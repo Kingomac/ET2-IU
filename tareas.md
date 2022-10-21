@@ -1,0 +1,3 @@
+- [ ] Gestionar errores HTTP.
+- [ ] Gestionar roles.
+- [ ] Gestionar personas.

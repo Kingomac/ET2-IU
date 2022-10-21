@@ -1,0 +1,28 @@
+const GA = {
+  titulo_pagina: "Xestión usuarios",
+  titulo_add: "Engadir",
+  titulo_search: "Buscar",
+  titulo_edit: "Editar",
+  titulo_delete: "Eliminar",
+  titulo_detail: "Detalle",
+  err_login_corto: "Tamaño login demasiado corto (min 3 caracteres)",
+  err_login_largo: "Tamaño login demasiado largo (max 15 caracteres)",
+  err_login_acentos:
+    "O login contén carecteres non permitidos (solo letras sen acentos e números)",
+  err_dni_size: "O tamaño do DNI debe ser de 9 caracteres",
+  err_dni_format: "O formato do DNI debe ser 8 números e 1 letra",
+  err_dni_incorrecto: "O DNI é incorrecto, o número non corresponde coa letra",
+  err_pass_corta: "Contrasinal demasiado corto (min. 3 caracteres)",
+  err_pass_larga: "Contrasinal demasiado largo (máx. 15 caracteres)",
+  err_pass_acentos:
+    "Contrasinal contén caracteres non permitidos (só letras sen acentos e números)",
+  err_USUARIO_PASS_KO: "Contrasinal incorrecto",
+  err_USUARIO_LOGIN_KO: "Usuario incorrecto",
+  label_rol: "Rol",
+  label_usuario: "Usuario",
+  label_dni: "DNI",
+  formato_dni: "12345678A",
+  rol_admin: "Admin",
+  rol_coordinador: "Coordinador",
+  rol_responsable: "Responsable",
+};
