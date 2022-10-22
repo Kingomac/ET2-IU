@@ -56,7 +56,7 @@ async function actualizarTablaPersonas(datos) {
     editBtn.width = 50;
     editBtn.height = 50;
     editBtn.src = "images/edit.svg";
-    editBtn.onclick = () => {};
+    editBtn.onclick = () => crearFormEditPersona(i);
 
     const deleteBtn = document.createElement("img");
     deleteBtn.width = 50;
@@ -93,10 +93,11 @@ async function actualizarTablaPersonas(datos) {
   trProgress.remove();
 }
 
+//#region FORM ADD
+
 function crearFormAddPersona() {
   //Reset formulario
-  const form = document.getElementById("id_form_persona");
-  form.reset();
+  resetForm("id_form_persona");
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
 
@@ -107,13 +108,30 @@ function crearFormAddPersona() {
   document.getElementById("form-accion").innerText = getTextoTitulo("add");
 }
 
-function addPersona() {}
+async function addPersona() {
+  if (
+    !comprobar_dni() ||
+    !comprobarNombrePersona() ||
+    !comprobarApellidosPersona() ||
+    !comprobarDireccionPersona() ||
+    !comprobarTelefonoPersona() ||
+    !comprobarEmailPersona() ||
+    !comprobarFotoPersona() ||
+    !comprobarFechaNacimientoPersona()
+  ) {
+    console.error("campos erroneos");
+    return;
+  }
+  await peticionBackAddPersona();
+  resetForm("id_form_persona");
+  await actualizarTablaPersonas();
+}
 
 function peticionBackAddPersona() {
   console.info("peticion add persona back");
-  eliminarCamposOcultos("id_form_usuario");
-  insertarCampoOculto("id_form_usuario", "controlador", "usuario");
-  insertarCampoOculto("id_form_usuario", "action", "ADD");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "ADD");
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
@@ -132,3 +150,85 @@ function peticionBackAddPersona() {
       });
   });
 }
+
+//#endregion
+
+//#region FORM ADD
+
+function crearFormEditPersona({
+  dni,
+  nombre_persona,
+  apellidos_persona,
+  direccion_persona,
+  telefono_persona,
+  email_persona,
+  foto_persona,
+  fechaNacimiento_persona,
+}) {
+  //Reset formulario
+  resetForm("id_form_persona");
+
+  document.getElementById("id_caja_formulario_persona").style.display = "block";
+
+  const submitImg = document.getElementById("img_form_submit");
+  submitImg.src = "images/edit.svg";
+  submitImg.onclick = editPersona;
+
+  document.getElementById("form-accion").innerText = getTextoTitulo("edit");
+
+  $("#id_dni").val(dni);
+  $("#nombre_persona").val(nombre_persona);
+  $("#apellidos_persona").val(apellidos_persona);
+  $("#direccion_persona").val(direccion_persona);
+  $("#telefono_persona").val(telefono_persona);
+  $("#email_persona").val(email_persona);
+  $("#foto_persona").val(foto_persona);
+  document.getElementById("fechaNacimiento_persona").valueAsDate =
+    fechaNacimiento_persona;
+
+  $("#id_dni").attr("readonly", true);
+  $("#fechaNacimiento_persona").attr("readonly", true);
+}
+
+async function editPersona() {
+  if (
+    !comprobarNombrePersona() ||
+    !comprobarApellidosPersona() ||
+    !comprobarDireccionPersona() ||
+    !comprobarTelefonoPersona() ||
+    !comprobarEmailPersona() ||
+    !comprobarFotoPersona()
+  ) {
+    console.error("campos erroneos");
+    return;
+  }
+  await peticionEditPersona();
+  resetForm("id_form_persona");
+  await actualizarTablaPersonas();
+}
+
+function peticionEditPersona() {
+  console.info("peticion edit persona back");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "EDIT");
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: "POST",
+      url: "http://193.147.87.202/Back/index.php",
+      data: $("#id_form_persona").serialize(),
+    })
+      .done((res) => {
+        if (res.ok != true || res.code != "SQL_OK") {
+          reject(res.code);
+        } else {
+          resolve(res);
+        }
+      })
+      .fail(function (jqXHR) {
+        reject(`http_status_${jqXHR.status}`);
+      });
+  });
+}
+
+//#endregion

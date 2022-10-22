@@ -15,7 +15,7 @@ function comprobarNombrePersona() {
     return false;
   }
   if (
-    !/^[^a-zA-Z\sÁÉÍÓÚáéíóúñÑ]+$/.test(document.getElementById(idInput).value)
+    /^[^a-zA-Z\sÁÉÍÓÚáéíóúñÑ]+$/.test(document.getElementById(idInput).value)
   ) {
     mensajeError({
       codigo: "nombre_persona_caracteres_invalidos",
@@ -50,6 +50,7 @@ function comprobarApellidosPersona() {
       codigo: "apellidos_persona_caracteres_invalidos",
       idInput,
     });
+    return false;
   }
   mensajeOK(idInput);
   return true;
@@ -72,7 +73,7 @@ function comprobarDireccionPersona() {
     return false;
   }
   if (
-    !/^[a-zA-ZñÑÁÉÍ´PÚáéíóú\s\/\-\,\º\ª]+$/.test(
+    !/^[0-9a-zA-ZñÑÁÉÍ´PÚáéíóú\s\/\-\,\º\ª]+$/.test(
       document.getElementById(idInput).value
     )
   ) {
@@ -130,7 +131,7 @@ function comprobarEmailPersona() {
     return false;
   }
   const valorCampo = document.getElementById(idInput).value;
-  if (!/^[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.\@]+$/.test(valorCampo)) {
+  if (!/^[0-9a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.\@]+$/.test(valorCampo)) {
     mensajeError({
       codigo: "email_persona_caracteres_invalidos",
       idInput,
@@ -138,12 +139,20 @@ function comprobarEmailPersona() {
     return false;
   }
   if (
-    !/^[^\.][a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+\@[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+\.[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+$/.test(
+    !/^([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)\@([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)\.([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)$/.test(
       valorCampo
     )
   ) {
     mensajeError({
       codigo: "email_persona_formato_invalido",
+      idInput,
+    });
+    return false;
+  }
+
+  if (valorCampo.startsWith(".") || valorCampo.endsWith(".")) {
+    mensajeError({
+      codigo: "email_persona_empieza_termina_punto",
       idInput,
     });
     return false;
@@ -182,6 +191,20 @@ function comprobarFotoPersona() {
       codigo: "foto_persona_formato_fichero_incorrecto",
       idInput,
     });
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarFechaNacimientoPersona() {
+  const idInput = "fechaNacimiento_persona";
+  const valorCampo = document.getElementById(idInput).valueAsDate;
+  if (valorCampo.valueOf() > Date.now()) {
+    mensajeError({
+      codigo: "fechaNacimiento_persona_futura",
+      idInput,
+    });
+    return false;
   }
   mensajeOK(idInput);
   return true;

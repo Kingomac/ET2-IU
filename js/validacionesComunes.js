@@ -72,3 +72,16 @@ function crearTR(...a) {
   }
   return tr;
 }
+
+/**
+ * Limpia campos del formulario, reinicia los bordes y quita los readonly de los campos
+ * @param {string} idForm
+ */
+function resetForm(idForm) {
+  const form = document.getElementById(idForm);
+  form.reset();
+  for (const i of form.querySelectorAll("input")) {
+    i.style.borderColor = "";
+    i.removeAttribute("readonly");
+  }
+}

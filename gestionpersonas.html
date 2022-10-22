@@ -18,6 +18,7 @@
   <script type="text/javascript" src="js/roles.js"></script>
   <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
   <script type="text/javascript" src="js/gestionpersonas/gestionpersonas.js"></script>
+  <script type="text/javascript" src="js/gestionpersonas/comprobar_errores_persona.js"></script>
 </head>
 
 <body
@@ -58,28 +59,33 @@
       <fieldset id="caja_campos_formulario">
         <legend id="form-accion"></legend>
         <label class="txt txt-label_dni" for="id_dni">dni</label>
-        <input class="txt txt-formato_dni" type='text' id='id_dni' name='dni' maxlength="9"></input>
+        <input onblur="comprobar_dni()" class="txt txt-formato_dni" type='text' id='id_dni' name='dni'
+          maxlength="9"></input>
         <br>
         <label for="nombre_persona" class="txt txt-label_nombre_persona"></label>
-        <input type="text" id="nombre_persona" name="nombre_persona">
+        <input onblur="comprobarNombrePersona()" maxlength="15" type="text" id="nombre_persona" name="nombre_persona">
         <br>
         <label for="apellidos_persona" class="txt txt-label_apellidos_persona"></label>
-        <input type="text" name="apellidos_persona" id="apellidos_persona">
+        <input onblur="comprobarApellidosPersona()" maxlength="100" type="text" name="apellidos_persona"
+          id="apellidos_persona">
         <br>
         <label for="fechaNacimiento_persona" class="txt txt-label_fecha_nacimiento_persona"></label>
-        <input type="date" name="fechaNacimiento_persona" id="fechaNacimiento_persona">
+        <input type="date" onblur="comprobarFechaNacimientoPersona()" name="fechaNacimiento_persona"
+          id="fechaNacimiento_persona">
         <br>
         <label for="direccion_persona" class="txt txt-label_direccion_persona"></label>
-        <input type="text" name="direccion_persona" id="direccion_persona">
+        <input onblur="comprobarDireccionPersona()" maxlength="200" type="text" name="direccion_persona"
+          id="direccion_persona">
         <br>
         <label for="telefono_persona" class="txt txt-label_telefono_persona"></label>
-        <input type="tel" name="telefono_persona" id="telefono_persona">
+        <input onblur="comprobarTelefonoPersona()" maxlength="9" type="tel" name="telefono_persona"
+          id="telefono_persona">
         <br>
         <label for="email_persona" class="txt txt-label_email_persona"></label>
-        <input type="email" name="email_persona" id="email_persona">
+        <input onblur="comprobarEmailPersona()" maxlength="45" type="email" name="email_persona" id="email_persona">
         <br>
         <label for="foto_persona" class="txt txt-label_foto_persona"></label>
-        <input type="text" name="foto_persona" id="foto_persona">
+        <input onblur="comprobarFotoPersona()" maxlength="45" type="text" name="foto_persona" id="foto_persona">
         <br>
         <img width="50" height="50" src="" alt="submit" id="img_form_submit">
       </fieldset>

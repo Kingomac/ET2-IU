@@ -78,10 +78,7 @@ function mensajeError({
   idInput,
   codigo,
 }) {
-  console.group();
-  console.error("input:", idInput);
-  console.error("codigo:", codigo);
-  console.groupEnd();
+  console.error("mensajeError:", codigo, idInput);
   document.getElementById(idCajaDiv).style.display = "block";
   if (idInput != null)
     document.getElementById(idInput).style.borderColor = "#ff0000";
