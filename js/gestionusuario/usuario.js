@@ -8,7 +8,6 @@ function peticionADDusuarioBack() {
   insertarCampoOculto("id_form_usuario", "controlador", "usuario");
   insertarCampoOculto("id_form_usuario", "action", "ADD");
   return new Promise((resolve, reject) => {
-    console.info("promesa ejecutandose");
     $.ajax({
       method: "POST",
       url: "http://193.147.87.202/Back/index.php",
@@ -110,7 +109,6 @@ function peticionSEARCHusuarioBack() {
 async function add_usuario() {
   console.info("add_usuario");
   if (comprobar_form_usuario_add()) {
-    console.info("form 👍");
     try {
       await peticionADDusuarioBack();
       $("#id_form_usuario").reset();
@@ -430,19 +428,9 @@ function peticionBackSHOWALLusuario() {
 }
 
 /**
- *
- * @param  {...string|Node} a
+ * Actualiza la tabla de usuarios con datos enviados como parámetro o se piden al back con ajax
+ * @param {{dni: string, contrasena: string, id_rol: number|{id_rol: number, nombre_rol: string, descrip_rol: string}, usuario: string}} datos
  */
-function crearTR(...a) {
-  const tr = document.createElement("tr");
-  for (const i of a) {
-    const td = document.createElement("td");
-    td.append(i);
-    tr.append(td);
-  }
-  return tr;
-}
-
 async function actualizarTablaUsuarios(datos) {
   const tbody = document.getElementById("table_body");
   tbody.textContent = "";

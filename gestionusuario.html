@@ -19,13 +19,11 @@
   <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
 </head>
 
-<body onload="ponerinvisibleerror();ponerinvisibleformusuario();setLang(readCookie('lang'));actualizarTablaUsuarios()">
+<body
+  onload="ponerinvisibleerror();ponerinvisibleformusuario();crearSelectIdioma();setLang(readCookie('lang'));actualizarTablaUsuarios()">
 
   <h1 class="txt txt-titulo_pagina">Página de gestión</h1>
   <select id="select_idioma" onchange="setLangSelect(event)">
-    <option value="ES">Español</option>
-    <option value="EN">English</option>
-    <option value="GA">Galego</option>
   </select>
   <img src='./images/add.svg' class="txt txt-titulo_add" title="Añadir" height="60" width="60"
     onclick="crearformADDusuario();">
