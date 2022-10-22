@@ -107,10 +107,7 @@ function comprobar_dni_search() {
     });
     return false;
   }
-  if (
-    !/^[0-9]{0,8}[a-zA-Z]{0,1}$/.test(dni) ||
-    !/^[0-9]{0,8}[a-zA-Z]{0,1}$/.test(dni)
-  ) {
+  if (!/^[0-9]{0,8}[a-zA-Z]{0,1}$/.test(dni)) {
     mensajeError({
       idInput: "id_dni",
       codigo: "dni_format_search",

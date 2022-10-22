@@ -178,7 +178,7 @@ function comprobarFotoPersona() {
     });
     return false;
   }
-  if (!/^[^À-ÿ]+$/.test(valorCampo)) {
+  if (!/^[^À-ÿ]*$/.test(valorCampo)) {
     mensajeError({
       codigo: "foto_persona_caracteres_invalidos",
       idInput,
@@ -197,6 +197,169 @@ function comprobarFotoPersona() {
 }
 
 function comprobarFechaNacimientoPersona() {
+  const idInput = "fechaNacimiento_persona";
+  const valorCampo = document.getElementById(idInput).valueAsDate;
+  if (valorCampo.valueOf() > Date.now()) {
+    mensajeError({
+      codigo: "fechaNacimiento_persona_futura",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+/*******************************************************************************+ */
+// #####################################################################################
+/************************************************************************************ */
+
+function comprobarNombrePersonaSearch() {
+  const idInput = "nombre_persona";
+  if (!size_maximo(idInput, 15)) {
+    mensajeError({
+      codigo: "nombre_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    /^[^a-zA-Z\sÁÉÍÓÚáéíóúñÑ]+$/.test(document.getElementById(idInput).value)
+  ) {
+    mensajeError({
+      codigo: "nombre_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarApellidosPersonaSearch() {
+  const idInput = "apellidos_persona";
+  if (!size_maximo(idInput, 100)) {
+    mensajeError({
+      codigo: "apellidos_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[a-zA-Z\-\sÁÉÍÓÚáéíóúñÑ]*$/.test(document.getElementById(idInput).value)
+  ) {
+    mensajeError({
+      codigo: "apellidos_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarDireccionPersonaSearch() {
+  const idInput = "direccion_persona";
+  if (!size_maximo(idInput, 200)) {
+    mensajeError({
+      codigo: "direccion_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[0-9a-zA-ZñÑÁÉÍ´PÚáéíóú\s\/\-\,\º\ª]*$/.test(
+      document.getElementById(idInput).value
+    )
+  ) {
+    mensajeError({
+      codigo: "direccion_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarTelefonoPersonaSearch() {
+  const idInput = "telefono_persona";
+  if (!size_maximo(idInput, 9)) {
+    mensajeError({
+      codigo: "telefono_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!/^[0-9]*$/.test(document.getElementById(idInput).value)) {
+    mensajeError({
+      codigo: "telefono_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarEmailPersonaSearch() {
+  const idInput = "email_persona";
+  if (!size_maximo(idInput, 45)) {
+    mensajeError({
+      codigo: "email_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  const valorCampo = document.getElementById(idInput).value;
+  if (!/^[0-9a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.\@]*$/.test(valorCampo)) {
+    mensajeError({
+      codigo: "email_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+
+  if (valorCampo.split("@").length - 1 > 1) {
+    mensajeError({
+      codigo: "email_persona_demasiadas_arrobas",
+      idInput,
+    });
+  }
+
+  if (valorCampo.startsWith(".") || valorCampo.endsWith(".")) {
+    mensajeError({
+      codigo: "email_persona_empieza_termina_punto",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarFotoPersonaSearch() {
+  const idInput = "foto_persona";
+  if (!size_maximo(idInput, 45)) {
+    mensajeError({
+      codigo: "foto_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  const valorCampo = document.getElementById(idInput).value;
+  if (!/^[^À-ÿ]*$/.test(valorCampo)) {
+    mensajeError({
+      codigo: "foto_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarFechaNacimientoPersonaSearch() {
   const idInput = "fechaNacimiento_persona";
   const valorCampo = document.getElementById(idInput).valueAsDate;
   if (valorCampo.valueOf() > Date.now()) {

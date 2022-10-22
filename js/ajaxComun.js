@@ -1,3 +1,5 @@
+const URL_BACK = "http://193.147.87.202/Back/index.php";
+
 function insertarCampoOculto(idForm, name, valor) {
   const hidden = document.createElement("input");
   hidden.type = "hidden";

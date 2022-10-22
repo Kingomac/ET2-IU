@@ -10,7 +10,7 @@ function peticionADDusuarioBack() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: $("#id_form_usuario").serialize(),
     })
       .done((res) => {
@@ -36,7 +36,7 @@ function peticionEDITusuarioBack() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: $("#id_form_usuario").serialize(),
     })
       .done((res) => {
@@ -62,7 +62,7 @@ function peticionDELETEusuarioBack() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: $("#id_form_usuario").serialize(),
     })
       .done((res) => {
@@ -86,7 +86,7 @@ function peticionSEARCHusuarioBack() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: $("#id_form_usuario").serialize(),
     })
       .done((res) => {
@@ -411,7 +411,7 @@ function peticionBackSHOWALLusuario() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: datos,
       processData: false,
       contentType: false,

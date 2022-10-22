@@ -66,7 +66,7 @@ function peticionRolesBack() {
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: datosPeticion,
       processData: false,
       contentType: false,

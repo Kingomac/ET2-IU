@@ -51,7 +51,7 @@ function loginAjaxPromesa() {
   return new Promise(function (resolve, reject) {
     $.ajax({
       method: "POST",
-      url: "http://193.147.87.202/Back/index.php",
+      url: URL_BACK,
       data: $("#id_form_login").serialize(),
     })
       .done((res) => {
