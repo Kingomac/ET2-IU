@@ -1,4 +1,5 @@
 const ES = {
+  //Login y gestión usuario
   titulo_pagina: "Gestión usuarios",
   titulo_pagina_login: "Página Login",
   titulo_add: "Añadir",
@@ -31,4 +32,14 @@ const ES = {
   rol_coordinador: "Coordinador",
   rol_responsable: "Responsable",
   err_RECORDSET_VACIO: "No ha habido resultados de la búsqueda",
+
+  // Gestion personas
+  title_gestion_personas: "Gestión de personas",
+  label_nombre_persona: "Nombre",
+  label_apellidos_persona: "Apellidos",
+  label_fecha_nacimiento_persona: "Fecha de nacimiento",
+  label_direccion_persona: "Dirección",
+  label_telefono_persona: "Teléfono",
+  label_email_persona: "Email",
+  label_foto_persona: "Foto",
 };

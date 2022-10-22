@@ -1,15 +1,28 @@
 let lang;
+const IDIOMAS = [
+  {
+    codigo: "ES",
+    texto: "Español",
+    valores: ES,
+  },
+  {
+    codigo: "EN",
+    texto: "English",
+    valores: EN,
+  },
+  {
+    codigo: "GA",
+    texto: "Galego",
+    valores: GA,
+  },
+];
 
 function setLangSelect(ev) {
   setLang(ev.target.value);
 }
 
 function setLang(codigo = "ES") {
-  const avlangs = {
-    ES,
-    EN,
-    GA,
-  };
+  const avlangs = Object.fromEntries(IDIOMAS.map((i) => [i.codigo, i.valores]));
   lang = avlangs[codigo];
 
   for (const el of document.querySelectorAll("div.txt")) {
@@ -88,5 +101,15 @@ function getLangClass(classList) {
 function removeLangClass(classList) {
   for (const i of classList) {
     if (i.startsWith("txt-")) classList.remove(i);
+  }
+}
+
+function crearSelectIdioma() {
+  const select = document.getElementById("select_idioma");
+  for (const i of IDIOMAS) {
+    const option = document.createElement("option");
+    option.value = i.codigo;
+    option.innerText = i.texto;
+    select.append(option);
   }
 }
