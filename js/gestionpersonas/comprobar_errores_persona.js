@@ -1,0 +1,188 @@
+function comprobarNombrePersona() {
+  const idInput = "nombre_persona";
+  if (!size_maximo(idInput, 15)) {
+    mensajeError({
+      codigo: "nombre_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 3)) {
+    mensajeError({
+      codigo: "nombre_persona_corto",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[^a-zA-Z\sÁÉÍÓÚáéíóúñÑ]+$/.test(document.getElementById(idInput).value)
+  ) {
+    mensajeError({
+      codigo: "nombre_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarApellidosPersona() {
+  const idInput = "apellidos_persona";
+  if (!size_maximo(idInput, 100)) {
+    mensajeError({
+      codigo: "apellidos_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 5)) {
+    mensajeError({
+      codigo: "apellidos_persona_corto",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[a-zA-Z\-\sÁÉÍÓÚáéíóúñÑ]+$/.test(document.getElementById(idInput).value)
+  ) {
+    mensajeError({
+      codigo: "apellidos_persona_caracteres_invalidos",
+      idInput,
+    });
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarDireccionPersona() {
+  const idInput = "direccion_persona";
+  if (!size_maximo(idInput, 200)) {
+    mensajeError({
+      codigo: "direccion_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 10)) {
+    mensajeError({
+      codigo: "direccion_persona_corta",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[a-zA-ZñÑÁÉÍ´PÚáéíóú\s\/\-\,\º\ª]+$/.test(
+      document.getElementById(idInput).value
+    )
+  ) {
+    mensajeError({
+      codigo: "direccion_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarTelefonoPersona() {
+  const idInput = "telefono_persona";
+  if (!size_maximo(idInput, 9)) {
+    mensajeError({
+      codigo: "telefono_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 9)) {
+    mensajeError({
+      codigo: "telefono_persona_corto",
+      idInput,
+    });
+    return false;
+  }
+  if (!/^[0-9]{9}$/.test(document.getElementById(idInput).value)) {
+    mensajeError({
+      codigo: "telefono_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarEmailPersona() {
+  const idInput = "email_persona";
+  if (!size_maximo(idInput, 45)) {
+    mensajeError({
+      codigo: "email_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 8)) {
+    mensajeError({
+      codigo: "email_persona_corto",
+      idInput,
+    });
+    return false;
+  }
+  const valorCampo = document.getElementById(idInput).value;
+  if (!/^[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.\@]+$/.test(valorCampo)) {
+    mensajeError({
+      codigo: "email_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  if (
+    !/^[^\.][a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+\@[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+\.[a-zA-ZáéíúóÁÉÍÓÚ\-\_\s\+\.]+$/.test(
+      valorCampo
+    )
+  ) {
+    mensajeError({
+      codigo: "email_persona_formato_invalido",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobarFotoPersona() {
+  const idInput = "foto_persona";
+  if (!size_maximo(idInput, 45)) {
+    mensajeError({
+      codigo: "foto_persona_largo",
+      idInput,
+    });
+    return false;
+  }
+  const valorCampo = document.getElementById(idInput).value;
+  if (valorCampo.length > 1 && !size_minimo(idInput, 6)) {
+    mensajeError({
+      codigo: "foto_persona_corto",
+      idInput,
+    });
+    return false;
+  }
+  if (!/^[^À-ÿ]+$/.test(valorCampo)) {
+    mensajeError({
+      codigo: "foto_persona_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+
+  if (!/^.*\.(png|jpg)$/.test(valorCampo)) {
+    mensajeError({
+      codigo: "foto_persona_formato_fichero_incorrecto",
+      idInput,
+    });
+  }
+  mensajeOK(idInput);
+  return true;
+}
