@@ -42,4 +42,10 @@ const ES = {
   label_telefono_persona: "Teléfono",
   label_email_persona: "Email",
   label_foto_persona: "Foto",
+
+  // Gestión roles
+  titulo_pagina_roles: "Gestión de roles",
+  label_id_rol: "ID Rol",
+  label_nombre_rol: "Nombre",
+  label_descrip_rol: "Descripción",
 };

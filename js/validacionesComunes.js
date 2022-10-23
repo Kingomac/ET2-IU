@@ -80,7 +80,7 @@ function crearTR(...a) {
 function resetForm(idForm) {
   const form = document.getElementById(idForm);
   form.reset();
-  for (const i of form.querySelectorAll("input")) {
+  for (const i of form.querySelectorAll("input, textarea")) {
     i.style.borderColor = "";
     i.removeAttribute("readonly");
   }

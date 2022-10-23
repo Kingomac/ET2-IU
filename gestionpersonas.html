@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,6 @@
   <script type="text/javascript" src="./js/md5.js"></script>
   <script type="text/javascript" src="js/cookies.js"></script>
   <script type="text/javascript" src="js/ajaxComun.js"></script>
-  <script type="text/javascript" src="js/roles.js"></script>
   <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
   <script type="text/javascript" src="js/gestionpersonas/gestionpersonas.js"></script>
   <script type="text/javascript" src="js/gestionpersonas/comprobar_errores_persona.js"></script>
@@ -34,19 +33,19 @@
   </div>
 
   <table border="1">
-    <thead>
+    <thead id="table_head">
       <tr>
-        <td class="txt txt-label_dni"></td>
-        <td class="txt txt-label_nombre_persona"></td>
-        <td class="txt txt-label_apellidos_persona"></td>
-        <td class="txt txt-label_fecha_nacimiento_persona"></td>
-        <td class="txt txt-label_direccion_persona"></td>
-        <td class="txt txt-label_telefono_persona"></td>
-        <td class="txt txt-label_email_persona"></td>
-        <td class="txt txt-label_foto_persona"></td>
-        <td class="txt txt-titulo_edit"></td>
-        <td class="txt txt-titulo_delete"></td>
-        <td class="txt txt-titulo_detail"></td>
+        <th class="txt txt-label_dni"></th>
+        <th class="txt txt-label_nombre_persona"></th>
+        <th class="txt txt-label_apellidos_persona"></th>
+        <th class="txt txt-label_fecha_nacimiento_persona"></th>
+        <th class="txt txt-label_direccion_persona"></th>
+        <th class="txt txt-label_telefono_persona"></th>
+        <th class="txt txt-label_email_persona"></th>
+        <th class="txt txt-label_foto_persona"></th>
+        <th class="txt txt-titulo_edit"></th>
+        <th class="txt txt-titulo_delete"></th>
+        <th class="txt txt-titulo_detail"></th>
       </tr>
     </thead>
     <tbody id="table_body"></tbody>

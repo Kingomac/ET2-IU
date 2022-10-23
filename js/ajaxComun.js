@@ -15,3 +15,18 @@ function eliminarCamposOcultos(idForm) {
     }
   }
 }
+
+/**
+ * Crea un botón para una acción CRUD
+ * @param {{accion: 'add' | 'edit' | 'delete' | 'detail' | 'search', click?:((this: GlobalEventHandlers, ev: MouseEvent) => any), width?: number, height?: number, src?: string}} accion
+ */
+function crearBotonCRUD({ accion, click, width = 50, height = 50, src }) {
+  const btn = document.createElement("img");
+  btn.src = src || `images/${accion}.svg`;
+  btn.width = width;
+  btn.height = height;
+  btn.className = `txt txt-titulo_${accion}`;
+  btn.title = getTextoTitulo(accion);
+  btn.onclick = click;
+  return btn;
+}

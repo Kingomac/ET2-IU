@@ -39,7 +39,9 @@ async function actualizarTablaPersonas(datos) {
   const tbody = document.getElementById("table_body");
   tbody.textContent = "";
   const trProgress = crearTR(progress);
-  trProgress.querySelector("td").colSpan = 11;
+  trProgress.querySelector("td").colSpan = document
+    .querySelector("#table_head")
+    .querySelectorAll("th").length;
   tbody.append(trProgress);
 
   try {
@@ -52,23 +54,20 @@ async function actualizarTablaPersonas(datos) {
   }
 
   for (const i of datos) {
-    const editBtn = document.createElement("img");
-    editBtn.width = 50;
-    editBtn.height = 50;
-    editBtn.src = "images/edit.svg";
-    editBtn.onclick = () => crearFormEditPersona(i);
+    const editBtn = crearBotonCRUD({
+      accion: "edit",
+      click: () => crearFormEditPersona(i),
+    });
 
-    const deleteBtn = document.createElement("img");
-    deleteBtn.width = 50;
-    deleteBtn.height = 50;
-    deleteBtn.src = "images/delete.svg";
-    deleteBtn.onclick = () => crearFormDeletePersona(i);
+    const deleteBtn = crearBotonCRUD({
+      accion: "delete",
+      click: () => crearFormDeletePersona(i),
+    });
 
-    const detailBtn = document.createElement("img");
-    detailBtn.width = 50;
-    detailBtn.height = 50;
-    detailBtn.src = "images/detail.svg";
-    detailBtn.onclick = () => crearFormDetailPersona(i);
+    const detailBtn = crearBotonCRUD({
+      accion: "detail",
+      click: () => crearFormDetailPersona(i),
+    });
 
     tbody.append(
       crearTR(
@@ -377,6 +376,15 @@ function crearFormDetailPersona({
   $("#email_persona").attr("readonly", true);
   $("#foto_persona").attr("readonly", true);
   $("#fechaNacimiento_persona").attr("readonly", true);
+
+  $("#id_dni").off("blur");
+  $("#nombre_persona").off("blur");
+  $("#apellidos_persona").off("blur");
+  $("#direccion_persona").off("blur");
+  $("#telefono_persona").off("blur");
+  $("#email_persona").off("blur");
+  $("#foto_persona").off("blur");
+  $("#fechaNacimiento_persona").off("blur");
 }
 
 //#endregion
@@ -385,6 +393,7 @@ function crearFormDetailPersona({
 function crearFormSearchPersona() {
   //Reset formulario
   resetForm("id_form_persona");
+  resetOnBlur();
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
 
