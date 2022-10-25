@@ -70,8 +70,11 @@ function loginAjaxPromesa() {
 async function login() {
   await loginAjaxPromesa()
     .then((res) => {
-      setCookie("token", res.resource);
-      setCookie("usuarioSistema", document.getElementById("id_usuario").value);
+      writeCookie({ clave: LOGIN_COOKIE_TOKEN, valor: res.resource });
+      writeCookie({
+        clave: LOGIN_COOKIE_USUARIO_SISTEMA,
+        valor: document.getElementById("id_usuario").value,
+      });
       window.location.href = "gestionusuario.html";
     })
     .catch((res) => {

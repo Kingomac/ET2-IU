@@ -1,4 +1,20 @@
 let lang;
+
+const IDIOMAS2 = Object.freeze({
+  ES: {
+    texto: "Español",
+    valores: ES,
+  },
+  EN: {
+    texto: "English",
+    valores: EN,
+  },
+  GA: {
+    texto: "Galego",
+    valores: GA,
+  },
+});
+
 const IDIOMAS = [
   {
     codigo: "ES",
@@ -22,8 +38,7 @@ function setLangSelect(ev) {
 }
 
 function setLang(codigo = "ES") {
-  const avlangs = Object.fromEntries(IDIOMAS.map((i) => [i.codigo, i.valores]));
-  lang = avlangs[codigo];
+  lang = IDIOMAS2[codigo].valores;
 
   for (const el of document.querySelectorAll("div.txt")) {
     el.innerHTML = lang[getLangClass(el.classList)];
@@ -101,12 +116,24 @@ function removeLangClass(classList) {
   }
 }
 
+// function crearSelectIdioma() {
+//   const select = document.getElementById("select_idioma");
+//   for (const i of IDIOMAS) {
+//     const option = document.createElement("option");
+//     option.value = i.codigo;
+//     option.innerText = i.texto;
+//     select.append(option);
+//   }
+// }
+
 function crearSelectIdioma() {
-  const select = document.getElementById("select_idioma");
-  for (const i of IDIOMAS) {
+  const select = document.createElement("select");
+  for (const i of Object.entries(IDIOMAS2)) {
     const option = document.createElement("option");
-    option.value = i.codigo;
-    option.innerText = i.texto;
+    option.value = i[0];
+    option.innerText = i[1].texto;
     select.append(option);
   }
+  select.onchange = (e) => setLang(e.target.value);
+  document.body.prepend(select);
 }

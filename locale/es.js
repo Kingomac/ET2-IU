@@ -1,6 +1,6 @@
 const ES = {
   //Login y gestión usuario
-  titulo_pagina: "Gestión usuarios",
+  titulo_gestion_usuarios: "Gestión usuarios",
   titulo_pagina_login: "Página Login",
   titulo_add: "Añadir",
   titulo_search: "Buscar",
@@ -34,7 +34,7 @@ const ES = {
   err_RECORDSET_VACIO: "No ha habido resultados de la búsqueda",
 
   // Gestion personas
-  title_gestion_personas: "Gestión de personas",
+  titulo_gestion_personas: "Gestión de personas",
   label_nombre_persona: "Nombre",
   label_apellidos_persona: "Apellidos",
   label_fecha_nacimiento_persona: "Fecha de nacimiento",
@@ -44,7 +44,7 @@ const ES = {
   label_foto_persona: "Foto",
 
   // Gestión roles
-  titulo_pagina_roles: "Gestión de roles",
+  titulo_gestion_roles: "Gestión de roles",
   label_id_rol: "ID Rol",
   label_nombre_rol: "Nombre",
   label_descrip_rol: "Descripción",

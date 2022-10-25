@@ -2,7 +2,7 @@
  * clave: clave de la cookie
  * valor: valor de la cookie
  * expires: ms a sumar al timestamp actual
- * @param {clave: string, valor: string, expires: number} params
+ * @param {{clave: string, valor: string, expires: number}} params
  * @returns void
  */
 function writeCookie({ clave, valor, expires = 7 * 24 * 60 * 60 * 1000 }) {
