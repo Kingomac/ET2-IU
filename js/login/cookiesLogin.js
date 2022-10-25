@@ -14,7 +14,7 @@ const PAGINAS = Object.freeze({
   gestionpermisos: "gestionpermisos",
   gestionusuario: "gestionusuario",
   gestionroles: "gestionroles",
-  gestionacciones: "gestionacciones",
+  gestionaccion: "gestionaccion",
   gestionfuncionalidad: "gestionfuncionalidad",
   login: "login",
 });

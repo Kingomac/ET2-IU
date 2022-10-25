@@ -84,17 +84,3 @@ function peticionRolesBack() {
       });
   });
 }
-
-/**
- * Desactiva los options excepto el seleccionado en un select para
- * tener un readonly
- * @param {string} idselect
- * @param {number} rol
- */
-function hacerSelectReadonly(idselect, rol) {
-  for (const i of document.getElementById(idselect).children) {
-    if (i.value != rol) {
-      i.setAttribute("disabled", true);
-    }
-  }
-}
