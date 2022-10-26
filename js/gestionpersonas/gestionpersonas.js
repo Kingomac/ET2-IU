@@ -107,6 +107,7 @@ function resetOnBlur() {
 
 function crearFormAddPersona() {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
 
@@ -133,9 +134,16 @@ async function addPersona() {
     console.error("campos erroneos");
     return;
   }
-  await peticionBackAddPersona();
-  resetForm("id_form_persona");
-  await actualizarTablaPersonas();
+  try {
+    await peticionBackAddPersona();
+    resetForm("id_form_persona");
+    await actualizarTablaPersonas();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackAddPersona() {
@@ -177,6 +185,7 @@ function crearFormEditPersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
 
@@ -214,9 +223,16 @@ async function editPersona() {
     console.error("campos erroneos");
     return;
   }
-  await peticionEditPersona();
-  resetForm("id_form_persona");
-  await actualizarTablaPersonas();
+  try {
+    await peticionEditPersona();
+    resetForm("id_form_persona");
+    await actualizarTablaPersonas();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionEditPersona() {
@@ -258,6 +274,7 @@ function crearFormDeletePersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
 
@@ -303,9 +320,16 @@ async function deletePersona() {
     console.error("campos erroneos");
     return;
   }
-  await peticionBackDeletePersona();
-  resetForm("id_form_persona");
-  await actualizarTablaPersonas();
+  try {
+    await peticionBackDeletePersona();
+    resetForm("id_form_persona");
+    await actualizarTablaPersonas();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackDeletePersona() {
@@ -347,6 +371,7 @@ function crearFormDetailPersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
 
@@ -392,6 +417,7 @@ function crearFormDetailPersona({
 //#region FORM SEARCH
 function crearFormSearchPersona() {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
 
@@ -427,9 +453,16 @@ async function searchPersona() {
     console.error("campos erroneos");
     return;
   }
-  const entradas = await peticionBackSearchPersona();
-  resetForm("id_form_persona");
-  await actualizarTablaPersonas(entradas);
+  try {
+    const entradas = await peticionBackSearchPersona();
+    resetForm("id_form_persona");
+    await actualizarTablaPersonas(entradas);
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackSearchPersona() {

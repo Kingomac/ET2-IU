@@ -5,6 +5,7 @@
  */
 async function actualizarTablaRoles(datos) {
   const tbody = document.getElementById("table_body");
+  tbody.textContent = "";
   const trLoading = crearTR(document.createElement("progress"));
   trLoading.querySelector("td").colSpan = document
     .querySelector("#table_head")
@@ -48,6 +49,7 @@ function resetOnBlurRoles() {
 
 function crearFormAddRol() {
   resetForm("id_form_rol");
+  scrollFinTabla();
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
@@ -68,9 +70,16 @@ async function addRol() {
   ) {
     return;
   }
-  await peticionBackAddRol();
-  resetForm("id_form_rol");
-  await actualizarTablaRoles();
+  try {
+    await peticionBackAddRol();
+    resetForm("id_form_rol");
+    await actualizarTablaRoles();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackAddRol() {
@@ -104,6 +113,7 @@ function peticionBackAddRol() {
 function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
+  scrollFinTabla();
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
@@ -123,9 +133,16 @@ async function editRol() {
   if (!comprobarNombreRol() || !comprobarDescripRol()) {
     return;
   }
-  await peticionEditRol();
-  resetForm("id_form_rol");
-  await actualizarTablaRoles();
+  try {
+    await peticionEditRol();
+    resetForm("id_form_rol");
+    await actualizarTablaRoles();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionEditRol() {
@@ -159,6 +176,7 @@ function peticionEditRol() {
 function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
+  scrollFinTabla();
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
@@ -185,9 +203,16 @@ async function deleteRol() {
     console.error("campos erroneos");
     return;
   }
-  await peticionBackDeleteRol();
-  resetForm("id_form_rol");
-  await actualizarTablaRoles();
+  try {
+    await peticionBackDeleteRol();
+    resetForm("id_form_rol");
+    await actualizarTablaRoles();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackDeleteRol() {
@@ -221,6 +246,7 @@ function peticionBackDeleteRol() {
 function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
+  scrollFinTabla();
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
@@ -248,6 +274,7 @@ function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
 function crearFormSearchRol() {
   //Reset formulario
   resetForm("id_form_rol");
+  scrollFinTabla();
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
@@ -273,9 +300,16 @@ async function searchRol() {
     console.error("campos erroneos");
     return;
   }
-  const entradas = await peticionBackSearchRol();
-  resetForm("id_form_rol");
-  await actualizarTablaRoles(entradas);
+  try {
+    const entradas = await peticionBackSearchRol();
+    resetForm("id_form_rol");
+    await actualizarTablaRoles(entradas);
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackSearchRol() {

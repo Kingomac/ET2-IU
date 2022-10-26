@@ -5,6 +5,7 @@
  */
 async function actualizarTablaAcciones(datos) {
   const tbody = document.getElementById("table_body");
+  tbody.textContent = "";
   const trLoading = crearTR(document.createElement("progress"));
   trLoading.querySelector("td").colSpan = document
     .querySelector("#table_head")
@@ -47,6 +48,7 @@ function resetOnBlurAcciones() {
 //#region FORM ADD
 
 function crearFormAddAccion() {
+  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
@@ -68,9 +70,16 @@ async function addAccion() {
   ) {
     return;
   }
-  await peticionBackAddAccion();
-  resetForm("id_form_accion");
-  await actualizarTablaAcciones();
+  try {
+    await peticionBackAddAccion();
+    resetForm("id_form_accion");
+    await actualizarTablaAcciones();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackAddAccion() {
@@ -103,6 +112,7 @@ function peticionBackAddAccion() {
 
 function crearFormEditAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
@@ -123,9 +133,16 @@ async function editAccion() {
   if (!comprobarNombreAccion() || !comprobarDescripAccion()) {
     return;
   }
-  await peticionEditAccion();
-  resetForm("id_form_accion");
-  await actualizarTablaAcciones();
+  try {
+    await peticionEditAccion();
+    resetForm("id_form_accion");
+    await actualizarTablaAcciones();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionEditAccion() {
@@ -158,6 +175,7 @@ function peticionEditAccion() {
 
 function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
@@ -185,9 +203,16 @@ async function deleteAccion() {
     console.error("campos erroneos");
     return;
   }
-  await peticionBackDeleteAccion();
-  resetForm("id_form_accion");
-  await actualizarTablaAcciones();
+  try {
+    await peticionBackDeleteAccion();
+    resetForm("id_form_accion");
+    await actualizarTablaAcciones();
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackDeleteAccion() {
@@ -220,6 +245,7 @@ function peticionBackDeleteAccion() {
 
 function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
@@ -247,6 +273,7 @@ function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
 //#region FORM SEARCH
 function crearFormSearchAccion() {
   //Reset formulario
+  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
@@ -273,9 +300,16 @@ async function searchAccion() {
     console.error("campos erroneos");
     return;
   }
-  const entradas = await peticionBackSearchAccion();
-  resetForm("id_form_accion");
-  await actualizarTablaAcciones(entradas);
+  try {
+    const entradas = await peticionBackSearchAccion();
+    resetForm("id_form_accion");
+    await actualizarTablaAcciones(entradas);
+  } catch (e) {
+    mensajeError({
+      codigo: e,
+      idInput: "caja_campos_formulario",
+    });
+  }
 }
 
 function peticionBackSearchAccion() {

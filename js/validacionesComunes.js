@@ -85,3 +85,13 @@ function resetForm(idForm) {
     i.removeAttribute("readonly");
   }
 }
+
+function scrollFinTabla() {
+  $("html, body").animate(
+    {
+      scrollTop: document.querySelector("table").offsetHeight,
+    },
+    800,
+    function () {}
+  );
+}

@@ -206,6 +206,7 @@ function resetearformusuario() {
 
 async function crearformADDusuario() {
   // resetear el formulario
+  scrollFinTabla();
   resetearformusuario();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("add");
@@ -247,6 +248,7 @@ async function crearformEDITusuario(dni, usuario, rol) {
   document.getElementById("form-accion").className = "txt txt-titulo_edit";
 
   // resetear al formulario
+  scrollFinTabla();
   resetearformusuario();
 
   // se crea el action del formulario
@@ -291,6 +293,7 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   document.getElementById("form-accion").innerText = getTextoTitulo("delete");
   document.getElementById("form-accion").className = "txt txt-titulo_delete";
 
+  scrollFinTabla();
   resetearformusuario();
 
   $("#id_dni").attr("readonly", "true");
@@ -330,6 +333,7 @@ async function crearformSEARCHusuario() {
   document.getElementById("form-accion").className = "txt txt-titulo_search";
 
   // reseteo el formulario
+  scrollFinTabla();
   resetearformusuario();
 
   $("#id_form_usuario")[0].reset();
@@ -369,6 +373,7 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
   document.getElementById("form-accion").className = "txt txt-titulo_detail";
 
   // reseteo el formulario
+  scrollFinTabla();
   resetearformusuario();
 
   $("#id_dni").val(dni);
