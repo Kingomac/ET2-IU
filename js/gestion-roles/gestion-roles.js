@@ -55,9 +55,12 @@ function crearFormAddRol() {
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("caja_id_rol").style.display = "none";
 
+  document.getElementById("id_form_rol").action = "javascript:addRol()";
+  document.getElementById("id_form_rol").onsubmit = () =>
+    comprobarNombreRol() && comprobarDescripRol();
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/add.svg";
-  submitImg.onclick = addRol;
+  submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
   $("#form-accion").text(getTextoTitulo("add"));
   document.getElementById("form-accion").className = "txt txt-titulo_add";
@@ -116,11 +119,15 @@ function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   scrollFinTabla();
   resetOnBlurRoles();
 
+  document.getElementById("id_form_rol").action = "javascript:editRol()";
+  document.getElementById("id_form_rol").onsubmit = () =>
+    comprobarNombreRol() && comprobarDescripRol();
+
   document.getElementById("id_caja_formulario_rol").style.display = "block";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/edit.svg";
-  submitImg.onclick = editRol;
+  submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("edit");
 
@@ -180,10 +187,11 @@ function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("id_form_rol").action = "javascript:deleteRol()";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/delete.svg";
-  submitImg.onclick = deleteRol;
+  submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("delete");
 
@@ -278,10 +286,15 @@ function crearFormSearchRol() {
   resetOnBlurRoles();
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("id_form_rol").action = "javascript:searchRol()";
+  document.getElementById("id_form_rol").onsubmit = () =>
+    comprobarIdRolSearch() &&
+    comprobarNombreRolSearch() &&
+    comprobarDescripRolSearch();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/search.svg";
-  submitImg.onclick = searchRol;
+  submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("search");
 
@@ -324,7 +337,7 @@ function peticionBackSearchRol() {
       data: $("#id_form_rol").serialize(),
     })
       .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
+        if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
           resolve(res.resource);

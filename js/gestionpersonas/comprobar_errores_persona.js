@@ -361,6 +361,10 @@ function comprobarFotoPersonaSearch() {
 
 function comprobarFechaNacimientoPersonaSearch() {
   const idInput = "fechaNacimiento_persona";
+  if (document.getElementById(idInput).value == "") {
+    mensajeOK(idInput);
+    return true;
+  }
   const valorCampo = document.getElementById(idInput).valueAsDate;
   if (valorCampo.valueOf() > Date.now()) {
     mensajeError({

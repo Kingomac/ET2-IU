@@ -48,4 +48,8 @@ const ES = {
   label_id_rol: "ID Rol",
   label_nombre_rol: "Nombre",
   label_descrip_rol: "Descripción",
+
+  //Login
+  titulo_registrar: "Registrar",
+  recuperar_contrasena: "Recuperar contraseña",
 };

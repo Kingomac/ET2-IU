@@ -17,11 +17,7 @@ function peticionBackShowAllPersona() {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res);
         } else {
-          const datos = res.resource;
-          for (const i of datos) {
-            i.fechaNacimiento_persona = new Date(i.fechaNacimiento_persona);
-          }
-          resolve(datos);
+          resolve(res.resource);
         }
       })
       .fail((res) => {
@@ -74,7 +70,7 @@ async function actualizarTablaPersonas(datos) {
         i.dni,
         i.nombre_persona,
         i.apellidos_persona,
-        i.fechaNacimiento_persona.toLocaleDateString("es-ES", {
+        new Date(i.fechaNacimiento_persona).toLocaleDateString("es-ES", {
           year: "numeric",
           day: "2-digit",
           month: "2-digit",
@@ -112,10 +108,20 @@ function crearFormAddPersona() {
   resetOnBlur();
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
+  document.getElementById("id_form_persona").action = "javascript:addPersona()";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/add.svg";
-  submitImg.onclick = addPersona;
+  submitImg.onclick = () => document.getElementById("id_form_persona").submit();
+  submitImg.onsubmit = () =>
+    comprobar_dni() &&
+    comprobarNombrePersona() &&
+    comprobarApellidosPersona() &&
+    comprobarDireccionPersona() &&
+    comprobarTelefonoPersona() &&
+    comprobarEmailPersona() &&
+    comprobarFotoPersona() &&
+    comprobarFechaNacimientoPersona();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("add");
 }
@@ -190,10 +196,21 @@ function crearFormEditPersona({
   resetOnBlur();
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
+  document.getElementById("id_form_persona").action =
+    "javascript:editPersona()";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/edit.svg";
-  submitImg.onclick = editPersona;
+  submitImg.onclick = () => document.getElementById("id_form_persona").submit();
+  submitImg.onsubmit = () =>
+    comprobar_dni() &&
+    comprobarNombrePersona() &&
+    comprobarApellidosPersona() &&
+    comprobarDireccionPersona() &&
+    comprobarTelefonoPersona() &&
+    comprobarEmailPersona() &&
+    comprobarFotoPersona() &&
+    comprobarFechaNacimientoPersona();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("edit");
 
@@ -279,10 +296,21 @@ function crearFormDeletePersona({
   resetOnBlur();
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
+  document.getElementById("id_form_persona").action =
+    "javascript:deletePersona()";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/delete.svg";
-  submitImg.onclick = deletePersona;
+  submitImg.onclick = () => document.getElementById("id_form_persona").submit();
+  submitImg.onsubmit = () =>
+    comprobar_dni() &&
+    comprobarNombrePersona() &&
+    comprobarApellidosPersona() &&
+    comprobarDireccionPersona() &&
+    comprobarTelefonoPersona() &&
+    comprobarEmailPersona() &&
+    comprobarFotoPersona() &&
+    comprobarFechaNacimientoPersona();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("delete");
 
@@ -422,10 +450,21 @@ function crearFormSearchPersona() {
   resetOnBlur();
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
+  document.getElementById("id_form_persona").action =
+    "javascript:searchPersona()";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/search.svg";
-  submitImg.onclick = searchPersona;
+  submitImg.onclick = () => document.getElementById("id_form_persona").submit();
+  submitImg.onsubmit = () =>
+    comprobar_dni_search() &&
+    comprobarNombrePersonaSearch() &&
+    comprobarApellidosPersonaSearch() &&
+    comprobarDireccionPersonaSearch() &&
+    comprobarTelefonoPersonaSearch() &&
+    comprobarEmailPersonaSearch() &&
+    comprobarFotoPersonaSearch() &&
+    comprobarFechaNacimientoPersonaSearch();
 
   document.getElementById("form-accion").innerText = getTextoTitulo("search");
 
@@ -477,7 +516,7 @@ function peticionBackSearchPersona() {
       data: $("#id_form_persona").serialize(),
     })
       .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
+        if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
           resolve(res.resource);

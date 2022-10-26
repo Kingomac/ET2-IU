@@ -1,0 +1,2 @@
+- [ ] Cambiar los forms que quedan (accion, funcionalidad, usuario) a usar action de javascript
+- [ ] Arreglar búsquedas en esos mismos formularios

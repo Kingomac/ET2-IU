@@ -45,7 +45,7 @@ function setLang(codigo = "ES") {
   }
 
   for (const el of document.querySelectorAll(
-    "th.txt, td.txt, label.txt, h1.txt, h2.txt, h3.txt, h4.txt, h5.txt, h6.txt, title.txt, legend.txt"
+    "th.txt, td.txt, label.txt, h1.txt, h2.txt, h3.txt, h4.txt, h5.txt, h6.txt, title.txt, legend.txt, a.txt"
   )) {
     el.innerText = lang[getLangClass(el.classList)];
   }
