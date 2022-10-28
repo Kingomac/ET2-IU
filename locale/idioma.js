@@ -1,6 +1,6 @@
 let lang;
-
-const IDIOMAS2 = Object.freeze({
+const ALT_TEXT = "👌👌👌👌👌👌👌👌";
+const IDIOMAS = Object.freeze({
   ES: {
     texto: "Español",
     valores: ES,
@@ -15,52 +15,44 @@ const IDIOMAS2 = Object.freeze({
   },
 });
 
-const IDIOMAS = [
-  {
-    codigo: "ES",
-    texto: "Español",
-    valores: ES,
-  },
-  {
-    codigo: "EN",
-    texto: "English",
-    valores: EN,
-  },
-  {
-    codigo: "GA",
-    texto: "Galego",
-    valores: GA,
-  },
-];
-
 function setLangSelect(ev) {
   setLang(ev.target.value);
 }
 
 function setLang(codigo = "ES") {
-  lang = IDIOMAS2[codigo].valores;
+  lang = IDIOMAS[codigo].valores;
 
   for (const el of document.querySelectorAll("div.txt")) {
-    el.innerHTML = lang[getLangClass(el.classList)];
+    el.innerHTML =
+      lang[getLangClass(el.classList)] ||
+      `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
   for (const el of document.querySelectorAll(
     "th.txt, td.txt, label.txt, h1.txt, h2.txt, h3.txt, h4.txt, h5.txt, h6.txt, title.txt, legend.txt, a.txt"
   )) {
-    el.innerText = lang[getLangClass(el.classList)];
+    el.innerText =
+      lang[getLangClass(el.classList)] ||
+      `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
   for (const el of document.querySelectorAll("option.txt")) {
-    const query = lang[getLangClass(el.classList)];
+    const query =
+      lang[getLangClass(el.classList)] ||
+      `${ALT_TEXT} (${getLangClass(el.classList)})`;
     if (query != null) el.innerText = query;
   }
 
   for (const el of document.querySelectorAll("img.txt")) {
-    el.title = lang[getLangClass(el.classList)];
+    el.title =
+      lang[getLangClass(el.classList)] ||
+      `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
   for (const el of document.querySelectorAll("input.txt")) {
-    el.placeholder = lang[getLangClass(el.classList)];
+    el.placeholder =
+      lang[getLangClass(el.classList)] ||
+      `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
   writeCookie({
@@ -72,11 +64,13 @@ function setLang(codigo = "ES") {
 }
 
 function getTextosRoles(rol) {
-  return lang[`rol_${rol}`];
+  return lang[`rol_${rol}`] || rol;
 }
 
 function getTextoTitulo(titulo) {
-  return lang[`titulo_${titulo}`];
+  return (
+    lang[`titulo_${titulo}`] || `${ALT_TEXT} (${getLangClass(el.classList)})`
+  );
 }
 
 /**
@@ -100,7 +94,7 @@ function mensajeError({
   const texterror = document.getElementById(idTextDiv);
   removeLangClass(texterror.classList);
   texterror.classList.add("txt-err_" + codigo.toString().split(" ")[0]);
-  texterror.innerText = lang[`err_${codigo}`] || codigo;
+  texterror.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo}})`;
 }
 
 function getLangClass(classList) {
@@ -128,7 +122,7 @@ function removeLangClass(classList) {
 
 function crearSelectIdioma() {
   const select = document.createElement("select");
-  for (const i of Object.entries(IDIOMAS2)) {
+  for (const i of Object.entries(IDIOMAS)) {
     const option = document.createElement("option");
     option.value = i[0];
     option.innerText = i[1].texto;

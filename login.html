@@ -16,6 +16,7 @@
   <script type="text/javascript" src="./js/validacionesComunes.js"></script>
   <script type="text/javascript" src="js/ajaxComun.js"></script>
   <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+  <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
 </head>
 
 <body onload="redirigirLoginTrue(PAGINAS.menu);ponerinvisibleerror();crearSelectIdioma();setLang(readCookie('lang'));">
@@ -30,10 +31,10 @@
   </div>
   <form id='id_form_login' name='form_login' action='javascript:login();' onsubmit='return comprobar_form_login();'
     method='post'>
-    <label for="usuario"></label>
+    <label for="usuario" class="txt txt-label_usuario"></label>
     <input type='text' id='id_usuario' name='usuario' onblur='comprobar_usuario();'></input>
     <br>
-    <label class="contrasena"></label>
+    <label class="contrasena" class="txt txt-label_contrasena"></label>
     <input type='password' id='id_contrasena' name='contrasena' onblur='comprobar_contrasena();'></input>
     <br>
     <input type='submit' value='enviar'>
