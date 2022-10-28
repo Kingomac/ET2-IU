@@ -111,7 +111,7 @@ async function add_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionADDusuarioBack();
-      $("#id_form_usuario").reset();
+      resetearformusuario();
       await actualizarTablaUsuarios();
     } catch (err) {
       mensajeError({
@@ -130,6 +130,7 @@ async function edit_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionEDITusuarioBack();
+      resetearformusuario();
       await actualizarTablaUsuarios();
     } catch (err) {
       mensajeError({
@@ -147,6 +148,7 @@ async function edit_usuario() {
 async function delete_usuario() {
   try {
     await peticionDELETEusuarioBack();
+    resetearformusuario();
     await actualizarTablaUsuarios();
   } catch (err) {
     mensajeError({
@@ -183,19 +185,20 @@ function resetearformusuario() {
     document.getElementById("caja_select_rol").removeChild(selectviejorol);
   }
 
-  // quitar el readonly de los atributos
-  $("#id_dni").attr("readonly", false);
-  $("#id_usuario").attr("readonly", false);
-  $("#id_id_rol").attr("readonly", false);
+  resetForm("id_form_usuario");
+  // // quitar el readonly de los atributos
+  // $("#id_dni").attr("readonly", false);
+  // $("#id_usuario").attr("readonly", false);
+  // $("#id_id_rol").attr("readonly", false);
 
   // eliminar el boton de submit de formulario
-  $("#id_boton_buscar_usuario").remove();
-
-  // eliminar la imagen para terminar el formulario
   $("#id_imagen_enviar_form").remove();
 
-  // se pone visible el formulario
-  $("#id_caja_formulario_usuario").attr("style", "display: none");
+  // // eliminar la imagen para terminar el formulario
+  // $("#id_imagen_enviar_form").remove();
+
+  // // se pone visible el formulario
+  // $("#id_caja_formulario_usuario").attr("style", "display: none");
 }
 
 // crearformADDusuario() creado con javascript
@@ -224,13 +227,18 @@ async function crearformADDusuario() {
   const rolSelect = await crearSelectRoles({ vacio: true });
   document.getElementById("caja_select_rol").appendChild(rolSelect);
 
+  document.getElementById("id_form_usuario").action =
+    "javascript:add_usuario()";
+
   // se coloca una imagen para la accion de editar
   const imagenenviarform = document.createElement("img");
   imagenenviarform.src = "./images/add.svg";
   imagenenviarform.id = "id_imagen_enviar_form";
   imagenenviarform.width = "50";
   imagenenviarform.height = "50";
-  imagenenviarform.onclick = add_usuario;
+  imagenenviarform.onclick = () =>
+    document.getElementById("id_form_usuario").submit();
+  imagenenviarform.onsubmit = () => comprobar_form_usuario_add();
   $("#caja_campos_formulario").append(imagenenviarform);
 
   // se muestra el formulario
@@ -270,13 +278,18 @@ async function crearformEDITusuario(dni, usuario, rol) {
   // se añade el select a su div contenedor
   $("#caja_select_rol").append(rolSelect);
 
+  document.getElementById("id_form_usuario").action =
+    "javascript:edit_usuario()";
+
   // se coloca una imagen para la accion de editar
   imagenenviarform = document.createElement("img");
   imagenenviarform.src = "./images/edit.svg";
   imagenenviarform.id = "id_imagen_enviar_form";
   imagenenviarform.width = "80";
   imagenenviarform.height = "80";
-  imagenenviarform.onclick = add_usuario;
+  imagenenviarform.onclick = () =>
+    document.getElementById("id_form_usuario").submit();
+  imagenenviarform.onsubmit = () => comprobar_form_usuario_add();
   $("#caja_campos_formulario").append(imagenenviarform);
 
   // se muestra el formulario
@@ -296,6 +309,9 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   scrollFinTabla();
   resetearformusuario();
 
+  $("#id_dni").off("blur");
+  $("#id_usuario").off("blur");
+
   $("#id_dni").attr("readonly", "true");
   $("#id_dni").val(dni);
 
@@ -308,7 +324,9 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   });
   $("#caja_select_rol").append(rolSelect);
   $("#id_id_rol").attr("readonly", "true");
-  hacerSelectReadonly("id_id_rol", rol);
+
+  document.getElementById("id_form_usuario").action =
+    "javascript:delete_usuario()";
 
   // se coloca una imagen para la accion de editar
   imagenenviarform = document.createElement("img");
@@ -316,7 +334,9 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   imagenenviarform.id = "id_imagen_enviar_form";
   imagenenviarform.width = "50";
   imagenenviarform.height = "50";
-  imagenenviarform.onclick = delete_usuario;
+  imagenenviarform.onclick = () =>
+    document.getElementById("id_form_usuario").submit();
+  imagenenviarform.onsubmit = null;
   $("#caja_campos_formulario").append(imagenenviarform);
 
   $("#id_caja_formulario_usuario").attr("style", "display: block");
@@ -351,6 +371,9 @@ async function crearformSEARCHusuario() {
   // se añade el select a la caja de select
   $("#caja_select_rol").append(rolSelect);
 
+  document.getElementById("id_form_usuario").action =
+    "javascript:search_usuario()";
+
   //creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
   const botonsubmit = document.createElement("img");
   botonsubmit.id = "id_boton_buscar_usuario";
@@ -359,7 +382,8 @@ async function crearformSEARCHusuario() {
   botonsubmit.src = "./images/search.svg";
   botonsubmit.width = "50";
   botonsubmit.height = "50";
-  botonsubmit.onclick = search_usuario;
+  botonsubmit.onclick = document.getElementById("id_form_usuario").submit();
+  botonsubmit.onsubmit = () => comprobar_form_usuario_search();
 
   // coloco la imagen para submit en el formulario
   $("#caja_campos_formulario").append(botonsubmit);
@@ -389,8 +413,6 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
 
   // se añade el select a la caja de select
   $("#caja_select_rol").append(rolSelect);
-
-  hacerSelectReadonly("id_id_rol", rol);
 
   $("#id_id_rol").val(rol);
 
