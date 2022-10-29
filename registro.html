@@ -21,9 +21,10 @@
   <script type="text/javascript" src="js/gestionpersonas/personas.js"></script>
   <script type="text/javascript" src="js/gestionusuario/usuario.js"></script>
   <script type="text/javascript" src="js/registro/registro.js"></script>
+  <script type="text/javascript" src="js/gestion-roles/roles.js"></script>
 </head>
 
-<body onload="ponerinvisibleerror();crearSelectIdioma();setLang(readCookie('lang'));">
+<body onload="ponerinvisibleerror();crearSelectIdioma();setLang(readCookie('lang'));appendSelectRoles()">
   <h1 class="txt txt-titulo-registro"></h1>
 
   <div id='id_caja_error'>
@@ -33,7 +34,7 @@
   <div id="id_form_registro">
     <form id="id_form_persona" onsubmit="return comprobarFormPersona()">
       <fieldset>
-        <legend class="txt txt-form_title_persona"></legend>
+        <legend class="txt txt-form_title_registro_persona"></legend>
         <label class="txt txt-label_dni" for="id_dni">dni</label>
         <input class="txt txt-formato_dni" type='text' id='id_dni' name='dni' maxlength="9"
           onblur="comprobar_dni()"></input>
@@ -65,8 +66,8 @@
       </fieldset>
     </form>
     <form id="id_form_usuario" onsubmit="return comprobarFormUsuario()">
-      <fieldset>
-        <legend class="txt txt-form_title_usuario"></legend>
+      <fieldset id="id_fields_usuario">
+        <legend class="txt txt-form_title_registro_usuario"></legend>
         <label for="id_usuario" class="txt txt-label_usuario"></label>
         <input type='text' id='id_usuario' name='usuario' onblur='comprobar_usuario();'></input>
         <br>
@@ -75,7 +76,10 @@
         <br>
         <label for="id_contrasena_verificar" class="txt txt-label_contrasena_verificar"></label>
         <input type="password" id="id_contrasena_verificar" onblur="comprobar_contrasena_verificada()">
+        <br>
+        <label for="id_id_rol" class="txt txt-label_rol"></label>
       </fieldset>
+      <input type="hidden" id="id_dni_hidden" name="dni">
     </form>
     <img src="images/add.svg" width="50" height="50"
       onclick="if(comprobarFormPersona() && comprobarFormUsuario()){registrar()}">

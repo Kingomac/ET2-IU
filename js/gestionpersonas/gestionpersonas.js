@@ -42,7 +42,7 @@ async function actualizarTablaPersonas(datos) {
         i.dni,
         i.nombre_persona,
         i.apellidos_persona,
-        new Date(i.fechaNacimiento_persona).toLocaleDateString("es-ES", {
+        i.fechaNacimiento_persona.toLocaleDateString("es-ES", {
           year: "numeric",
           day: "2-digit",
           month: "2-digit",
@@ -226,15 +226,7 @@ function crearFormDeletePersona({
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/delete.svg";
   submitImg.onclick = () => document.getElementById("id_form_persona").submit();
-  submitImg.onsubmit = () =>
-    comprobar_dni() &&
-    comprobarNombrePersona() &&
-    comprobarApellidosPersona() &&
-    comprobarDireccionPersona() &&
-    comprobarTelefonoPersona() &&
-    comprobarEmailPersona() &&
-    comprobarFotoPersona() &&
-    comprobarFechaNacimientoPersona();
+  submitImg.onsubmit = () => true;
 
   document.getElementById("form-accion").innerText = getTextoTitulo("delete");
 
@@ -256,22 +248,18 @@ function crearFormDeletePersona({
   $("#email_persona").attr("readonly", true);
   $("#foto_persona").attr("readonly", true);
   $("#fechaNacimiento_persona").attr("readonly", true);
+
+  $("#id_dni").off("blur");
+  $("#nombre_persona").off("blur");
+  $("#apellidos_persona").off("blur");
+  $("#direccion_persona").off("blur");
+  $("#telefono_persona").off("blur");
+  $("#email_persona").off("blur");
+  $("#foto_persona").off("blur");
+  $("#fechaNacimiento_persona").off("blur");
 }
 
 async function deletePersona() {
-  if (
-    !comprobar_dni() ||
-    !comprobarNombrePersona() ||
-    !comprobarApellidosPersona() ||
-    !comprobarDireccionPersona() ||
-    !comprobarTelefonoPersona() ||
-    !comprobarEmailPersona() ||
-    !comprobarFotoPersona() ||
-    !comprobarFechaNacimientoPersona()
-  ) {
-    console.error("campos erroneos");
-    return;
-  }
   try {
     await peticionBackDeletePersona();
     resetForm("id_form_persona");

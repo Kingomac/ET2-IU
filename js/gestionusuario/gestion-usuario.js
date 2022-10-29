@@ -7,7 +7,7 @@ async function add_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionADDusuarioBack();
-      resetearformusuario();
+      await crearformADDusuario();
       await actualizarTablaUsuarios();
     } catch (err) {
       mensajeError({
@@ -26,7 +26,7 @@ async function edit_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionEDITusuarioBack();
-      resetearformusuario();
+      await crearformEDITusuario();
       await actualizarTablaUsuarios();
     } catch (err) {
       mensajeError({

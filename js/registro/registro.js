@@ -51,6 +51,7 @@ function comprobarFormPersona() {
 }
 
 function comprobarFormUsuario() {
+  $("#id_dni_hidden").val($("#id_dni").val());
   return (
     comprobar_usuario() &&
     comprobar_contrasena() &&
@@ -58,21 +59,24 @@ function comprobarFormUsuario() {
   );
 }
 
-async function registrar() {
-  const results = await Promise.allSettled([
-    peticionBackAddPersona(),
-    peticionADDusuarioBack(),
-  ]);
-  for (const i of results) {
-    if (i.status == "rejected") {
-      console.error("error registrar", err);
-      mensajeError({
-        codigo: `http_status_${err.status}`,
-        idInput: "id_form_registro",
-      });
-      continue;
-    }
+async function appendSelectRoles() {
+  document.getElementById("id_fields_usuario").append(
+    await crearSelectRoles({
+      readonly: false,
+      vacio: false,
+    })
+  );
+}
 
-    console.log("resultado promesa registro", i.value);
+async function registrar() {
+  try {
+    await peticionBackAddPersona();
+    await peticionADDusuarioBack({ eliminarCamposOcultos: false });
+    window.location.href = "login.html";
+  } catch (err) {
+    mensajeError({
+      codigo: `http_status_${err.status}`,
+      idInput: "id_form_registro",
+    });
   }
 }

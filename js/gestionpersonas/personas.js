@@ -85,7 +85,11 @@ function peticionBackSearchPersona() {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
-          resolve(res.resource);
+          const datos = res.resource;
+          for (const i of datos) {
+            i.fechaNacimiento_persona = new Date(i.fechaNacimiento_persona);
+          }
+          resolve(datos);
         }
       })
       .fail(function (jqXHR) {
@@ -113,7 +117,11 @@ function peticionBackShowAllPersona() {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res);
         } else {
-          resolve(res.resource);
+          const datos = res.resource;
+          for (const i of datos) {
+            i.fechaNacimiento_persona = new Date(i.fechaNacimiento_persona);
+          }
+          resolve(datos);
         }
       })
       .fail((res) => {
