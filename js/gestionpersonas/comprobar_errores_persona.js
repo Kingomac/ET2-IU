@@ -198,6 +198,13 @@ function comprobarFotoPersona() {
 
 function comprobarFechaNacimientoPersona() {
   const idInput = "fechaNacimiento_persona";
+  if (document.getElementById(idInput).value == "") {
+    mensajeError({
+      codigo: "fechaNacimiento_invalida",
+      idInput,
+    });
+    return false;
+  }
   const valorCampo = document.getElementById(idInput).valueAsDate;
   if (valorCampo.valueOf() > Date.now()) {
     mensajeError({

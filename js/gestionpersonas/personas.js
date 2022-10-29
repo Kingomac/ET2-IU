@@ -1,17 +1,13 @@
-/**
- * Hace petición al back de add usuario
- * @returns
- */
-function peticionADDusuarioBack() {
-  console.info("peticion add usuario back");
-  eliminarCamposOcultos("id_form_usuario");
-  insertarCampoOculto("id_form_usuario", "controlador", "usuario");
-  insertarCampoOculto("id_form_usuario", "action", "ADD");
+function peticionBackAddPersona() {
+  console.info("peticion add persona back");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "ADD");
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
       url: URL_BACK,
-      data: $("#id_form_usuario").serialize(),
+      data: $("#id_form_persona").serialize(),
     })
       .done((res) => {
         if (res.ok != true || res.code != "SQL_OK") {
@@ -26,18 +22,16 @@ function peticionADDusuarioBack() {
   });
 }
 
-// peticionEDITusuarioBack()
-// funcion que utilizariamos para hacer una solicitud a back para editar un usuario
-function peticionEDITusuarioBack() {
-  console.info("peticion edit usuario back");
-  eliminarCamposOcultos("id_form_usuario");
-  insertarCampoOculto("id_form_usuario", "controlador", "usuario");
-  insertarCampoOculto("id_form_usuario", "action", "EDIT");
+function peticionBackDeletePersona() {
+  console.info("peticion add persona back");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "DELETE");
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
       url: URL_BACK,
-      data: $("#id_form_usuario").serialize(),
+      data: $("#id_form_persona").serialize(),
     })
       .done((res) => {
         if (res.ok != true || res.code != "SQL_OK") {
@@ -52,21 +46,19 @@ function peticionEDITusuarioBack() {
   });
 }
 
-// peticionDELETEusuarioBack()
-// funcion que utilizariamos para hacer una solicitud a back para borrar un usuario
-function peticionDELETEusuarioBack() {
-  console.info("peticion delete usuario back");
-  eliminarCamposOcultos("id_form_usuario");
-  insertarCampoOculto("id_form_usuario", "controlador", "usuario");
-  insertarCampoOculto("id_form_usuario", "action", "DELETE");
+function peticionEditPersona() {
+  console.info("peticion edit persona back");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "EDIT");
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
       url: URL_BACK,
-      data: $("#id_form_usuario").serialize(),
+      data: $("#id_form_persona").serialize(),
     })
       .done((res) => {
-        if (res.code != "SQL_OK") {
+        if (res.ok != true || res.code != "SQL_OK") {
           reject(res.code);
         } else {
           resolve(res);
@@ -78,22 +70,22 @@ function peticionDELETEusuarioBack() {
   });
 }
 
-function peticionSEARCHusuarioBack() {
-  console.info("peticion detail usuario back");
-  eliminarCamposOcultos("id_form_usuario");
-  insertarCampoOculto("id_form_usuario", "controlador", "usuario");
-  insertarCampoOculto("id_form_usuario", "action", "SEARCH");
+function peticionBackSearchPersona() {
+  console.info("peticion add persona back");
+  eliminarCamposOcultos("id_form_persona");
+  insertarCampoOculto("id_form_persona", "controlador", "persona");
+  insertarCampoOculto("id_form_persona", "action", "SEARCH");
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
       url: URL_BACK,
-      data: $("#id_form_usuario").serialize(),
+      data: $("#id_form_persona").serialize(),
     })
       .done((res) => {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
-          resolve(res);
+          resolve(res.resource);
         }
       })
       .fail(function (jqXHR) {
@@ -103,12 +95,11 @@ function peticionSEARCHusuarioBack() {
 }
 
 /**
- *
- * @returns {Promise<{dni: string, contrasena: string, id_rol: number|{id_rol: number, nombre_rol: string, descrip_rol: string}, usuario: string}[]>}
+ * @returns {Promise<{dni: string, nombre_persona: string, apellidos_persona: string, fechaNacimiento_persona: Date, direccion_persona: string, telefono_persona: number, email_persona: string, foto_persona: string}[]>}
  */
-function peticionBackSHOWALLusuario() {
+function peticionBackShowAllPersona() {
   const datos = new FormData();
-  datos.append("controlador", "usuario");
+  datos.append("controlador", "persona");
   datos.append("action", "SEARCH");
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -121,7 +112,9 @@ function peticionBackSHOWALLusuario() {
       .done((res) => {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res);
-        } else resolve(res.resource);
+        } else {
+          resolve(res.resource);
+        }
       })
       .fail((res) => {
         reject(res);

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title class="txt txt-titulo_registro"></title>
+  <script type="text/javascript" src="js/cookies.js"></script>
+  <script type="text/javascript" src="./locale/ES.js"></script>
+  <script type="text/javascript" src="./locale/EN.js"></script>
+  <script type="text/javascript" src="./locale/GA.js"></script>
+  <script type="text/javascript" src="./locale/idioma.js"></script>
+  <script type="text/javascript" src="./js/md5.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+  <script type="text/javascript" src="js/ajaxComun.js"></script>
+  <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+  <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
+  <script type="text/javascript" src="js/gestionpersonas/comprobar_errores_persona.js"></script>
+  <script type="text/javascript" src="js/gestionpersonas/personas.js"></script>
+  <script type="text/javascript" src="js/gestionusuario/usuario.js"></script>
+  <script type="text/javascript" src="js/registro/registro.js"></script>
+</head>
+
+<body onload="ponerinvisibleerror();crearSelectIdioma();setLang(readCookie('lang'));">
+  <h1 class="txt txt-titulo-registro"></h1>
+
+  <div id='id_caja_error'>
+    <div id="id_texterror" class='txt'></div><img src="./images/close.svg" width="25" height="25"
+      onclick="document.getElementById('id_caja_error').style.display = 'none';" />
+  </div>
+  <div id="id_form_registro">
+    <form id="id_form_persona" onsubmit="return comprobarFormPersona()">
+      <fieldset>
+        <legend class="txt txt-form_title_persona"></legend>
+        <label class="txt txt-label_dni" for="id_dni">dni</label>
+        <input class="txt txt-formato_dni" type='text' id='id_dni' name='dni' maxlength="9"
+          onblur="comprobar_dni()"></input>
+        <br>
+        <label for="nombre_persona" class="txt txt-label_nombre_persona"></label>
+        <input maxlength="15" type="text" id="nombre_persona" name="nombre_persona" onblur="comprobarNombrePersona()">
+        <br>
+        <label for="apellidos_persona" class="txt txt-label_apellidos_persona"></label>
+        <input maxlength="100" type="text" name="apellidos_persona" id="apellidos_persona"
+          onblur="comprobarApellidosPersona()">
+        <br>
+        <label for="fechaNacimiento_persona" class="txt txt-label_fecha_nacimiento_persona"></label>
+        <input type="date" name="fechaNacimiento_persona" id="fechaNacimiento_persona"
+          onblur="comprobarFechaNacimientoPersona()">
+        <br>
+        <label for="direccion_persona" class="txt txt-label_direccion_persona"></label>
+        <input maxlength="200" type="text" name="direccion_persona" id="direccion_persona"
+          onblur="comprobarDireccionPersona()">
+        <br>
+        <label for="telefono_persona" class="txt txt-label_telefono_persona"></label>
+        <input maxlength="9" type="tel" name="telefono_persona" id="telefono_persona"
+          onblur="comprobarTelefonoPersona()">
+        <br>
+        <label for="email_persona" class="txt txt-label_email_persona"></label>
+        <input maxlength="45" type="email" name="email_persona" id="email_persona" onblur="comprobarEmailPersona()">
+        <br>
+        <label for="foto_persona" class="txt txt-label_foto_persona"></label>
+        <input maxlength="45" type="text" name="foto_persona" id="foto_persona" onblur="comprobarFotoPersona()">
+      </fieldset>
+    </form>
+    <form id="id_form_usuario" onsubmit="return comprobarFormUsuario()">
+      <fieldset>
+        <legend class="txt txt-form_title_usuario"></legend>
+        <label for="id_usuario" class="txt txt-label_usuario"></label>
+        <input type='text' id='id_usuario' name='usuario' onblur='comprobar_usuario();'></input>
+        <br>
+        <label for="id_contrasena" class="txt txt-label_contrasena"></label>
+        <input type='password' id='id_contrasena' name='contrasena' onblur='comprobar_contrasena();'></input>
+        <br>
+        <label for="id_contrasena_verificar" class="txt txt-label_contrasena_verificar"></label>
+        <input type="password" id="id_contrasena_verificar" onblur="comprobar_contrasena_verificada()">
+      </fieldset>
+    </form>
+    <img src="images/add.svg" width="50" height="50"
+      onclick="if(comprobarFormPersona() && comprobarFormUsuario()){registrar()}">
+  </div>
+</body>
+
+</html>
