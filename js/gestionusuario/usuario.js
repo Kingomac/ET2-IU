@@ -2,11 +2,9 @@
  * Hace petición al back de add usuario
  * @returns
  */
-function peticionADDusuarioBack(
-  { quitarCamposOcultos } = { quitarCamposOcultos: true }
-) {
+function peticionADDusuarioBack() {
   console.info("peticion add usuario back");
-  if (quitarCamposOcultos) eliminarCamposOcultos("id_form_usuario");
+  eliminarCamposOcultos("id_form_usuario");
   insertarCampoOculto("id_form_usuario", "controlador", "usuario");
   insertarCampoOculto("id_form_usuario", "action", "ADD");
   return new Promise((resolve, reject) => {

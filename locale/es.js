@@ -52,4 +52,5 @@ const ES = {
   //Login
   titulo_registrar: "Registrar",
   recuperar_contrasena: "Recuperar contraseña",
+  label_contrasena: "Contraseña",
 };

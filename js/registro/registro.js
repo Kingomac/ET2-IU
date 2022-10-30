@@ -51,7 +51,6 @@ function comprobarFormPersona() {
 }
 
 function comprobarFormUsuario() {
-  $("#id_dni_hidden").val($("#id_dni").val());
   return (
     comprobar_usuario() &&
     comprobar_contrasena() &&
@@ -70,13 +69,37 @@ async function appendSelectRoles() {
 
 async function registrar() {
   try {
-    await peticionBackAddPersona();
-    await peticionADDusuarioBack({ eliminarCamposOcultos: false });
+    encriptarpassword();
+    await peticionBackRegistrar();
     window.location.href = "login.html";
   } catch (err) {
     mensajeError({
-      codigo: `http_status_${err.status}`,
+      codigo: err,
       idInput: "id_form_registro",
     });
   }
+}
+
+function peticionBackRegistrar() {
+  console.info("peticion registrar usuario back");
+  eliminarCamposOcultos("id_form_registro");
+  insertarCampoOculto("id_form_registro", "controlador", "AUTH");
+  insertarCampoOculto("id_form_registro", "action", "REGISTRAR");
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: "POST",
+      url: URL_BACK,
+      data: $("#id_form_registro").serialize(),
+    })
+      .done((res) => {
+        if (res.ok != true || res.code != "REGISTRAR_OK") {
+          reject(res.code);
+        } else {
+          resolve(res);
+        }
+      })
+      .fail(function (jqXHR) {
+        reject(`http_status_${jqXHR}`);
+      });
+  });
 }
