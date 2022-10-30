@@ -24,30 +24,30 @@ function comprobar_form_usuario_search() {
 
 // comprobar_usuario()
 // funcion de validación de formato de usuario en acciones que no sean search
-function comprobar_usuario() {
-  if (!size_minimo("id_usuario", 3)) {
+function comprobar_usuario({ idInput } = { idInput: "id_usuario" }) {
+  if (!size_minimo(idInput, 3)) {
     mensajeError({
       codigo: "login_corto",
-      idInput: "id_usuario",
+      idInput,
     });
     return false;
   }
-  if (!size_maximo("id_usuario", 15)) {
+  if (!size_maximo(idInput, 15)) {
     mensajeError({
-      idInput: "id_usuario",
+      idInput,
       codigo: "login_largo",
     });
     return false;
   }
-  if (!letrassinacentoynumeros("id_usuario")) {
+  if (!letrassinacentoynumeros(idInput)) {
     mensajeError({
-      idInput: "id_usuario",
+      idInput,
       codigo: "login_acentos",
     });
     return false;
   }
 
-  mensajeOK("id_usuario");
+  mensajeOK(idInput);
   return true;
 }
 
@@ -128,5 +128,51 @@ function comprobar_id_rol() {
 // comprobar_id_rol_search()
 // funcion de validacion del formato de id_rol
 function comprobar_id_rol_search() {
+  return true;
+}
+
+function comprobar_contrasena({ idInput } = { idInput: "id_contrasena" }) {
+  if (!size_maximo(idInput, 45)) {
+    mensajeError({
+      codigo: "contrasena_format_larga",
+      idInput,
+    });
+    return false;
+  }
+  if (!size_minimo(idInput, 3)) {
+    mensajeError({
+      codigo: "contrasena_format_corta",
+      idInput,
+    });
+    return false;
+  }
+  if (/[^a-zA-Z0-9\_\-]/.test(document.getElementById(idInput).value)) {
+    mensajeError({
+      codigo: "contrasena_caracteres_invalidos",
+      idInput,
+    });
+    return false;
+  }
+  mensajeOK(idInput);
+  return true;
+}
+
+function comprobar_contrasena_verificada(
+  { idInput, idInputVerificar } = {
+    idInput: "id_contrasena",
+    idInputVerificar: "id_contrasena_verificar",
+  }
+) {
+  if (
+    document.getElementById(idInput).value !=
+    document.getElementById(idInputVerificar).value
+  ) {
+    mensajeError({
+      codigo: "contrasena_no_verifica",
+      idInput: idInputVerificar,
+    });
+    return false;
+  }
+  mensajeOK(idInputVerificar);
   return true;
 }

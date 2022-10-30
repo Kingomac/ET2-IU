@@ -1,6 +1,8 @@
 function comprobar_form_login() {
-  if (comprobar_usuario() && comprobar_contrasena()) {
-    encriptarpassword();
+  if (
+    comprobar_usuario() &&
+    comprobar_contrasena({ idInput: "id_contrasena_noencriptada" })
+  ) {
     return true;
   } else {
     return false;
@@ -25,28 +27,16 @@ function comprobar_usuario() {
   return true;
 }
 
-function comprobar_contrasena() {
-  if (!size_minimo("id_contrasena", 3)) {
-    mensajeError({ idInput: "id_contrasena", codigo: "pass_corta" });
-    return false;
-  }
-  if (!size_maximo("id_contrasena", 15)) {
-    mensajeError({ idInput: "id_contrasena", codigo: "pass_larga" });
-    return false;
-  }
-  if (!letrassinacentoynumeros("id_contrasena")) {
-    mensajeError({ idInput: "id_contrasena", codigo: "pass_acentos" });
-    return false;
-  }
-
-  mensajeOK("id_contrasena");
-  return true;
-}
-
 //Función ajax con promesas
 function loginAjaxPromesa() {
+  eliminarCamposOcultos("id_form_login");
   insertarCampoOculto("id_form_login", "controlador", "AUTH");
   insertarCampoOculto("id_form_login", "action", "LOGIN");
+  insertarCampoOculto(
+    "id_form_login",
+    "contrasena",
+    hex_md5($("#id_contrasena_noencriptada").val())
+  );
 
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -86,4 +76,66 @@ async function login() {
       //eliminarcampo('action');
       //setLang(idioma);
     });
+}
+
+function mostrarCambiarContrasena() {
+  const el = document.getElementById("id_form_cambiar_contrasena");
+  el.style.display = el.style.display == "none" ? "block" : "none";
+}
+
+async function cambiarContrasena() {
+  if (
+    !comprobar_usuario({ idInput: "cc_usuario" }) ||
+    !comprobar_contrasena({ idInput: "cc_contrasena_noencriptada" })
+  ) {
+    return false;
+  }
+  try {
+    await peticionBackCambiarContrasena();
+    mensajeOK("id_fields_cambiar_contrasena");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  } catch (err) {
+    mensajeError({
+      idInput: "id_form_cambiar_contrasena",
+      codigo: err,
+    });
+  }
+}
+
+function peticionBackCambiarContrasena() {
+  eliminarCamposOcultos("id_form_cambiar_contrasena");
+  insertarCampoOculto("id_form_cambiar_contrasena", "controlador", "AUTH");
+  insertarCampoOculto(
+    "id_form_cambiar_contrasena",
+    "action",
+    "CAMBIAR_CONTRASENA"
+  );
+  insertarCampoOculto(
+    "id_form_cambiar_contrasena",
+    "contrasena",
+    hex_md5($("#id_contrasena_noencriptada").val())
+  );
+
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: "POST",
+      url: URL_BACK,
+      data: $("#id_form_cambiar_contrasena").serialize(),
+    })
+      .done((res) => {
+        if (res.code != "SQL_OK") {
+          reject(res.code);
+        } else {
+          resolve(res);
+        }
+      })
+      .fail(function (jqXHR) {
+        mensajeError({
+          idInput: "id_form_cambiar_contrasena",
+          codigo: `http_status_${jqXHR}`,
+        });
+      });
+  });
 }
