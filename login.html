@@ -75,12 +75,13 @@
     >
       <fieldset id="id_fields_cambiar_contrasena">
         <legend class="txt txt-form_title_registro_usuario"></legend>
-        <label for="cc_usuario" class="txt txt-label_usuario"></label>
+        <label for="cc_dni" class="txt txt-label_dni"></label>
         <input
           type="text"
-          id="cc_usuario"
-          name="usuario"
-          onblur='comprobar_usuario({ idInput: "cc_usuario" });'
+          id="cc_dni"
+          name="dni"
+          onblur="comprobar_dni({idInput: 'cc_dni'})"
+          maxlength="9"
         />
         <br />
         <label

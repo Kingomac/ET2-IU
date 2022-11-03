@@ -85,7 +85,7 @@ function mostrarCambiarContrasena() {
 
 async function cambiarContrasena() {
   if (
-    !comprobar_usuario({ idInput: "cc_usuario" }) ||
+    !comprobar_dni({ idInput: "cc_dni" }) ||
     !comprobar_contrasena({ idInput: "cc_contrasena_noencriptada" })
   ) {
     return false;
@@ -115,7 +115,7 @@ function peticionBackCambiarContrasena() {
   insertarCampoOculto(
     "id_form_cambiar_contrasena",
     "contrasena",
-    hex_md5($("#id_contrasena_noencriptada").val())
+    hex_md5($("#cc_contrasena_noencriptada").val())
   );
 
   return new Promise(function (resolve, reject) {
@@ -125,7 +125,7 @@ function peticionBackCambiarContrasena() {
       data: $("#id_form_cambiar_contrasena").serialize(),
     })
       .done((res) => {
-        if (res.code != "SQL_OK") {
+        if (res.code != "CAMBIAR_contrasena_OK") {
           reject(res.code);
         } else {
           resolve(res);

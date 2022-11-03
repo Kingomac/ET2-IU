@@ -66,20 +66,23 @@ function comprobar_usuario_search() {
   return true;
 }
 
-// comprobar_dni()
-// funcion de validación de formato de dni en acciones que no sean search
-function comprobar_dni() {
-  const dni = document.querySelector("#id_dni").value;
+/**
+ * Comprueba si un DNI introducido en un `<input>` es correcto
+ * @param {{idInput: string}} params
+ * @returns `true`si es correcto y `false` si es incorrecto
+ */
+function comprobar_dni({ idInput } = { idInput: dni }) {
+  const dni = document.getElementById(idInput).value;
   if (dni.length != 9) {
     mensajeError({
-      idInput: "id_dni",
+      idInput: idInput,
       codigo: "dni_size",
     });
     return false;
   }
   if (!/^[0-9]{8}[a-zA-Z]$/.test(dni)) {
     mensajeError({
-      idInput: "id_dni",
+      idInput: idInput,
       codigo: "dni_format",
     });
     return false;
@@ -87,12 +90,12 @@ function comprobar_dni() {
   const letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
   if (dni.charAt(8) != letrasDNI.charAt(dni.slice(0, 8) % letrasDNI.length)) {
     mensajeError({
-      idInput: "id_dni",
+      idInput: idInput,
       codigo: "dni_incorrecto",
     });
     return false;
   }
-  mensajeOK("id_dni");
+  mensajeOK(idInput);
   return true;
 }
 

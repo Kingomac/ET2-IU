@@ -20,7 +20,7 @@ const PAGINAS = Object.freeze({
 });
 
 /**
- *
+ * Redirige a la página especificada si el usuario está logueado
  * @param {PAGINAS} pagina
  */
 function redirigirLoginTrue(pagina = PAGINAS.menu) {
@@ -29,8 +29,17 @@ function redirigirLoginTrue(pagina = PAGINAS.menu) {
   }
 }
 
+/**
+ * Redirige a la página especificada si el usuario NO está conectado
+ * @param {PAGINAS} pagina
+ */
 function redirigirLoginFalse(pagina = PAGINAS.login) {
   if (!comprobarLogin()) {
     window.location.href = `${pagina}.html`;
   }
+}
+
+function desconectarUsuario() {
+  document.cookie = `${LOGIN_COOKIE_TOKEN}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+  document.cookie = `${LOGIN_COOKIE_USUARIO_SISTEMA}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
 }
