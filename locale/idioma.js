@@ -119,15 +119,3 @@ function removeLangClass(classList) {
 //     select.append(option);
 //   }
 // }
-
-function crearSelectIdioma() {
-  const select = document.createElement("select");
-  for (const i of Object.entries(IDIOMAS)) {
-    const option = document.createElement("option");
-    option.value = i[0];
-    option.innerText = i[1].texto;
-    select.append(option);
-  }
-  select.onchange = (e) => setLang(e.target.value);
-  document.body.prepend(select);
-}

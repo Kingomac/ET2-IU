@@ -53,4 +53,9 @@ const ES = {
   titulo_registrar: "Registrar",
   recuperar_contrasena: "Recuperar contraseña",
   label_contrasena: "Contraseña",
+
+  // Menú
+  titulo_menu: "Menú",
+  titulo_desconectar: "Desconectar",
+  titulo_volver: "Volver",
 };

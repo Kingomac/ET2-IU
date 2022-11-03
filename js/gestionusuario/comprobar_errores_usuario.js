@@ -71,7 +71,7 @@ function comprobar_usuario_search() {
  * @param {{idInput: string}} params
  * @returns `true`si es correcto y `false` si es incorrecto
  */
-function comprobar_dni({ idInput } = { idInput: dni }) {
+function comprobar_dni({ idInput } = { idInput: "id_dni" }) {
   const dni = document.getElementById(idInput).value;
   if (dni.length != 9) {
     mensajeError({

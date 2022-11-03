@@ -68,7 +68,7 @@ async function login() {
         clave: LOGIN_COOKIE_USUARIO_SISTEMA,
         valor: document.getElementById("id_usuario").value,
       });
-      window.location.href = "gestionusuario.html";
+      window.location.href = "menu.html";
     })
     .catch((res) => {
       mensajeError({ idInput: "id_form_login", codigo: res.code });

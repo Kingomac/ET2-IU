@@ -1,90 +1,181 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="txt txt-titulo_gestion_personas"></title>
+    <script type="text/javascript" src="locale/es.js"></script>
+    <script type="text/javascript" src="locale/en.js"></script>
+    <script type="text/javascript" src="locale/ga.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/ajaxComun.js"></script>
+    <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script
+      type="text/javascript"
+      src="js/gestionusuario/comprobar_errores_usuario.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestionpersonas/personas.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestionpersonas/gestionpersonas.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestionpersonas/comprobar_errores_persona.js"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title class="txt txt-titulo_gestion_personas"></title>
-  <script type="text/javascript" src="locale/es.js"></script>
-  <script type="text/javascript" src="locale/en.js"></script>
-  <script type="text/javascript" src="locale/ga.js"></script>
-  <script type="text/javascript" src="locale/idioma.js"></script>
-  <script type="text/javascript" src="./js/validacionesComunes.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="./js/md5.js"></script>
-  <script type="text/javascript" src="js/cookies.js"></script>
-  <script type="text/javascript" src="js/ajaxComun.js"></script>
-  <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
-  <script type="text/javascript" src="js/gestionpersonas/personas.js"></script>
-  <script type="text/javascript" src="js/gestionpersonas/gestionpersonas.js"></script>
-  <script type="text/javascript" src="js/gestionpersonas/comprobar_errores_persona.js"></script>
-</head>
+  <body
+    onload="redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setDivInvisible('id_caja_formulario_persona');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPersonas();"
+  >
+    <header>
+      <h1 class="txt txt-titulo_gestion_personas"></h1>
+    </header>
+    <div>
+      <img
+        src="./images/add.svg"
+        class="txt txt-titulo_add"
+        title="Añadir"
+        height="60"
+        width="60"
+        onclick="crearFormAddPersona();"
+      />
+      <img
+        src="./images/search.svg"
+        class="txt txt-titulo_search"
+        title="Buscar"
+        height="60"
+        width="60"
+        onclick="crearFormSearchPersona();"
+      />
+    </div>
 
-<body
-  onload="setDivInvisible('id_caja_error');setDivInvisible('id_caja_formulario_persona');crearSelectIdioma();setLang(readCookie('lang'));actualizarTablaPersonas();">
-  <h1 class="txt txt-titulo_gestion_personas"></h1>
-  <div>
-    <img src='./images/add.svg' class="txt txt-titulo_add" title="Añadir" height="60" width="60"
-      onclick="crearFormAddPersona();">
-    <img src='./images/search.svg' class="txt txt-titulo_search" title="Buscar" height="60" width="60"
-      onclick="crearFormSearchPersona();">
-  </div>
-
-  <table border="1">
-    <thead id="table_head">
-      <tr>
-        <th class="txt txt-label_dni"></th>
-        <th class="txt txt-label_nombre_persona"></th>
-        <th class="txt txt-label_apellidos_persona"></th>
-        <th class="txt txt-label_fecha_nacimiento_persona"></th>
-        <th class="txt txt-label_direccion_persona"></th>
-        <th class="txt txt-label_telefono_persona"></th>
-        <th class="txt txt-label_email_persona"></th>
-        <th class="txt txt-label_foto_persona"></th>
-        <th class="txt txt-titulo_edit"></th>
-        <th class="txt txt-titulo_delete"></th>
-        <th class="txt txt-titulo_detail"></th>
-      </tr>
-    </thead>
-    <tbody id="table_body"></tbody>
-  </table>
-  <div id='id_caja_error'>
-    <div id='id_texterror' class="txt">adfafaf</div>
-  </div>
-  <div id='id_caja_formulario_persona'>
-    <form id='id_form_persona' name='form_persona' method='post'>
-      <fieldset id="caja_campos_formulario">
-        <legend id="form-accion"></legend>
-        <label class="txt txt-label_dni" for="id_dni">dni</label>
-        <input class="txt txt-formato_dni" type='text' id='id_dni' name='dni' maxlength="9"></input>
-        <br>
-        <label for="nombre_persona" class="txt txt-label_nombre_persona"></label>
-        <input maxlength="15" type="text" id="nombre_persona" name="nombre_persona">
-        <br>
-        <label for="apellidos_persona" class="txt txt-label_apellidos_persona"></label>
-        <input maxlength="100" type="text" name="apellidos_persona" id="apellidos_persona">
-        <br>
-        <label for="fechaNacimiento_persona" class="txt txt-label_fecha_nacimiento_persona"></label>
-        <input type="date" name="fechaNacimiento_persona" id="fechaNacimiento_persona">
-        <br>
-        <label for="direccion_persona" class="txt txt-label_direccion_persona"></label>
-        <input maxlength="200" type="text" name="direccion_persona" id="direccion_persona">
-        <br>
-        <label for="telefono_persona" class="txt txt-label_telefono_persona"></label>
-        <input maxlength="9" type="tel" name="telefono_persona" id="telefono_persona">
-        <br>
-        <label for="email_persona" class="txt txt-label_email_persona"></label>
-        <input maxlength="45" type="email" name="email_persona" id="email_persona">
-        <br>
-        <label for="foto_persona" class="txt txt-label_foto_persona"></label>
-        <input maxlength="45" type="text" name="foto_persona" id="foto_persona">
-        <br>
-        <img width="50" height="50" src="" alt="submit" id="img_form_submit">
-      </fieldset>
-    </form>
-    <br>
-  </div>
-</body>
-
+    <table border="1">
+      <thead id="table_head">
+        <tr>
+          <th class="txt txt-label_dni"></th>
+          <th class="txt txt-label_nombre_persona"></th>
+          <th class="txt txt-label_apellidos_persona"></th>
+          <th class="txt txt-label_fecha_nacimiento_persona"></th>
+          <th class="txt txt-label_direccion_persona"></th>
+          <th class="txt txt-label_telefono_persona"></th>
+          <th class="txt txt-label_email_persona"></th>
+          <th class="txt txt-label_foto_persona"></th>
+          <th class="txt txt-titulo_edit"></th>
+          <th class="txt txt-titulo_delete"></th>
+          <th class="txt txt-titulo_detail"></th>
+        </tr>
+      </thead>
+      <tbody id="table_body"></tbody>
+    </table>
+    <div id="id_caja_error">
+      <div id="id_texterror" class="txt">adfafaf</div>
+    </div>
+    <div id="id_caja_formulario_persona">
+      <form id="id_form_persona" name="form_persona" method="post">
+        <fieldset id="caja_campos_formulario">
+          <legend id="form-accion"></legend>
+          <label class="txt txt-label_dni" for="id_dni">dni</label>
+          <input
+            class="txt txt-formato_dni"
+            type="text"
+            id="id_dni"
+            name="dni"
+            maxlength="9"
+          />
+          <br />
+          <label
+            for="nombre_persona"
+            class="txt txt-label_nombre_persona"
+          ></label>
+          <input
+            maxlength="15"
+            type="text"
+            id="nombre_persona"
+            name="nombre_persona"
+          />
+          <br />
+          <label
+            for="apellidos_persona"
+            class="txt txt-label_apellidos_persona"
+          ></label>
+          <input
+            maxlength="100"
+            type="text"
+            name="apellidos_persona"
+            id="apellidos_persona"
+          />
+          <br />
+          <label
+            for="fechaNacimiento_persona"
+            class="txt txt-label_fecha_nacimiento_persona"
+          ></label>
+          <input
+            type="date"
+            name="fechaNacimiento_persona"
+            id="fechaNacimiento_persona"
+          />
+          <br />
+          <label
+            for="direccion_persona"
+            class="txt txt-label_direccion_persona"
+          ></label>
+          <input
+            maxlength="200"
+            type="text"
+            name="direccion_persona"
+            id="direccion_persona"
+          />
+          <br />
+          <label
+            for="telefono_persona"
+            class="txt txt-label_telefono_persona"
+          ></label>
+          <input
+            maxlength="9"
+            type="tel"
+            name="telefono_persona"
+            id="telefono_persona"
+          />
+          <br />
+          <label
+            for="email_persona"
+            class="txt txt-label_email_persona"
+          ></label>
+          <input
+            maxlength="45"
+            type="email"
+            name="email_persona"
+            id="email_persona"
+          />
+          <br />
+          <label for="foto_persona" class="txt txt-label_foto_persona"></label>
+          <input
+            maxlength="45"
+            type="text"
+            name="foto_persona"
+            id="foto_persona"
+          />
+          <br />
+          <img
+            width="50"
+            height="50"
+            src=""
+            alt="submit"
+            id="img_form_submit"
+          />
+        </fieldset>
+      </form>
+      <br />
+    </div>
+  </body>
 </html>

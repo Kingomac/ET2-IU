@@ -1,75 +1,115 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="txt txt-titulo_gestion_acciones"></title>
+    <script type="text/javascript" src="locale/es.js"></script>
+    <script type="text/javascript" src="locale/en.js"></script>
+    <script type="text/javascript" src="locale/ga.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/ajaxComun.js"></script>
+    <script type="text/javascript" src="js/gestion-accion/acciones.js"></script>
+    <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script
+      type="text/javascript"
+      src="js/gestionusuario/comprobar_errores_usuario.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestion-accion/gestion-accion.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestion-accion/comprobar-errores-accion.js"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title class="txt txt-titulo_gestion_acciones"></title>
-  <script type="text/javascript" src="locale/es.js"></script>
-  <script type="text/javascript" src="locale/en.js"></script>
-  <script type="text/javascript" src="locale/ga.js"></script>
-  <script type="text/javascript" src="locale/idioma.js"></script>
-  <script type="text/javascript" src="./js/validacionesComunes.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="./js/md5.js"></script>
-  <script type="text/javascript" src="js/cookies.js"></script>
-  <script type="text/javascript" src="js/ajaxComun.js"></script>
-  <script type="text/javascript" src="js/gestion-accion/acciones.js"></script>
-  <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
-  <script type="text/javascript" src="js/gestion-accion/gestion-accion.js"></script>
-  <script type="text/javascript" src="js/gestion-accion/comprobar-errores-accion.js"></script>
-</head>
+  <body
+    onload="redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setDivInvisible('id_caja_formulario_accion');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaAcciones();"
+  >
+    <header>
+      <h1 class="txt txt-titulo_gestion_acciones"></h1>
+    </header>
+    <div>
+      <img
+        src="./images/add.svg"
+        class="txt txt-titulo_add"
+        title="Añadir"
+        height="60"
+        width="60"
+        onclick="crearFormAddAccion();"
+      />
+      <img
+        src="./images/search.svg"
+        class="txt txt-titulo_search"
+        title="Buscar"
+        height="60"
+        width="60"
+        onclick="crearFormSearchAccion();"
+      />
+    </div>
 
-<body
-  onload="setDivInvisible('id_caja_error');setDivInvisible('id_caja_formulario_accion');crearSelectIdioma();setLang(readCookie('lang'));actualizarTablaAcciones();">
-  <h1 class="txt txt-titulo_gestion_acciones"></h1>
-  <div>
-    <img src='./images/add.svg' class="txt txt-titulo_add" title="Añadir" height="60" width="60"
-      onclick="crearFormAddAccion();">
-    <img src='./images/search.svg' class="txt txt-titulo_search" title="Buscar" height="60" width="60"
-      onclick="crearFormSearchAccion();">
-  </div>
+    <div id="id_caja_error">
+      <div id="id_texterror" class="txt">adfafaf</div>
+    </div>
+    <div id="id_caja_formulario_accion">
+      <form id="id_form_accion" name="form_accion" method="post">
+        <fieldset id="caja_campos_formulario">
+          <legend id="form-accion"></legend>
+          <div id="caja_id_accion">
+            <label for="id_accion" class="txt txt-label_id_accion"></label>
+            <input type="number" id="id_accion" name="id_accion" />
+            <br />
+          </div>
+          <label
+            for="nombre_accion"
+            class="txt txt-label_nombre_accion"
+          ></label>
+          <input type="text" id="nombre_accion" name="nombre_accion" />
+          <br />
+          <label
+            for="descrip_accion"
+            class="txt txt-label_descrip_accion"
+          ></label>
+          <textarea
+            name="descrip_accion"
+            id="descrip_accion"
+            cols="30"
+            rows="10"
+            maxlength="200"
+          ></textarea>
+          <br />
+          <img
+            width="50"
+            height="50"
+            src=""
+            alt="submit"
+            id="img_form_submit"
+          />
+        </fieldset>
+      </form>
+      <br />
+    </div>
 
-  <div id='id_caja_error'>
-    <div id='id_texterror' class="txt">adfafaf</div>
-  </div>
-  <div id='id_caja_formulario_accion'>
-    <form id='id_form_accion' name='form_accion' method='post'>
-      <fieldset id="caja_campos_formulario">
-        <legend id="form-accion"></legend>
-        <div id="caja_id_accion">
-          <label for="id_accion" class="txt txt-label_id_accion"></label>
-          <input type="number" id="id_accion" name="id_accion">
-          <br>
-        </div>
-        <label for="nombre_accion" class="txt txt-label_nombre_accion"></label>
-        <input type="text" id="nombre_accion" name="nombre_accion">
-        <br>
-        <label for="descrip_accion" class="txt txt-label_descrip_accion"></label>
-        <textarea name="descrip_accion" id="descrip_accion" cols="30" rows="10" maxlength="200"></textarea>
-        <br>
-        <img width="50" height="50" src="" alt="submit" id="img_form_submit">
-      </fieldset>
-    </form>
-    <br>
-  </div>
-
-  <table border="1">
-    <thead id="table_head">
-      <tr>
-        <th class="txt txt-label_id_accion">id_accion</th>
-        <th class="txt txt-label_nombre_accion">nombre_accion</th>
-        <th class="txt txt-label_descrip_accion">descrip_accion</th>
-        <th class="txt txt-titulo_edit"></th>
-        <th class="txt txt-titulo_delete"></th>
-        <th class="txt txt-titulo_detail"></th>
-      </tr>
-    </thead>
-    <tbody id="table_body">
-
-    </tbody>
-  </table>
-</body>
-
+    <table border="1">
+      <thead id="table_head">
+        <tr>
+          <th class="txt txt-label_id_accion">id_accion</th>
+          <th class="txt txt-label_nombre_accion">nombre_accion</th>
+          <th class="txt txt-label_descrip_accion">descrip_accion</th>
+          <th class="txt txt-titulo_edit"></th>
+          <th class="txt txt-titulo_delete"></th>
+          <th class="txt txt-titulo_detail"></th>
+        </tr>
+      </thead>
+      <tbody id="table_body"></tbody>
+    </table>
+  </body>
 </html>

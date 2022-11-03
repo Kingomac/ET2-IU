@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="./locale/ES.js"></script>
+    <script type="text/javascript" src="./locale/EN.js"></script>
+    <script type="text/javascript" src="./locale/GA.js"></script>
+    <script type="text/javascript" src="./locale/idioma.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script type="text/javascript" src="js/ajaxComun.js"></script>
+    <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="js/menu/menu.js"></script>
+    <title class="txt txt-titulo_menu"></title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-</head>
-
-<body>
-  <h1>ET2</h1>
-  <nav>
-    <ul>
-      <li><a href="gestionusuario.html">Gestión usuario</a></li>
-      <li><a href="gestionpersonas.html">Gestión personas</a></li>
-      <li><a href="gestionroles.html">Gestión roles</a></li>
-      <li><a href="gestionpermisos.html">Gestión permisos</a></li>
-    </ul>
-  </nav>
-</body>
-
+  <body
+    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
+  >
+    <header>
+      <h1 class="txt txt-titulo_menu">ET2</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="gestionusuario.html" class="txt txt-titulo_gestion_usuarios"
+            >Gestión usuario</a
+          >
+        </li>
+        <li>
+          <a href="gestionpersonas.html" class="txt txt-titulo_gestion_personas"
+            >Gestión personas</a
+          >
+        </li>
+        <li>
+          <a href="gestionroles.html" class="txt txt-titulo_gestion_roles"
+            >Gestión roles</a
+          >
+        </li>
+        <li>
+          <a href="gestionpermisos.html" class="txt txt-titulo_gestion_permisos"
+            >Gestión permisos</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </body>
 </html>
