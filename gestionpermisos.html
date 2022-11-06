@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="txt txt-titulo_gestion_permisos"></title>
+    <script type="text/javascript" src="locale/es.js"></script>
+    <script type="text/javascript" src="locale/en.js"></script>
+    <script type="text/javascript" src="locale/ga.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/ajaxComun.js"></script>
+    <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script type="text/javascript" src="js/gestion-accion/acciones.js"></script>
+    <script type="text/javascript" src="js/gestion-roles/roles.js"></script>
+    <script
+      type="text/javascript"
+      src="js/gestion-permisos/permisos.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestion-permisos/gestion-permisos.js"
+    ></script>
+  </head>
+  <body
+    onload="redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setLang(readCookie('lang'));insertarMenuAcciones();"
+  >
+    <header>
+      <h1 class="txt txt-titulo_gestion_permisos"></h1>
+    </header>
+    <div id="id_caja_error">
+      <div id="id_texterror"></div>
+    </div>
+    <table border="1" id="tabla_showall">
+      <thead>
+        <tr id="table_title">
+          <th class="txt txt-permisos_titulo_funcionalidad"></th>
+          <th class="txt txt-permisos_titulo_accion"></th>
+        </tr>
+      </thead>
+      <tbody id="table_body"></tbody>
+    </table>
+  </body>
+</html>

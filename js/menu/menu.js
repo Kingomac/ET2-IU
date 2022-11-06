@@ -32,8 +32,14 @@ function insertarMenuAcciones({
   desconectar = true,
   volver = true,
   selectIdioma = true,
+  nombreUsuario = true,
 } = {}) {
   let opciones = [];
+
+  if (nombreUsuario && comprobarLogin()) {
+    opciones.push(`Conectado como ${getUsuarioConectado()}`);
+  }
+
   if (desconectar) {
     const btnDesconectar = document.createElement("a");
     btnDesconectar.innerText = getTextoTitulo("desconectar");

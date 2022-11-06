@@ -58,4 +58,10 @@ const ES = {
   titulo_menu: "Menú",
   titulo_desconectar: "Desconectar",
   titulo_volver: "Volver",
+
+  //Permisos
+  titulo_gestion_permisos: "Gestión permisos",
+  permisos_titulo_accion: "Acción",
+  permisos_titulo_funcionalidad: "Funcionalidad",
+  permisos_titulo_rol: "Rol",
 };

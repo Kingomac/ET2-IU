@@ -68,9 +68,7 @@ function getTextosRoles(rol) {
 }
 
 function getTextoTitulo(titulo) {
-  return (
-    lang[`titulo_${titulo}`] || `${ALT_TEXT} (${getLangClass(el.classList)})`
-  );
+  return lang[`titulo_${titulo}`] || `${ALT_TEXT} (titulo_${titulo})`;
 }
 
 /**

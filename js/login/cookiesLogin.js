@@ -43,3 +43,7 @@ function desconectarUsuario() {
   document.cookie = `${LOGIN_COOKIE_TOKEN}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
   document.cookie = `${LOGIN_COOKIE_USUARIO_SISTEMA}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
 }
+
+function getUsuarioConectado() {
+  return readCookie("usuarioSistema");
+}
