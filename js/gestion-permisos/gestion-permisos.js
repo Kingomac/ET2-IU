@@ -21,6 +21,9 @@ const ID_ROL_ADMIN = 0;
       }[] | undefined} datos 
  */
 async function actualizarTablaPermisos(datos) {
+  document.getElementById("loading_bar").style.display = "block";
+  document.getElementById("tabla_showall").style.display = "none";
+  document.getElementById("id_form_search").style.display = "none";
   // Reset del tbody
   const tbody = document.getElementById("table_body");
   tbody.textContent = "";
@@ -33,6 +36,7 @@ async function actualizarTablaPermisos(datos) {
   if (datos == null) {
     try {
       datos = await peticionBackSHOWALLrolaccionfuncionalidad();
+      actualizarSelectSearch(datos);
     } catch (err) {
       mensajeError({
         idInput: "id_caja_error",
@@ -41,6 +45,7 @@ async function actualizarTablaPermisos(datos) {
       return;
     }
   }
+
   const roles = await getRoles();
   for (const i of roles) {
     const th = document.createElement("th");
@@ -91,6 +96,9 @@ async function actualizarTablaPermisos(datos) {
     }
     tbody.append(tr);
   }
+  document.getElementById("loading_bar").style.display = "none";
+  document.getElementById("tabla_showall").style.display = "";
+  document.getElementById("id_form_search").style.display = "";
 }
 
 /**
@@ -177,71 +185,54 @@ async function addRolAccionFuncionalidad({
 }
 
 /**
- *
- * @param {{id_funcionalidad: number, id_accion: number, id_rol: number}} params
- * @returns
+ * 
+ * @param {{
+        id_funcionalidad: {
+          id_funcionalidad: number,
+          nombre_funcionalidad: string,
+          descrip_funcionalidad: string
+        },
+        id_accion: {
+          id_accion: number,
+          nombre_accion: string,
+          descrip_accion: string
+        },
+        id_rol: {
+          id_rol: number,
+          nombre_rol: string,
+          descrip_rol: string
+        }
+      }[] | undefined} datos 
  */
-function peticionBackAddRolAccionFuncionalidad({
-  id_funcionalidad,
-  id_accion,
-  id_rol,
-}) {
-  const datos = new FormData();
-  datos.append("id_funcionalidad", id_funcionalidad);
-  datos.append("id_accion", id_accion);
-  datos.append("id_rol", id_rol);
-  datos.append("controlador", "rolaccionfuncionalidad");
-  datos.append("action", "ADD");
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      method: "POST",
-      url: URL_BACK,
-      data: datos,
-      processData: false,
-      contentType: false,
-    })
-      .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
-          reject(res);
-        } else resolve(res.resource);
-      })
-      .fail((res) => {
-        reject(res);
-      });
-  });
+function actualizarSelectSearch(datos) {
+  const select = document.getElementById("select_funcionalidad");
+  const blanco = document.createElement("option");
+  select.append(blanco);
+  for (let i = 0; i < datos.length; ) {
+    const option = document.createElement("option");
+    option.value = datos[i].id_funcionalidad.id_funcionalidad;
+    option.innerText = datos[i].id_funcionalidad.nombre_funcionalidad;
+    select.append(option);
+    const id_funcionalidad = datos[i].id_funcionalidad.id_funcionalidad;
+    while (
+      i < datos.length &&
+      id_funcionalidad == datos[i].id_funcionalidad.id_funcionalidad
+    )
+      i++;
+  }
 }
 
-/**
- *
- * @param {{id_funcionalidad: number, id_accion: number, id_rol: number}} params
- * @returns
- */
-function peticionBackDeleteRolAccionFuncionalidad({
-  id_funcionalidad,
-  id_accion,
-  id_rol,
-}) {
-  const datos = new FormData();
-  datos.append("id_funcionalidad", id_funcionalidad);
-  datos.append("id_accion", id_accion);
-  datos.append("id_rol", id_rol);
-  datos.append("controlador", "rolaccionfuncionalidad");
-  datos.append("action", "DELETE");
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      method: "POST",
-      url: URL_BACK,
-      data: datos,
-      processData: false,
-      contentType: false,
-    })
-      .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
-          reject(res);
-        } else resolve(res.resource);
-      })
-      .fail((res) => {
-        reject(res);
-      });
-  });
+async function searchFuncionalidad() {
+  try {
+    document.getElementById("loading_bar").style.display = "block";
+    document.getElementById("tabla_showall").style.display = "none";
+    document.getElementById("id_form_search").style.display = "none";
+    const datos = await peticionBackSEARCHrolaccionfuncionalidad();
+    actualizarTablaPermisos(datos);
+  } catch (err) {
+    mensajeError({
+      idInput: "id_caja_error",
+      codigo: err,
+    });
+  }
 }

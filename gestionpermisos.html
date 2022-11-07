@@ -36,6 +36,30 @@
     <div id="id_caja_error">
       <div id="id_texterror"></div>
     </div>
+    <div>
+      <form
+        action="javascript:searchFuncionalidad()"
+        method="post"
+        id="id_form_search"
+      >
+        <label
+          for="select_funcionalidad"
+          class="txt txt-label_permisos_select_funcionalidad"
+        ></label>
+        <select
+          name="id_funcionalidad"
+          id="select_funcionalidad"
+          onchange="document.getElementById('id_form_search').submit()"
+        ></select>
+        <input
+          type="hidden"
+          name="controlador"
+          value="rolaccionfuncionalidad"
+        />
+        <input type="hidden" name="action" value="SEARCH" />
+      </form>
+    </div>
+    <progress id="loading_bar"></progress>
     <table border="1" id="tabla_showall">
       <thead>
         <tr id="table_title">
