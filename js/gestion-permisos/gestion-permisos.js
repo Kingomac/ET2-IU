@@ -124,25 +124,25 @@ function crearBtnAddDelete({
   id_rol,
 }) {
   const btnTick = document.createElement("img");
-  btnTick.src = "./images/tick.svg";
   btnTick.className = "txt txt-titulo_permiso_add";
   btnTick.title = getTextoTitulo("permiso_add");
   btnTick.width = "35";
   btnTick.height = "35";
 
   const btnDelete = document.createElement("img");
-  btnDelete.src = "./images/close.svg";
   btnDelete.className = "txt txt-titulo_permiso_delete";
   btnDelete.title = getTextoTitulo("permiso_delete");
   btnDelete.width = "35";
   btnDelete.height = "35";
 
   if (tienePermiso) {
-    btnTick.style.filter = "grayscale(100%)";
+    btnTick.src = "./images/tick-disabled.svg";
+    btnDelete.src = "./images/close.svg";
     btnDelete.onclick = () =>
       deleteRolAccionFuncionalidad({ id_accion, id_funcionalidad, id_rol });
   } else {
-    btnDelete.style.filter = "grayscale(100%)";
+    btnTick.src = "./images/tick.svg";
+    btnDelete.src = "./images/close-disabled.svg";
     btnTick.onclick = () =>
       addRolAccionFuncionalidad({ id_accion, id_funcionalidad, id_rol });
   }
