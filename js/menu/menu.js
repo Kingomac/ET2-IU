@@ -69,6 +69,7 @@ function insertarMenuAcciones({
       select.append(option);
     }
     select.onchange = (e) => setLang(e.target.value);
+    select.value = readCookie(COOKIE_LANG);
     opciones.push(select);
   }
 

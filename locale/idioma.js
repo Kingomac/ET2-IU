@@ -1,5 +1,6 @@
 let lang;
 const ALT_TEXT = "👌👌👌👌👌👌👌👌";
+const COOKIE_LANG = "lang";
 const IDIOMAS = Object.freeze({
   ES: {
     texto: "Español",
