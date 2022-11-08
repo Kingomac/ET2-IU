@@ -58,6 +58,7 @@ function setLang(codigo = "ES") {
   writeCookie({
     clave: "lang",
     valor: codigo,
+    expires: new Date(Date.now() + 36288000),
   });
   const sel = document.getElementById("select_idioma");
   sel != null && (sel.value = codigo);

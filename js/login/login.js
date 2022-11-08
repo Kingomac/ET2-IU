@@ -46,9 +46,9 @@ function loginAjaxPromesa() {
     })
       .done((res) => {
         if (res.code != "LOGIN_OK") {
-          reject(res);
+          reject(res.code);
         } else {
-          resolve(res);
+          resolve(res.resource);
         }
       })
       .fail(function (jqXHR) {
@@ -63,10 +63,9 @@ function loginAjaxPromesa() {
 async function login() {
   await loginAjaxPromesa()
     .then((res) => {
-      writeCookie({ clave: LOGIN_COOKIE_TOKEN, valor: res.resource });
-      writeCookie({
-        clave: LOGIN_COOKIE_USUARIO_SISTEMA,
-        valor: document.getElementById("id_usuario").value,
+      conectarUsuario({
+        token: res,
+        usuarioSistema: document.getElementById("id_usuario").value,
       });
       window.location.href = "menu.html";
     })

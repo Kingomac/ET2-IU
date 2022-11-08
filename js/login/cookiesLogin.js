@@ -39,11 +39,22 @@ function redirigirLoginFalse(pagina = PAGINAS.login) {
   }
 }
 
+function conectarUsuario({ usuarioSistema, token }) {
+  writeCookie({
+    clave: LOGIN_COOKIE_TOKEN,
+    valor: token,
+  });
+  writeCookie({
+    clave: LOGIN_COOKIE_USUARIO_SISTEMA,
+    valor: usuarioSistema,
+  });
+}
+
 function desconectarUsuario() {
-  document.cookie = `${LOGIN_COOKIE_TOKEN}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
-  document.cookie = `${LOGIN_COOKIE_USUARIO_SISTEMA}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+  deleteCookie(LOGIN_COOKIE_TOKEN);
+  deleteCookie(LOGIN_COOKIE_USUARIO_SISTEMA);
 }
 
 function getUsuarioConectado() {
-  return readCookie("usuarioSistema");
+  return readCookie(LOGIN_COOKIE_USUARIO_SISTEMA);
 }

@@ -1,13 +1,14 @@
 /**
  * clave: clave de la cookie
  * valor: valor de la cookie
- * expires: ms a sumar al timestamp actual
- * @param {{clave: string, valor: string, expires: number}} params
+ * expires: fecha a expirar la cookie
+ * @param {{clave: string, valor: string, expires?: Date}} params
  * @returns void
  */
-function writeCookie({ clave, valor, expires = 7 * 24 * 60 * 60 * 1000 }) {
-  expires = new Date(Date.now() + expires);
-  document.cookie = `${clave}=${valor}; expires=${expires.toUTCString()}; path=/`;
+function writeCookie({ clave, valor, expires }) {
+  const expiresString =
+    expires != null ? `expires=${expires.toUTCString()}; ` : "";
+  document.cookie = `${clave}=${valor}; ${expiresString}path=/`;
 }
 
 /**
@@ -23,4 +24,12 @@ function readCookie(clave) {
     }
   }
   return undefined;
+}
+
+function deleteCookie(clave) {
+  writeCookie({
+    clave,
+    valor: "",
+    expires: new Date(0),
+  });
 }
