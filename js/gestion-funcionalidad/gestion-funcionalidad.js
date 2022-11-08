@@ -51,6 +51,7 @@ function crearFormAddFuncionalidad() {
   scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -121,6 +122,7 @@ function crearFormEditFuncionalidad({
   scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -190,6 +192,7 @@ function crearFormDeleteFuncionalidad({
   scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -266,6 +269,7 @@ function crearFormDetailFuncionalidad({
   scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -296,6 +300,7 @@ function crearFormSearchFuncionalidad() {
   scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";

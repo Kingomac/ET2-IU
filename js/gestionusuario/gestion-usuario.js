@@ -107,6 +107,7 @@ async function crearformADDusuario() {
   // resetear el formulario
   scrollFinTabla();
   resetearformusuario();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("form-accion").innerText = getTextoTitulo("add");
   document.getElementById("form-accion").className = "txt txt-titulo_add";
@@ -154,6 +155,7 @@ async function crearformEDITusuario(dni, usuario, rol) {
   // resetear al formulario
   scrollFinTabla();
   resetearformusuario();
+  document.getElementById("id_caja_error").style.display = "none";
 
   // se crea el action del formulario
   $("#id_form_usuario").attr("action", "http://193.147.87.202/procesaform.php");
@@ -204,6 +206,7 @@ async function crearformDELETEusuario(dni, usuario, rol) {
 
   scrollFinTabla();
   resetearformusuario();
+  document.getElementById("id_caja_error").style.display = "none";
 
   $("#id_dni").off("blur");
   $("#id_usuario").off("blur");
@@ -251,6 +254,7 @@ async function crearformSEARCHusuario() {
   // reseteo el formulario
   scrollFinTabla();
   resetearformusuario();
+  document.getElementById("id_caja_error").style.display = "none";
 
   $("#id_form_usuario")[0].reset();
 
@@ -295,6 +299,7 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
   // reseteo el formulario
   scrollFinTabla();
   resetearformusuario();
+  document.getElementById("id_caja_error").style.display = "none";
 
   $("#id_dni").val(dni);
   $("#id_dni").attr("readonly", true);

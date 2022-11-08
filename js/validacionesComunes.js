@@ -10,12 +10,6 @@ function setDivInvisible(form) {
   document.getElementById(form).style.display = "none";
 }
 
-function mensajeKO(idElemento, texto) {
-  document.getElementById("id_texterror").innerHTML = texto;
-  document.getElementById("id_caja_error").style.display = "block";
-  document.getElementById(idElemento).style.borderColor = "#ff0000";
-}
-
 function mensajeOK(idElemento) {
   document.getElementById("id_texterror").innerHTML = "";
   document.getElementById("id_caja_error").style.display = "none";
@@ -83,6 +77,9 @@ function resetForm(idForm) {
   for (const i of form.querySelectorAll("input, textarea")) {
     i.style.borderColor = "";
     i.removeAttribute("readonly");
+  }
+  for (const i of form.querySelectorAll("fieldset")) {
+    i.style.borderColor = "";
   }
 }
 

@@ -61,7 +61,7 @@ async function actualizarTablaPersonas(datos) {
 }
 
 function resetOnBlur() {
-  $("#id_dni").blur(comprobar_dni);
+  $("#id_dni").blur(() => comprobar_dni());
   $("#nombre_persona").blur(comprobarNombrePersona);
   $("#apellidos_persona").blur(comprobarApellidosPersona);
   $("#direccion_persona").blur(comprobarDireccionPersona);
@@ -78,6 +78,7 @@ function crearFormAddPersona() {
   scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action = "javascript:addPersona()";
@@ -142,6 +143,7 @@ function crearFormEditPersona({
   scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =
@@ -218,6 +220,7 @@ function crearFormDeletePersona({
   scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =
@@ -292,6 +295,7 @@ function crearFormDetailPersona({
   scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
 
@@ -338,6 +342,7 @@ function crearFormSearchPersona() {
   scrollFinTabla();
   resetForm("id_form_persona");
   resetOnBlur();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =

@@ -51,6 +51,7 @@ function crearFormAddRol() {
   resetForm("id_form_rol");
   scrollFinTabla();
   resetOnBlurRoles();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("caja_id_rol").style.display = "none";
@@ -118,6 +119,7 @@ function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   resetForm("id_form_rol");
   scrollFinTabla();
   resetOnBlurRoles();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_form_rol").action = "javascript:editRol()";
   document.getElementById("id_form_rol").onsubmit = () =>
@@ -185,6 +187,7 @@ function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   resetForm("id_form_rol");
   scrollFinTabla();
   resetOnBlurRoles();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("id_form_rol").action = "javascript:deleteRol()";
@@ -256,6 +259,7 @@ function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
   resetForm("id_form_rol");
   scrollFinTabla();
   resetOnBlurRoles();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
 
@@ -284,6 +288,7 @@ function crearFormSearchRol() {
   resetForm("id_form_rol");
   scrollFinTabla();
   resetOnBlurRoles();
+  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("id_form_rol").action = "javascript:searchRol()";

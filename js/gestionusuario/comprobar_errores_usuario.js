@@ -1,3 +1,5 @@
+const LETRAS_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+
 // comprobar_form_usuario_add()
 // funcion para validar el submit del formulario usuario para las acciones que no sean search
 
@@ -72,6 +74,9 @@ function comprobar_usuario_search() {
  * @returns `true`si es correcto y `false` si es incorrecto
  */
 function comprobar_dni({ idInput } = { idInput: "id_dni" }) {
+  /**
+   * @type string
+   */
   const dni = document.getElementById(idInput).value;
   if (dni.length != 9) {
     mensajeError({
@@ -87,8 +92,10 @@ function comprobar_dni({ idInput } = { idInput: "id_dni" }) {
     });
     return false;
   }
-  const letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
-  if (dni.charAt(8) != letrasDNI.charAt(dni.slice(0, 8) % letrasDNI.length)) {
+  if (
+    dni.charAt(8).toUpperCase() !=
+    LETRAS_DNI.charAt(dni.slice(0, 8) % LETRAS_DNI.length)
+  ) {
     mensajeError({
       idInput: idInput,
       codigo: "dni_incorrecto",
@@ -114,6 +121,26 @@ function comprobar_dni_search() {
     mensajeError({
       idInput: "id_dni",
       codigo: "dni_format_search",
+    });
+    return false;
+  }
+
+  if (dni.length == 9 && !/^[0-9]{8}[a-zA-Z]$/.test(dni)) {
+    mensajeError({
+      idInput: idInput,
+      codigo: "dni_format",
+    });
+    return false;
+  }
+
+  if (
+    dni.length == 9 &&
+    dni.charAt(8).toUpperCase() !=
+      LETRAS_DNI.charAt(dni.slice(0, 8) % LETRAS_DNI.length)
+  ) {
+    mensajeError({
+      idInput: idInput,
+      codigo: "dni_incorrecto",
     });
     return false;
   }
