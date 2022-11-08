@@ -62,7 +62,7 @@ async function search_usuario() {
   if (comprobar_form_usuario_search()) {
     try {
       const peticion = await peticionSEARCHusuarioBack();
-      await actualizarTablaUsuarios(peticion.resources);
+      await actualizarTablaUsuarios(peticion.resource);
     } catch (err) {
       mensajeError({
         codigo: err,
@@ -277,13 +277,14 @@ async function crearformSEARCHusuario() {
 
   //creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
   const botonsubmit = document.createElement("img");
-  botonsubmit.id = "id_boton_buscar_usuario";
+  botonsubmit.id = "id_imagen_enviar_form";
   botonsubmit.title = "Buscar";
   botonsubmit.alt = "Buscar";
   botonsubmit.src = "./images/search.svg";
   botonsubmit.width = "50";
   botonsubmit.height = "50";
-  botonsubmit.onclick = document.getElementById("id_form_usuario").submit();
+  botonsubmit.onclick = () =>
+    document.getElementById("id_form_usuario").submit();
   botonsubmit.onsubmit = () => comprobar_form_usuario_search();
 
   // coloco la imagen para submit en el formulario
@@ -344,7 +345,7 @@ async function actualizarTablaUsuarios(datos) {
   try {
     datos ??= await peticionBackSHOWALLusuario();
   } catch (err) {
-    idInput({ codigo: err, idInput: "caja_campos_formulario" });
+    mensajeError({ codigo: err, idInput: "caja_campos_formulario" });
   }
   const roles = await getRoles();
   console.log("datos", datos);

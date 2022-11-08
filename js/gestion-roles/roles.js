@@ -10,7 +10,7 @@ async function crearSelectRoles({
 }) {
   const datos = await getRoles();
   if (datos === undefined) return;
-  if (vacio) datos.unshift({ id_rol: -1, nombre_rol: "", descrip_rol: "" });
+  if (vacio) datos.unshift({ id_rol: "", nombre_rol: "", descrip_rol: "" });
   const select = document.createElement("select");
   select.name = "id_rol";
   select.id = "id_id_rol";
