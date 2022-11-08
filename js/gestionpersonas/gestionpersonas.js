@@ -267,7 +267,8 @@ async function deletePersona() {
   }
   try {
     await peticionBackDeletePersona();
-    resetForm("id_form_persona");
+    document.getElementById("id_caja_formulario_persona").style.display =
+      "none";
     await actualizarTablaPersonas();
   } catch (e) {
     mensajeError({

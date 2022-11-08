@@ -216,7 +216,7 @@ async function deleteRol() {
   }
   try {
     await peticionBackDeleteRol();
-    resetForm("id_form_rol");
+    document.getElementById('id_caja_formulario_rol').style.display = 'none'
     await actualizarTablaRoles();
   } catch (e) {
     mensajeError({

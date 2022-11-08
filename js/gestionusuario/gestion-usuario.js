@@ -44,7 +44,8 @@ async function edit_usuario() {
 async function delete_usuario() {
   try {
     await peticionDELETEusuarioBack();
-    resetearformusuario();
+    document.getElementById("id_caja_formulario_usuario").style.display =
+      "none";
     await actualizarTablaUsuarios();
   } catch (err) {
     mensajeError({

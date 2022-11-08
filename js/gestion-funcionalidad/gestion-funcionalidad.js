@@ -222,7 +222,8 @@ async function deleteFuncionalidad() {
   }
   try {
     await peticionBackDeleteFuncionalidad();
-    resetForm("id_form_funcionalidad");
+    document.getElementById("id_caja_formulario_funcionalidad").style.display =
+      "none";
     await actualizarTablaFuncionalidades();
   } catch (e) {
     mensajeError({

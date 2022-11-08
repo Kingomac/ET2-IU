@@ -208,7 +208,7 @@ async function deleteAccion() {
   }
   try {
     await peticionBackDeleteAccion();
-    resetForm("id_form_accion");
+    document.getElementById("id_caja_formulario_accion").style.display = "none";
     await actualizarTablaAcciones();
   } catch (e) {
     mensajeError({
