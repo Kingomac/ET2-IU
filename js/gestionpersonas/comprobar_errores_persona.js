@@ -73,7 +73,7 @@ function comprobarDireccionPersona() {
     return false;
   }
   if (
-    !/^[0-9a-zA-ZñÑÁÉÍ´PÚáéíóú\s\/\-\,\º\ª]+$/.test(
+    !/^[0-9a-zA-ZñÑÁÉÍPÚáéíóú\s\/\-\,\º\ª]+$/.test(
       document.getElementById(idInput).value
     )
   ) {
@@ -131,7 +131,7 @@ function comprobarEmailPersona() {
     return false;
   }
   const valorCampo = document.getElementById(idInput).value;
-  if (!/^[0-9a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.\@]+$/.test(valorCampo)) {
+  if (!/^[0-9a-zA-Z\-\_\+\.\@]+$/.test(valorCampo)) {
     mensajeError({
       codigo: "email_persona_caracteres_invalidos",
       idInput,
@@ -139,7 +139,7 @@ function comprobarEmailPersona() {
     return false;
   }
   if (
-    !/^([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)\@([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)\.([a-zA-ZáéíúóÁÉÍÓÚ\-\_\+\.]+)$/.test(
+    !/^([0-9a-zA-Z\-\_\+\.]+)\@([0-9a-zA-Z\-\_\+\.]+)\.([0-9a-zA-Z\-\_\+\.]+)$/.test(
       valorCampo
     )
   ) {

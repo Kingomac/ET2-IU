@@ -43,6 +43,9 @@ const ES = {
   label_email_persona: "Email",
   label_foto_persona: "Foto",
 
+  err_fechaNacimiento_persona_futura:
+    "La fecha de nacimiento no puede ser posterior a la actual",
+
   // Gestión roles
   titulo_gestion_roles: "Gestión de roles",
   label_id_rol: "ID Rol",
@@ -77,6 +80,68 @@ const ES = {
   permisos_titulo_funcionalidad: "Funcionalidad",
   permisos_titulo_rol: "Rol",
   label_permisos_select_funcionalidad: "Filtrar por funcionalidad",
+
+  // Errores de comprobaciones
+  //err_id_accion_largo: "ID de acción largo",
+  //err_id_accion_negativo: "ID de acción no puede ser negativo",
+  err_nombre_accion_largo: "El nombre de la acción es demasiado largo",
+  err_nombre_accion_acentos: "El nombre de la acción no puede contener acentos",
+  err_descrip_accion_largo: "La descipción de la acción es demasiado larga",
+  err_descrip_accion_corta: "La descripción de la acción es demasiado corta",
+  err_descrip_accion_caracteres_invalidos:
+    "La descripción de la acción no puede contener los caracteres: '=','<','>','$','#','{','}','[','",
+  // Funcionalidad
+  //err_id_funcionalidad_largo: "ID de funcionalidad largo",
+  //err_id_funcionalidad_corto: "ID de funcionalidad corto",
+  //err_id_funcionalidad_negativo: "ID de funcionalidad no puede ser negativo",
+  err_nombre_funcionalidad_largo: "",
+  err_nombre_funcionalidad_corto: "",
+  err_nombre_funcionalidad_acentos: "",
+  err_descrip_funcionalidad_largo: "",
+  err_descrip_funcionalidad_corto: "",
+  err_descrip_funcionalidad_caracteres_invalidos: "",
+  // Rol
+  //err_id_rol_largo: "",
+  //err_id_rol_corto: "",
+  //err_id_rol_negativo: "",
+  err_nombre_rol_largo: "El nombre del rol es demasiado largo",
+  err_nombre_rol_corto: "El nombre del rol es demasiado corto",
+  err_nombre_rol_acentos: "El nombre del rol no puede contener acentos",
+  err_descrip_rol_largo: "La descripción del rol es demasiado larga",
+  err_descrip_rol_corto: "La descripción del rol es demasiado corta",
+  err_descrip_rol_caracteres_invalidos:
+    "La descripción del rol no puede contener los caracteres: '=','<','>','$','#','{','}','[','",
+  // Persona
+  err_nombre_persona_largo: "El nombre es demasiado largo",
+  err_nombre_persona_corto: "El nombre es demasiado corto",
+  err_nombre_persona_caracteres_invalidos:
+    "El nombre solo puede contener letras, letras con acentos y espacios",
+  err_apellidos_persona_largo: "El apellido es demasiado largo",
+  err_apellidos_persona_corto: "El apellido es demasiado corto",
+  err_apellidos_persona_caracteres_invalidos:
+    "El apellido solo puede contener letras, letras con acentosm, espacios y guiones",
+  err_direccion_persona_largo: "La dirección es demasiado larga",
+  err_direccion_persona_corta: "La dirección es demasiado corta",
+  err_direccion_persona_caracteres_invalidos:
+    "La dirección solo puede contener letras, letras con acentos, espacios, números y los caracteres: '/','-',',','º','ª'",
+  err_telefono_persona_largo: "El teléfono es demasiado largo",
+  err_telefono_persona_corto: "El teléfono es demasiado corto",
+  err_telefono_persona_caracteres_invalidos:
+    "El teléfono solo puede contener números",
+  err_email_persona_largo: "El email es demasiado largo",
+  err_email_persona_corto: "El email es demasiado corto",
+  err_email_persona_caracteres_invalidos:
+    "El email solo puede contener letras, números y los caracteres: '-','_','+','.','@'",
+  err_email_persona_formato_invalido:
+    "El formato del email es inválido, debe ser: correo@dominio.com",
+  err_email_persona_empieza_termina_punto:
+    "El email no puede empezar o terminar en punto",
+  err_foto_persona_largo: "El nombre del archivo de la foto es demasiado largo",
+  err_foto_persona_corto: "El nombre del archivo de la foto es demasiado corto",
+  err_foto_persona_caracteres_invalidos:
+    "El nombre del archivo de la foto no puede contener acentos",
+  err_foto_persona_formato_fichero_incorrecto:
+    "La foto debe estar en formato PNG o JPG",
 
   //LITERALES DEVUELTOS DESDE BACK COMO RESPUESTA A ACCIONES (2/11/2022)
   //generales
