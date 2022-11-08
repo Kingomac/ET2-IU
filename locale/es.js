@@ -1,4 +1,4 @@
-const ES = {
+const ES = Object.freeze({
   //Login y gestión usuario
   titulo_gestion_usuarios: "Gestión usuarios",
   titulo_pagina_login: "Página Login",
@@ -22,8 +22,6 @@ const ES = {
   err_pass_larga: "Contraseña demasiado larga (máx. 15 caracteres)",
   err_pass_acentos:
     "Contraseña contiene caracteres no permitidos (solo letras sin acentos y números)",
-  err_USUARIO_PASS_KO: "Contraseña incorrecta",
-  err_USUARIO_LOGIN_KO: "Usuario incorrecto",
   label_rol: "Rol",
   label_usuario: "Usuario",
   label_dni: "DNI",
@@ -76,6 +74,8 @@ const ES = {
 
   //Permisos
   titulo_gestion_permisos: "Gestión permisos",
+  titulo_permiso_delete: "Eliminar permiso",
+  titulo_permiso_add: "Añadir permiso",
   permisos_titulo_accion: "Acción",
   permisos_titulo_funcionalidad: "Funcionalidad",
   permisos_titulo_rol: "Rol",
@@ -85,6 +85,7 @@ const ES = {
   //err_id_accion_largo: "ID de acción largo",
   //err_id_accion_negativo: "ID de acción no puede ser negativo",
   err_nombre_accion_largo: "El nombre de la acción es demasiado largo",
+  err_nombre_accion_corto: "El nombre de la accion es demasiado corto",
   err_nombre_accion_acentos: "El nombre de la acción no puede contener acentos",
   err_descrip_accion_largo: "La descipción de la acción es demasiado larga",
   err_descrip_accion_corta: "La descripción de la acción es demasiado corta",
@@ -94,12 +95,13 @@ const ES = {
   //err_id_funcionalidad_largo: "ID de funcionalidad largo",
   //err_id_funcionalidad_corto: "ID de funcionalidad corto",
   //err_id_funcionalidad_negativo: "ID de funcionalidad no puede ser negativo",
-  err_nombre_funcionalidad_largo: "",
-  err_nombre_funcionalidad_corto: "",
-  err_nombre_funcionalidad_acentos: "",
-  err_descrip_funcionalidad_largo: "",
-  err_descrip_funcionalidad_corto: "",
-  err_descrip_funcionalidad_caracteres_invalidos: "",
+  err_nombre_funcionalidad_largo: "El nombre es demasiado largo",
+  err_nombre_funcionalidad_corto: "El nombre es demasiado corto",
+  err_nombre_funcionalidad_acentos: "El nombre no puede contener acentos",
+  err_descrip_funcionalidad_largo: "La descripción es demasiado larga",
+  err_descrip_funcionalidad_corto: "La descripción es demasiado corta",
+  err_descrip_funcionalidad_caracteres_invalidos:
+    "La descripción no puede contener los caracteres: '=','<','>','$','#','{','}','[','",
   // Rol
   //err_id_rol_largo: "",
   //err_id_rol_corto: "",
@@ -119,7 +121,7 @@ const ES = {
   err_apellidos_persona_largo: "El apellido es demasiado largo",
   err_apellidos_persona_corto: "El apellido es demasiado corto",
   err_apellidos_persona_caracteres_invalidos:
-    "El apellido solo puede contener letras, letras con acentosm, espacios y guiones",
+    "El apellido solo puede contener letras, letras con acentos, espacios y guiones",
   err_direccion_persona_largo: "La dirección es demasiado larga",
   err_direccion_persona_corta: "La dirección es demasiado corta",
   err_direccion_persona_caracteres_invalidos:
@@ -151,7 +153,7 @@ const ES = {
   // err_RECORDSET_DATOS: "Hay datos",
 
   // registrar
-  err_CAMBIAR_contrasena_KO: "CAMBIAR_contrasena_KO",
+  err_CAMBIAR_contrasena_KO: "No se ha podido cambiar la contraseña",
   // login
   err_USUARIO_PASS_KO: "Contraseña incorrecta",
   err_USUARIO_LOGIN_KO: "Usuario incorrecto",
@@ -210,4 +212,4 @@ const ES = {
     "El permiso a eliminar no existe",
   err_prohibido_edit_rolaccionfuncionalidad:
     "No se permite editar permisos, se deben eliminar o añadir",
-};
+});
