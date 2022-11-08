@@ -161,7 +161,8 @@ async function deleteRolAccionFuncionalidad({
       id_funcionalidad,
       id_rol,
     });
-    await actualizarTablaPermisos();
+    const datos = await peticionBackSEARCHrolaccionfuncionalidad();
+    await actualizarTablaPermisos(datos);
   } catch (err) {
     mensajeError({ idInput: "id_caja_error", codigo: err });
   }
@@ -178,7 +179,8 @@ async function addRolAccionFuncionalidad({
       id_funcionalidad,
       id_rol,
     });
-    await actualizarTablaPermisos();
+    const datos = await peticionBackSEARCHrolaccionfuncionalidad();
+    await actualizarTablaPermisos(datos);
   } catch (err) {
     mensajeError({ idInput: "id_caja_error", codigo: err });
   }
