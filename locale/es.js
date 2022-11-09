@@ -11,7 +11,7 @@ const ES = Object.freeze({
   err_login_largo: "Tamaño login demasiado largo (max 15 caracteres)",
   err_login_acentos:
     "El login contiene carecteres no permitidos (solo letras sin acentos y números)",
-  err_dni_size: "EL tamaño del DNI debe ser de 9 caracteres",
+  err_dni_size: "El tamaño del DNI debe ser de 9 caracteres",
   err_dni_format: "El formato del DNI debe ser 8 números y 1 letra",
   err_dni_incorrecto:
     "El DNI es incorrecto, el número no corresponde con la letra",
@@ -87,7 +87,7 @@ const ES = Object.freeze({
   err_nombre_accion_largo: "El nombre de la acción es demasiado largo",
   err_nombre_accion_corto: "El nombre de la accion es demasiado corto",
   err_nombre_accion_acentos: "El nombre de la acción no puede contener acentos",
-  err_descrip_accion_largo: "La descipción de la acción es demasiado larga",
+  err_descrip_accion_largo: "La descripción de la acción es demasiado larga",
   err_descrip_accion_corta: "La descripción de la acción es demasiado corta",
   err_descrip_accion_caracteres_invalidos:
     "La descripción de la acción no puede contener los caracteres: '=','<','>','$','#','{','}','[','",
@@ -173,7 +173,7 @@ const ES = Object.freeze({
   err_admin_no_se_puede_modificar_KO:
     "Los datos del administrador no se pueden modificar",
   err_admin_no_se_puede_borrar_KO:
-    "Los datos del administrados no se pueden eliminar",
+    "Los datos del administrador no se pueden eliminar",
   // rol
   err_id_rol_EXISTE_en_usuario_KO: "El usuario ya tiene este rol",
   err_no_puede_borrar_rol_adminybasico:
