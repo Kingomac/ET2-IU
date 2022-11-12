@@ -163,6 +163,11 @@ function comprobarEmailPersona() {
 
 function comprobarFotoPersona() {
   const idInput = "foto_persona";
+  const valorCampo = document.getElementById(idInput).value;
+  if (valorCampo.length == 0) {
+    mensajeOK(idInput);
+    return true;
+  }
   if (!size_maximo(idInput, 45)) {
     mensajeError({
       codigo: "foto_persona_largo",
@@ -170,8 +175,7 @@ function comprobarFotoPersona() {
     });
     return false;
   }
-  const valorCampo = document.getElementById(idInput).value;
-  if (valorCampo.length > 1 && !size_minimo(idInput, 6)) {
+  if (!size_minimo(idInput, 6)) {
     mensajeError({
       codigo: "foto_persona_corto",
       idInput,
