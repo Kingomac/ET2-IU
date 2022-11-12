@@ -41,9 +41,6 @@ const ES = Object.freeze({
   label_email_persona: "Email",
   label_foto_persona: "Foto",
 
-  err_fechaNacimiento_persona_futura:
-    "La fecha de nacimiento no puede ser posterior a la actual",
-
   // Gestión roles
   titulo_gestion_roles: "Gestión de roles",
   label_id_rol: "ID Rol",
@@ -97,7 +94,7 @@ const ES = Object.freeze({
   err_nombre_accion_corto: "El nombre de la accion es demasiado corto",
   err_nombre_accion_acentos: "El nombre de la acción no puede contener acentos",
   err_descrip_accion_largo: "La descripción de la acción es demasiado larga",
-  err_descrip_accion_corta: "La descripción de la acción es demasiado corta",
+  err_descrip_accion_corto: "La descripción de la acción es demasiado corta",
   err_descrip_accion_caracteres_invalidos:
     "La descripción de la acción no puede contener los caracteres: '=','<','>','$','#','{','}','[','",
   // Funcionalidad
@@ -147,12 +144,16 @@ const ES = Object.freeze({
     "El formato del email es inválido, debe ser: correo@dominio.com",
   err_email_persona_empieza_termina_punto:
     "El email no puede empezar o terminar en punto",
+  email_persona_demasiadas_arrobas: "El email solo puede contener una '@'",
   err_foto_persona_largo: "El nombre del archivo de la foto es demasiado largo",
   err_foto_persona_corto: "El nombre del archivo de la foto es demasiado corto",
   err_foto_persona_caracteres_invalidos:
     "El nombre del archivo de la foto no puede contener acentos",
   err_foto_persona_formato_fichero_incorrecto:
     "La foto debe estar en formato PNG o JPG",
+  err_fechaNacimiento_invalida: "La fecha de nacimiento es inválida",
+  err_fechaNacimiento_persona_futura:
+    "La fecha de nacimiento no puede ser posterior a la actual",
   // Contraseñas
   err_contrasena_no_verifica: "Las contraseñas no coinciden",
   err_contrasena_caracteres_invalidos:
@@ -164,7 +165,7 @@ const ES = Object.freeze({
   //generales
   // err_SQL_KO: "Error de operación",
   // err_CONEXION_KO: "Se ha producido un error de conexión",
-  // err_RECORDSET_VACIO: "No hay datos",
+  err_RECORDSET_VACIO: "No hay resultados",
   // err_RECORDSET_DATOS: "Hay datos",
 
   // registrar
@@ -227,4 +228,8 @@ const ES = Object.freeze({
     "El permiso a eliminar no existe",
   err_prohibido_edit_rolaccionfuncionalidad:
     "No se permite editar permisos, se deben eliminar o añadir",
+  //http
+  err_http_status_404:
+    "Error HTTP 404, el recurso solicitado no se ha encontrado",
+    err_http_status_undefined:'Error HTTP desconocido'
 });

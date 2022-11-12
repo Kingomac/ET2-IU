@@ -97,8 +97,7 @@ const GA = Object.freeze({
   err_nombre_accion_acentos: "O nome da acción non pode conter acentos",
   err_descrip_accion_largo: "A descrición da acción é demasiado longa",
   err_descrip_accion_corta: "A descrición da acción é demasiado curta",
-  err_descrip_accion_caracteres_invalidos:
-    "A descrición da acción non pode conter os caracteres: '=','<','>','$','#','{','}','[','",
+
   // Funcionalidad
   //err_id_funcionalidad_largo: "ID de funcionalidade longo",
   //err_id_funcionalidad_corto: "ID de funcionalidade curto",
@@ -146,12 +145,16 @@ const GA = Object.freeze({
     "O formato do email é inválido, debe de ser: correo@dominio.com",
   err_email_persona_empieza_termina_punto:
     "O email non pode empezar o terminar en punto",
+  email_persona_demasiadas_arrobas: "O email só pode conter unha '@'",
   err_foto_persona_largo: "O nome do  arquivo da foto é demasiado longo",
   err_foto_persona_corto: "O nome do  arquivo da foto é demasiado curto",
   err_foto_persona_caracteres_invalidos:
     "O nome do  arquivo da foto non pode conter acentos",
   err_foto_persona_formato_fichero_incorrecto:
     "A foto debe estar en formato PNG ou JPG",
+  err_fechaNacimiento_invalida: "A data de nacemento é inválida",
+  err_descrip_accion_caracteres_invalidos:
+    "A descrición da acción non pode conter os caracteres: '=','<','>','$','#','{','}','[','",
   // Contrasinais
   err_contrasena_no_verifica: "Os contrasinais non coinciden",
   err_contrasena_caracteres_invalidos:
@@ -163,7 +166,7 @@ const GA = Object.freeze({
   //generales
   // err_SQL_KO: "Error de operación",
   // err_CONEXION_KO: "Se ha producido un error de conexión",
-  // err_RECORDSET_VACIO: "Non hay datos",
+  err_RECORDSET_VACIO: "Non hai resultados",
   // err_RECORDSET_DATOS: "Hay datos",
 
   // registrar
@@ -226,4 +229,7 @@ const GA = Object.freeze({
     "O permiso a eliminar non existe",
   err_prohibido_edit_rolaccionfuncionalidad:
     "Non se permite editar permisos, débense eliminar ou engadir",
+  //http
+  err_http_status_404: "Error HTTP 404, o recurso solicitado non se topou",
+  err_http_status_undefined: "Error HTTP descoñecido",
 });

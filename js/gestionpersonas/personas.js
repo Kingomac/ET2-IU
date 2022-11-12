@@ -125,7 +125,7 @@ function peticionBackShowAllPersona() {
         }
       })
       .fail((res) => {
-        reject(res);
+        reject(`http_status_${res.status}`);
       });
   });
 }

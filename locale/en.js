@@ -40,9 +40,6 @@ const EN = Object.freeze({
   label_email_persona: "Email",
   label_foto_persona: "Photo",
 
-  err_fechaNacimiento_persona_futura:
-    "The date of birth cannot be later than the current one",
-
   // Gestión roles
   titulo_gestion_roles: "Role management",
   label_id_rol: "Role ID",
@@ -146,12 +143,16 @@ const EN = Object.freeze({
     "The email format is incorrect, it must be: email@domain.com",
   err_email_persona_empieza_termina_punto:
     "The email cannot start or end with dot",
+  email_persona_demasiadas_arrobas: "Email can just include one '@'",
   err_foto_persona_largo: "The name del photo file is too long",
   err_foto_persona_corto: "The name del photo file is too short",
   err_foto_persona_caracteres_invalidos:
     "The name del photo file cannot include any accents",
   err_foto_persona_formato_fichero_incorrecto:
     "The photo format must be PNG or JPG",
+  err_fechaNacimiento_invalida: "The birthdate is not valid",
+  err_fechaNacimiento_persona_futura:
+    "The date of birth cannot be later than the current one",
   // Contraseñas
   err_contrasena_no_verifica: "Passwords must match",
   err_contrasena_caracteres_invalidos:
@@ -163,7 +164,7 @@ const EN = Object.freeze({
   //generales
   // err_SQL_KO: "Error de operación",
   // err_CONEXION_KO: "Se ha producido un error de conexión",
-  // err_RECORDSET_VACIO: "No hay datos",
+  err_RECORDSET_VACIO: "No results",
   // err_RECORDSET_DATOS: "Hay datos",
 
   // registrar
@@ -221,4 +222,7 @@ const EN = Object.freeze({
     "The permission does not exist",
   err_prohibido_edit_rolaccionfuncionalidad:
     "Permissions cannot be modified, they must be added or deleted",
+  //http
+  err_http_status_404: "HTTP error 404, the requested resource cannot be found",
+  err_http_status_undefined: "Unknown HTTP error",
 });

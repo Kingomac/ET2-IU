@@ -65,7 +65,7 @@ function peticionBackRegistrar() {
         }
       })
       .fail(function (jqXHR) {
-        reject(`http_status_${jqXHR}`);
+        reject(`http_status_${jqXHR.status}`);
       });
   });
 }
