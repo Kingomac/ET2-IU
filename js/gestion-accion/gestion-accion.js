@@ -73,8 +73,12 @@ async function addAccion() {
   }
   try {
     await peticionBackAddAccion();
-    resetForm("id_form_accion");
+    await crearAccionesAdmin({
+      nombre_accion: document.getElementById("nombre_accion").value,
+      descrip_accion: document.getElementById("descrip_accion").value,
+    });
     await actualizarTablaAcciones();
+    resetForm("id_form_accion");
   } catch (e) {
     mensajeError({
       codigo: e,

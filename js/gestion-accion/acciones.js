@@ -48,3 +48,25 @@ function peticionAccionesBack() {
       });
   });
 }
+
+async function crearAccionesAdmin({ nombre_accion, descrip_accion }) {
+  const acciones = await getAcciones();
+  let id;
+  for (const i of acciones) {
+    if (
+      i.nombre_accion == nombre_accion &&
+      i.descrip_accion == descrip_accion
+    ) {
+      id = i.id_accion;
+    }
+  }
+  if (id == null) throw new Error("permisos_para_accion_no_creados");
+  const funcionalidades = await getFuncionalidades();
+  for (const i of funcionalidades) {
+    await peticionBackAddRolAccionFuncionalidad({
+      id_accion: id,
+      id_funcionalidad: i.id_funcionalidad,
+      id_rol: 0,
+    });
+  }
+}
