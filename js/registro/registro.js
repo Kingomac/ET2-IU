@@ -29,8 +29,8 @@ async function appendSelectRoles() {
 }
 
 async function registrar() {
+  if (!comprobarFormPersona() || !comprobarFormUsuario()) return false;
   try {
-    encriptarpassword();
     await peticionBackRegistrar();
     window.location.href = "login.html";
   } catch (err) {
@@ -46,6 +46,11 @@ function peticionBackRegistrar() {
   eliminarCamposOcultos("id_form_registro");
   insertarCampoOculto("id_form_registro", "controlador", "AUTH");
   insertarCampoOculto("id_form_registro", "action", "REGISTRAR");
+  insertarCampoOculto(
+    "id_form_registro",
+    "contrasena",
+    hex_md5(document.getElementById("id_contrasena").value)
+  );
   return new Promise((resolve, reject) => {
     $.ajax({
       method: "POST",
