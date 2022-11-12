@@ -40,7 +40,7 @@ function insertarMenuAcciones({
     opciones.push(`Conectado como ${getUsuarioConectado()}`);
   }
 
-  if (desconectar) {
+  if (desconectar && comprobarLogin()) {
     const btnDesconectar = document.createElement("a");
     btnDesconectar.innerText = getTextoTitulo("desconectar");
     btnDesconectar.classList.add("txt");

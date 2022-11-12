@@ -94,7 +94,7 @@ function mensajeError({
   const texterror = document.getElementById(idTextDiv);
   removeLangClass(texterror.classList);
   texterror.classList.add("txt-err_" + codigo.toString().split(" ")[0]);
-  texterror.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo}})`;
+  texterror.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
 }
 
 function getLangClass(classList) {

@@ -81,6 +81,15 @@ const ES = Object.freeze({
   permisos_titulo_rol: "Rol",
   label_permisos_select_funcionalidad: "Filtrar por funcionalidad",
 
+  // Registro
+  titulo_registro: "Registro",
+  form_title_registro_persona: "Datos persona",
+  form_title_registro_usuario: "Datos usuario",
+  label_contrasena_verificar: "Repite la contraseña",
+
+  // Cambiar contraseña
+  btn_cambiar_contrasena: "Cambiar contraseña",
+
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción largo",
   //err_id_accion_negativo: "ID de acción no puede ser negativo",
@@ -144,6 +153,12 @@ const ES = Object.freeze({
     "El nombre del archivo de la foto no puede contener acentos",
   err_foto_persona_formato_fichero_incorrecto:
     "La foto debe estar en formato PNG o JPG",
+  // Contraseñas
+  err_contrasena_no_verifica: "Las contraseñas no coinciden",
+  err_contrasena_caracteres_invalidos:
+    "La contraseña solo puede contener letras mayúsculas y minúsculas, números, barra baja (_) y guión (-)",
+  err_contrasena_format_corta: "La contraseña es demasiado corta",
+  err_contrasena_format_larga: "La contraseña es demasidado larga",
 
   //LITERALES DEVUELTOS DESDE BACK COMO RESPUESTA A ACCIONES (2/11/2022)
   //generales

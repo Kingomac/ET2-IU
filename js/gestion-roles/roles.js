@@ -18,8 +18,7 @@ async function crearSelectRoles({
   for (const rol of datos) {
     const option = document.createElement("option");
     option.value = rol.id_rol;
-    option.text = getTextosRoles(rol.nombre_rol) || rol.nombre_rol;
-    option.className = `txt txt-rol_${rol.nombre_rol}`;
+    option.text = rol.nombre_rol;
 
     if (readonly && option.value != itemseleccionado) {
       option.disabled = true;

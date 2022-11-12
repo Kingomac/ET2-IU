@@ -80,6 +80,15 @@ const EN = Object.freeze({
   permisos_titulo_rol: "Role",
   label_permisos_select_funcionalidad: "Filter by functionality",
 
+  // Registro
+  titulo_registro: "Register",
+  form_title_registro_persona: "Person information",
+  form_title_registro_usuario: "User information",
+  label_contrasena_verificar: "Verify password",
+
+  // Cambiar contraseña
+  btn_cambiar_contrasena: "Cambiar contraseña",
+
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción largo",
   //err_id_accion_negativo: "ID de acción no puede ser negativo",
@@ -143,6 +152,12 @@ const EN = Object.freeze({
     "The name del photo file cannot include any accents",
   err_foto_persona_formato_fichero_incorrecto:
     "The photo format must be PNG or JPG",
+  // Contraseñas
+  err_contrasena_no_verifica: "Passwords must match",
+  err_contrasena_caracteres_invalidos:
+    "Password can just include letters (upcase or lowercase), numbers, low bar (_) and hyphen (-)",
+  err_contrasena_format_corta: "Password is too short",
+  err_contrasena_format_larga: "Password is too longks",
 
   //LITERALES DEVUELTOS DESDE BACK COMO RESPUESTA A ACCIONES (2/11/2022)
   //generales

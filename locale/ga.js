@@ -80,6 +80,15 @@ const GA = Object.freeze({
   permisos_titulo_rol: "Rol",
   label_permisos_select_funcionalidad: "Filtrar por funcionalidade",
 
+  // Registro
+  titulo_registro: "Rexistro",
+  form_title_registro_persona: "Datos persoa",
+  form_title_registro_usuario: "Datos usuario",
+  label_contrasena_verificar: "Repite o contrasinal",
+
+  // Cambiar contraseña
+  btn_cambiar_contrasena: "Cambiar contrasinal",
+
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción longo",
   //err_id_accion_negativo: "ID de acción non pode ser negativo",
@@ -143,6 +152,12 @@ const GA = Object.freeze({
     "O nome do  arquivo da foto non pode conter acentos",
   err_foto_persona_formato_fichero_incorrecto:
     "A foto debe estar en formato PNG ou JPG",
+  // Contrasinais
+  err_contrasena_no_verifica: "Os contrasinais non coinciden",
+  err_contrasena_caracteres_invalidos:
+    "O contrasinal só pode conter letras maiúsculas e minúsculas, números, barra baixa (_) e guión (-)",
+  err_contrasena_format_corta: "O contrasinal é demasiado curto",
+  err_contrasena_format_larga: "O contrasinal é demasidado longo",
 
   //LITERALES DEVUELTOS DESDE BACK COMO RESPUESTA A ACCIONES (2/11/2022)
   //generales
