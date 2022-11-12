@@ -93,7 +93,7 @@ const EN = Object.freeze({
   err_nombre_accion_corto: "The name is too short",
   err_nombre_accion_acentos: "The name cannot include any accents",
   err_descrip_accion_largo: "The description is too long",
-  err_descrip_accion_corta: "The description is too short",
+  err_descrip_accion_corto: "The description is too short",
   err_descrip_accion_caracteres_invalidos:
     "The description cannot include any of these characters: '=','<','>','$','#','{','}','[','",
   // Funcionalidad
@@ -173,6 +173,8 @@ const EN = Object.freeze({
   err_USUARIO_PASS_KO: "Incorrect password",
   err_USUARIO_LOGIN_KO: "Incorrect user",
   // persona
+  err_dni_EXISTE_EN_usuario_KO:
+    "There's an user registered with that DNI so delete that user before deleting the person",
   err_dni_EXISTE_en_persona_KO: "This DNI is already registered",
   err_dni_NO_EXISTE_en_persona_KO: "There is not any user with that DNI",
   err_dni_EXISTE_en_usuario_KO: "This DNI is already registered",

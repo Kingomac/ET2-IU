@@ -96,7 +96,7 @@ const GA = Object.freeze({
   err_nombre_accion_corto: "O nome da accion é demasiado curto",
   err_nombre_accion_acentos: "O nome da acción non pode conter acentos",
   err_descrip_accion_largo: "A descrición da acción é demasiado longa",
-  err_descrip_accion_corta: "A descrición da acción é demasiado curta",
+  err_descrip_accion_corto: "A descrición da acción é demasiado curta",
 
   // Funcionalidad
   //err_id_funcionalidad_largo: "ID de funcionalidade longo",
@@ -175,6 +175,8 @@ const GA = Object.freeze({
   err_USUARIO_PASS_KO: "Contrasinal incorrecto",
   err_USUARIO_LOGIN_KO: "Usuario incorrecto",
   // persona
+  err_dni_EXISTE_EN_usuario_KO:
+    "Existe un usuario con este DNI, debes de eliminalo antes de eliminar a persoa",
   err_dni_EXISTE_en_persona_KO:
     "O DNI introducido xa está rexistrado por unha persona",
   err_dni_NO_EXISTE_en_persona_KO: "Non existe unha persona co DNI introducido",

@@ -203,7 +203,6 @@ function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
 
 async function deleteAccion() {
   if (!comprobarNombreAccion() || !comprobarDescripAccion()) {
-    console.error("campos erroneos");
     return;
   }
   try {
@@ -302,7 +301,6 @@ async function searchAccion() {
     !comprobarNombreAccionSearch() ||
     !comprobarDescripAccionSearch()
   ) {
-    console.error("campos erroneos");
     return;
   }
   try {
@@ -329,7 +327,7 @@ function peticionBackSearchAccion() {
       data: $("#id_form_accion").serialize(),
     })
       .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
+        if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
           resolve(res.resource);

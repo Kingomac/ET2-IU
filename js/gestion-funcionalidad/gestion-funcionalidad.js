@@ -352,7 +352,7 @@ function peticionBackSearchFuncionalidad() {
       data: $("#id_form_funcionalidad").serialize(),
     })
       .done((res) => {
-        if (res.ok != true || res.code != "SQL_OK") {
+        if (res.ok != true || res.code != "RECORDSET_DATOS") {
           reject(res.code);
         } else {
           resolve(res.resource);

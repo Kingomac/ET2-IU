@@ -174,6 +174,8 @@ const ES = Object.freeze({
   err_USUARIO_PASS_KO: "Contraseña incorrecta",
   err_USUARIO_LOGIN_KO: "Usuario incorrecto",
   // persona
+  err_dni_EXISTE_EN_usuario_KO:
+    "Existe un usuario con este DNI, debes eliminar primero el usuario",
   err_dni_EXISTE_en_persona_KO:
     "El DNI introducido ya está registrado por una persona",
   err_dni_NO_EXISTE_en_persona_KO:
@@ -231,5 +233,5 @@ const ES = Object.freeze({
   //http
   err_http_status_404:
     "Error HTTP 404, el recurso solicitado no se ha encontrado",
-    err_http_status_undefined:'Error HTTP desconocido'
+  err_http_status_undefined: "Error HTTP desconocido",
 });
