@@ -21,7 +21,7 @@ async function getFuncionalidades() {
 
 /**
  * Hace petición a back de las funcionalidades
- * @returns
+ * @returns {Promise<{id_funcionalidad: number, nombre_funcionalidad: string, descrip_funcionalidad: string}[]>}
  */
 function peticionFuncionalidadesBack() {
   const datosPeticion = new FormData();
@@ -47,4 +47,31 @@ function peticionFuncionalidadesBack() {
         });
       });
   });
+}
+
+async function crearRAFAdminFuncionalidad({
+  nombre_funcionalidad,
+  descrip_funcionalidad,
+}) {
+  const funcionalidades = await getFuncionalidades();
+  let id;
+  for (const i of funcionalidades) {
+    if (
+      i.nombre_funcionalidad == nombre_funcionalidad &&
+      i.descrip_funcionalidad == descrip_funcionalidad
+    ) {
+      id = i.id_funcionalidad;
+      break;
+    }
+  }
+  console.log(nombre_funcionalidad, descrip_funcionalidad, id);
+  if (id == null) throw new Error("funcionalidad_no_creada");
+  const acciones = await getAcciones();
+  for (const i of acciones) {
+    await peticionBackAddRolAccionFuncionalidad({
+      id_funcionalidad: id,
+      id_accion: i.id_accion,
+      id_rol: 0,
+    });
+  }
 }

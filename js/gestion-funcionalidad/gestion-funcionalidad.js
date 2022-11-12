@@ -75,8 +75,14 @@ async function addFuncionalidad() {
   }
   try {
     await peticionBackAddFuncionalidad();
-    resetForm("id_form_funcionalidad");
     await actualizarTablaFuncionalidades();
+    await crearRAFAdminFuncionalidad({
+      nombre_funcionalidad: document.getElementById("nombre_funcionalidad")
+        .value,
+      descrip_funcionalidad: document.getElementById("descrip_funcionalidad")
+        .value,
+    });
+    resetForm("id_form_funcionalidad");
   } catch (e) {
     mensajeError({
       codigo: e,
