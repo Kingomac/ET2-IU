@@ -95,6 +95,8 @@ function mensajeError({
   removeLangClass(texterror.classList);
   texterror.classList.add("txt-err_" + codigo.toString().split(" ")[0]);
   texterror.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
+  if (idCajaDiv != null)
+    document.getElementById(idCajaDiv).scrollIntoView({ behavior: "smooth" });
 }
 
 function getLangClass(classList) {

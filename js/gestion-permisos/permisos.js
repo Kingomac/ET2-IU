@@ -1,5 +1,6 @@
 /**
- * 
+ * Petición back de rolaccionfuncionalidad
+ * siempre hay para cada par funcionalidad acción una entrada de Admin
  * @returns {Promise<{
         id_funcionalidad: {
           id_funcionalidad: number,
@@ -32,11 +33,11 @@ function peticionBackSHOWALLrolaccionfuncionalidad() {
     })
       .done((res) => {
         if (res.ok != true || res.code != "RECORDSET_DATOS") {
-          reject(res);
+          reject(res.code);
         } else resolve(res.resource);
       })
       .fail((res) => {
-        reject(res);
+        reject(`http_status_${res.status}`);
       });
   });
 }
@@ -67,11 +68,11 @@ function peticionBackAddRolAccionFuncionalidad({
     })
       .done((res) => {
         if (res.ok != true || res.code != "SQL_OK") {
-          reject(res);
+          reject(res.code);
         } else resolve(res.resource);
       })
       .fail((res) => {
-        reject(res);
+        reject(`http_status_${res.status}`);
       });
   });
 }
@@ -102,11 +103,11 @@ function peticionBackDeleteRolAccionFuncionalidad({
     })
       .done((res) => {
         if (res.ok != true || res.code != "SQL_OK") {
-          reject(res);
+          reject(res.code);
         } else resolve(res.resource);
       })
       .fail((res) => {
-        reject(res);
+        reject(`http_status_${res.status}`);
       });
   });
 }
