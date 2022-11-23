@@ -34,10 +34,12 @@ function insertarMenuAcciones({
   selectIdioma = true,
   nombreUsuario = true,
 } = {}) {
-  let opciones = [];
+  const nav = document.createElement("nav");
 
   if (nombreUsuario && comprobarLogin()) {
-    opciones.push(`Conectado como ${getUsuarioConectado()}`);
+    const textoUsuario = document.createElement("span");
+    textoUsuario.innerText = `Conectado como ${getUsuarioConectado()}`;
+    nav.append(textoUsuario);
   }
 
   if (desconectar && comprobarLogin()) {
@@ -50,7 +52,7 @@ function insertarMenuAcciones({
       desconectarUsuario();
       window.location.href = "login.html";
     };
-    opciones.push(btnDesconectar);
+    nav.append(btnDesconectar);
   }
   if (volver) {
     const btnVolver = document.createElement("a");
@@ -58,7 +60,7 @@ function insertarMenuAcciones({
     btnVolver.classList.add("txt");
     btnVolver.classList.add("txt-titulo_volver");
     btnVolver.href = "menu.html";
-    opciones.push(btnVolver);
+    nav.append(btnVolver);
   }
   if (selectIdioma) {
     const select = document.createElement("select");
@@ -70,8 +72,8 @@ function insertarMenuAcciones({
     }
     select.onchange = (e) => setLang(e.target.value);
     select.value = readCookie(COOKIE_LANG);
-    opciones.push(select);
+    nav.append(select);
   }
 
-  document.querySelector("header").prepend(crearLista(...opciones));
+  document.querySelector("header").prepend(nav);
 }
