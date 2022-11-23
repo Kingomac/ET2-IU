@@ -63,6 +63,7 @@ const ES = Object.freeze({
   titulo_registrar: "Registrar",
   recuperar_contrasena: "Recuperar contraseña",
   label_contrasena: "Contraseña",
+  btn_login: "Iniciar sesión",
 
   // Menú
   titulo_menu: "Menú",
@@ -86,6 +87,7 @@ const ES = Object.freeze({
 
   // Cambiar contraseña
   btn_cambiar_contrasena: "Cambiar contraseña",
+  fields_nueva_contrasena: "Escribe tu nueva contraseña",
 
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción largo",

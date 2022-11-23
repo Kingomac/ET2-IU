@@ -15,31 +15,108 @@
     <script type="text/javascript" src="js/ajaxComun.js"></script>
     <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
     <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script type="text/javascript" src="js/menu/cambioContrasena.js"></script>
+    <script
+      type="text/javascript"
+      src="js/gestionusuario/comprobar_errores_usuario.js"
+    ></script>
     <title class="txt txt-titulo_menu"></title>
   </head>
 
   <body
-    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
+    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});mostrarCambiarContrasena();"
   >
     <header>
       <h1 class="txt txt-titulo_menu">ET2</h1>
     </header>
     <nav>
-      <a href="gestionusuario.html" class="txt txt-titulo_gestion_usuarios"></a>
-      <a
-        href="gestionpersonas.html"
-        class="txt txt-titulo_gestion_personas"
-      ></a>
-      <a href="gestionroles.html" class="txt txt-titulo_gestion_roles"></a>
-      <a href="gestionaccion.html" class="txt txt-titulo_gestion_acciones"></a>
-      <a
-        href="gestionfuncionalidad.html"
-        class="txt txt-titulo_gestion_funcionalidades"
-      ></a>
-      <a
-        href="gestionpermisos.html"
-        class="txt txt-titulo_gestion_permisos"
-      ></a>
+      <ul>
+        <li>
+          <a
+            href="gestionusuario.html"
+            class="txt txt-titulo_gestion_usuarios"
+          ></a>
+        </li>
+        <li>
+          <a
+            href="gestionpersonas.html"
+            class="txt txt-titulo_gestion_personas"
+          ></a>
+        </li>
+        <li>
+          <a href="gestionroles.html" class="txt txt-titulo_gestion_roles"></a>
+        </li>
+        <li>
+          <a
+            href="gestionaccion.html"
+            class="txt txt-titulo_gestion_acciones"
+          ></a>
+        </li>
+        <li>
+          <a
+            href="gestionfuncionalidad.html"
+            class="txt txt-titulo_gestion_funcionalidades"
+          ></a>
+        </li>
+        <li>
+          <a
+            href="gestionpermisos.html"
+            class="txt txt-titulo_gestion_permisos"
+          ></a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="mostrarCambiarContrasena()"
+            class="txt txt-btn_cambiar_contrasena"
+          ></a>
+        </li>
+      </ul>
     </nav>
+    <div id="id_caja_error" style="display: none">
+      <div id="id_texterror" class="txt"></div>
+      <img
+        src="./images/close.svg"
+        width="50"
+        height="50"
+        onclick="document.getElementById('id_caja_error').style.display = 'none';"
+      />
+    </div>
+    <form
+      id="id_form_cambiar_contrasena"
+      action="javascript:cambiarContrasenaMenu()"
+    >
+      <fieldset id="id_fields_cambiar_contrasena">
+        <legend class="txt txt-fields_nueva_contrasena">
+          Escribe una nueva contraseña
+        </legend>
+        <label
+          for="cc_contrasena_noencriptada"
+          class="txt txt-label_contrasena"
+        ></label>
+        <input
+          type="password"
+          id="cc_contrasena_noencriptada"
+          onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
+          autocomplete="new-password"
+        />
+        <br />
+        <label
+          for="cc_contrasena_verificar"
+          class="txt txt-label_contrasena_verificar"
+        ></label>
+        <input
+          type="password"
+          id="cc_contrasena_verificar"
+          onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
+          autocomplete="off"
+        />
+        <img
+          src="images/edit.svg"
+          class="txt txt-btn_cambiar_contrasena"
+          onclick="document.getElementById('id_form_cambiar_contrasena').submit()"
+        />
+      </fieldset>
+    </form>
   </body>
 </html>
