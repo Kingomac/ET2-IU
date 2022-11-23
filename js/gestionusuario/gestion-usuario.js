@@ -128,16 +128,13 @@ async function crearformADDusuario() {
   document.getElementById("id_form_usuario").action =
     "javascript:add_usuario()";
 
-  // se coloca una imagen para la accion de editar
-  const imagenenviarform = document.createElement("img");
-  imagenenviarform.src = "./images/add.svg";
-  imagenenviarform.id = "id_imagen_enviar_form";
-  imagenenviarform.width = "50";
-  imagenenviarform.height = "50";
-  imagenenviarform.onclick = () =>
-    document.getElementById("id_form_usuario").submit();
-  imagenenviarform.onsubmit = () => comprobar_form_usuario_add();
-  $("#caja_campos_formulario").append(imagenenviarform);
+  $("#caja_campos_formulario").append(
+    crearBotonCRUD({
+      accion: "add",
+      click: () => document.getElementById("id_form_usuario").submit(),
+      onsubmit: () => comprobar_form_usuario_add(),
+    })
+  );
 
   // se muestra el formulario
   document.getElementById("id_caja_formulario_usuario").style.display = "block";
@@ -180,16 +177,14 @@ async function crearformEDITusuario(dni, usuario, rol) {
   document.getElementById("id_form_usuario").action =
     "javascript:edit_usuario()";
 
-  // se coloca una imagen para la accion de editar
-  imagenenviarform = document.createElement("img");
-  imagenenviarform.src = "./images/edit.svg";
-  imagenenviarform.id = "id_imagen_enviar_form";
-  imagenenviarform.width = "80";
-  imagenenviarform.height = "80";
-  imagenenviarform.onclick = () =>
-    document.getElementById("id_form_usuario").submit();
-  imagenenviarform.onsubmit = () => comprobar_form_usuario_add();
-  $("#caja_campos_formulario").append(imagenenviarform);
+  $("#caja_campos_formulario").append(
+    crearBotonCRUD({
+      id: "id_imagen_enviar_form",
+      accion: "edit",
+      click: () => document.getElementById("id_form_usuario").submit(),
+      onsubmit: () => comprobar_form_usuario_add(),
+    })
+  );
 
   // se muestra el formulario
   $("#id_caja_formulario_usuario").attr("style", "display: block");
@@ -228,16 +223,13 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   document.getElementById("id_form_usuario").action =
     "javascript:delete_usuario()";
 
-  // se coloca una imagen para la accion de editar
-  imagenenviarform = document.createElement("img");
-  imagenenviarform.src = "./images/delete.svg";
-  imagenenviarform.id = "id_imagen_enviar_form";
-  imagenenviarform.width = "50";
-  imagenenviarform.height = "50";
-  imagenenviarform.onclick = () =>
-    document.getElementById("id_form_usuario").submit();
-  imagenenviarform.onsubmit = null;
-  $("#caja_campos_formulario").append(imagenenviarform);
+  $("#caja_campos_formulario").append(
+    crearBotonCRUD({
+      id: "id_imagen_enviar_form",
+      accion: "delete",
+      click: () => document.getElementById("id_form_usuario").submit(),
+    })
+  );
 
   $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
@@ -275,20 +267,15 @@ async function crearformSEARCHusuario() {
   document.getElementById("id_form_usuario").action =
     "javascript:search_usuario()";
 
-  //creo un input de tipo image que el formulario va utilizar como si fuese un tipo input submit
-  const botonsubmit = document.createElement("img");
-  botonsubmit.id = "id_imagen_enviar_form";
-  botonsubmit.title = "Buscar";
-  botonsubmit.alt = "Buscar";
-  botonsubmit.src = "./images/search.svg";
-  botonsubmit.width = "50";
-  botonsubmit.height = "50";
-  botonsubmit.onclick = () =>
-    document.getElementById("id_form_usuario").submit();
-  botonsubmit.onsubmit = () => comprobar_form_usuario_search();
-
   // coloco la imagen para submit en el formulario
-  $("#caja_campos_formulario").append(botonsubmit);
+  $("#caja_campos_formulario").append(
+    crearBotonCRUD({
+      id: "id_imagen_enviar_form",
+      accion: "search",
+      click: () => document.getElementById("id_form_usuario").submit(),
+      onsubmit: () => comprobar_form_usuario_search(),
+    })
+  );
 
   // se pone visible el formulario
   $("#id_caja_formulario_usuario").attr("style", "display: block");
@@ -319,13 +306,13 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
 
   $("#id_id_rol").val(rol);
 
-  const botonCerrar = document.createElement("img");
-  botonCerrar.id = "id_imagen_enviar_form";
-  botonCerrar.src = "images/close.svg";
-  botonCerrar.width = 50;
-  botonCerrar.onclick = ponerinvisibleformusuario;
-
-  $("#caja_campos_formulario").append(botonCerrar);
+  $("#caja_campos_formulario").append(
+    crearBotonCRUD({
+      id: "id_imagen_enviar_form",
+      accion: "close",
+      click: () => ponerinvisibleformusuario(),
+    })
+  );
 
   $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
@@ -348,24 +335,7 @@ async function actualizarTablaUsuarios(datos) {
     mensajeError({ codigo: err, idInput: "caja_campos_formulario" });
   }
   const roles = await getRoles();
-  console.log("datos", datos);
   for (const i of datos) {
-    console.log("i:", i);
-    const btnEdit = document.createElement("img");
-    const btnDelete = document.createElement("img");
-    const btnDetail = document.createElement("img");
-
-    btnEdit.src = "images/edit.svg";
-    btnDelete.src = "images/delete.svg";
-    btnDetail.src = "images/detail.svg";
-
-    btnEdit.onclick = () =>
-      crearformEDITusuario(i.dni, i.usuario, i.id_rol.id_rol);
-    btnDelete.onclick = () =>
-      crearformDELETEusuario(i.dni, i.usuario, i.id_rol.id_rol);
-    btnDetail.onclick = () =>
-      crearformSHOWCURRENTusuario(i.dni, i.usuario, i.id_rol.id_rol);
-
     const idRol = i.id_rol.id_rol || i.id_rol;
     let irol = 0;
     while (irol < roles.length && roles[irol].id_rol != idRol) {
@@ -381,9 +351,20 @@ async function actualizarTablaUsuarios(datos) {
         i.dni,
         i.usuario,
         getTextosRoles(roles[irol].nombre_rol) || roles[irol].nombre_rol,
-        btnEdit,
-        btnDelete,
-        btnDetail
+        crearBotonCRUD({
+          accion: "edit",
+          click: () => crearformEDITusuario(i.dni, i.usuario, i.id_rol.id_rol),
+        }),
+        crearBotonCRUD({
+          accion: "delete",
+          click: () =>
+            crearformDELETEusuario(i.dni, i.usuario, i.id_rol.id_rol),
+        }),
+        crearBotonCRUD({
+          accion: "detail",
+          click: () =>
+            crearformSHOWCURRENTusuario(i.dni, i.usuario, i.id_rol.id_rol),
+        })
       )
     );
   }
