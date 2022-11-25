@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <title class="txt txt-titulo_pagina_login">LOGIN</title>
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="./locale/ES.js"></script>
@@ -38,77 +40,79 @@
         onclick="document.getElementById('id_caja_error').style.display = 'none';"
       />
     </div>
-    <form
-      id="id_form_login"
-      name="form_login"
-      action="javascript:login();"
-      onsubmit="return comprobar_form_login();"
-      method="post"
-    >
-      <label for="id_usuario" class="txt txt-label_usuario"></label>
-      <input
-        type="text"
-        id="id_usuario"
-        name="usuario"
-        onblur="comprobar_usuario();"
-      />
-      <br />
-      <label for="id_contrasena" class="txt txt-label_contrasena"></label>
-      <input
-        type="password"
-        id="id_contrasena_noencriptada"
-        name="contrasena"
-        onblur="comprobar_contrasena({idInput: 'id_contrasena_noencriptada'});"
-      />
-      <br />
-      <button type="submit" class="txt txt-btn_login"></button>
-    </form>
-    <nav>
-      <a href="registro.html" class="txt txt-titulo_registrar"></a>
-      <a
-        href="#"
-        onclick="mostrarCambiarContrasena()"
-        class="txt txt-recuperar_contrasena"
-      ></a>
-    </nav>
-    <form
-      id="id_form_cambiar_contrasena"
-      action="javascript:cambiarContrasenaLogin()"
-      method="POST"
-    >
-      <fieldset id="id_fields_cambiar_contrasena">
-        <legend class="txt txt-form_title_registro_usuario"></legend>
-        <label for="cc_dni" class="txt txt-label_dni"></label>
+    <div class="contenedor">
+      <form
+        class="form-login"
+        id="id_form_login"
+        name="form_login"
+        action="javascript:login();"
+        onsubmit="return comprobar_form_login();"
+        method="post"
+      >
+        <label for="id_usuario" class="txt txt-label_usuario"></label>
         <input
           type="text"
-          id="cc_dni"
-          name="dni"
-          onblur="comprobar_dni({idInput: 'cc_dni'})"
-          maxlength="9"
+          id="id_usuario"
+          name="usuario"
+          onblur="comprobar_usuario();"
         />
-        <br />
-        <label
-          for="cc_contrasena_noencriptada"
-          class="txt txt-label_contrasena"
-        ></label>
+
+        <label for="id_contrasena" class="txt txt-label_contrasena"></label>
         <input
           type="password"
-          id="cc_contrasena_noencriptada"
-          onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
+          id="id_contrasena_noencriptada"
+          name="contrasena"
+          onblur="comprobar_contrasena({idInput: 'id_contrasena_noencriptada'});"
         />
-        <br />
-        <label
-          for="cc_contrasena_verificar"
-          class="txt txt-label_contrasena_verificar"
-        ></label>
-        <input
-          type="password"
-          id="cc_contrasena_verificar"
-          onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
-        />
-        <br />
-      </fieldset>
-      <button type="submit" class="txt txt-btn_cambiar_contrasena"></button>
-    </form>
+
+        <button type="submit" class="txt txt-btn_login"></button>
+      </form>
+      <nav>
+        <a href="registro.html" class="txt txt-titulo_registrar"></a>
+        <a
+          href="#"
+          onclick="mostrarCambiarContrasena()"
+          class="txt txt-recuperar_contrasena"
+        ></a>
+      </nav>
+      <form
+        id="id_form_cambiar_contrasena"
+        action="javascript:cambiarContrasenaLogin()"
+        method="POST"
+      >
+        <fieldset id="id_fields_cambiar_contrasena">
+          <legend class="txt txt-form_title_registro_usuario"></legend>
+          <label for="cc_dni" class="txt txt-label_dni"></label>
+          <input
+            type="text"
+            id="cc_dni"
+            name="dni"
+            onblur="comprobar_dni({idInput: 'cc_dni'})"
+            maxlength="9"
+          />
+
+          <label
+            for="cc_contrasena_noencriptada"
+            class="txt txt-label_contrasena"
+          ></label>
+          <input
+            type="password"
+            id="cc_contrasena_noencriptada"
+            onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
+          />
+
+          <label
+            for="cc_contrasena_verificar"
+            class="txt txt-label_contrasena_verificar"
+          ></label>
+          <input
+            type="password"
+            id="cc_contrasena_verificar"
+            onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
+          />
+        </fieldset>
+        <button type="submit" class="txt txt-btn_cambiar_contrasena"></button>
+      </form>
+    </div>
   </body>
 </html>
