@@ -75,5 +75,5 @@ function insertarMenuAcciones({
     nav.append(select);
   }
 
-  document.querySelector("header").prepend(nav);
+  document.body.prepend(nav);
 }

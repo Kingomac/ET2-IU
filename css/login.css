@@ -1,3 +1,39 @@
+@import 'general.css';
+
+.contenedor.caja-login {
+  margin: auto;
+  width: fit-content;
+  padding: 12vh 2vw 4vh 2vw;
+  border-radius: 25px;
+  animation-name: neon;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes neon {
+  0% {box-shadow: 0px 0px 58px 5px #E913F6;}
+  10% {box-shadow: 0px 0px 48px 10px #D209DE;}
+  20% {box-shadow: 0px 0px 38px 15px #B307BE;}
+  30% {box-shadow: 0px 0px 28px 11px #85068C;}
+  40% {box-shadow: 0px 0px 38px 15px #B307BE;}
+  50% {box-shadow: 0px 0px 48px 10px #D209DE;}
+  70% {box-shadow: 0px 0px 58px 5px #E913F6;}
+  100% {box-shadow: 0px 0px 68px 0px #EC34F7;}
+}
+
 .form-login {
   border: red solid 1px;
+  padding: 6vh 3vw 6vh 3vw;
+  align-content: flex-start;
+}
+
+.form-login input,button {
+  margin: 1vh 0vw 1vh 0vw;
+}
+
+.caja-login nav {
+  margin-top: 12vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
