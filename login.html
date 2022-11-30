@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="css/general.css" />
     <link rel="stylesheet" href="css/login.css" />
     <title class="txt txt-titulo_pagina_login">LOGIN</title>
     <script type="text/javascript" src="js/cookies.js"></script>
@@ -27,9 +26,6 @@
   <body
     onload="redirigirLoginTrue(PAGINAS.menu);ponerinvisibleerror();mostrarCambiarContrasena();setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
   >
-    <header>
-      <h1 class="txt txt-titulo_pagina_login"></h1>
-    </header>
     <div id="id_caja_superior"></div>
     <div id="id_caja_error">
       <div id="id_texterror" class="txt"></div>
@@ -40,7 +36,10 @@
         onclick="document.getElementById('id_caja_error').style.display = 'none';"
       />
     </div>
-    <div class="contenedor">
+    <div class="contenedor caja-login">
+      <header>
+        <h1 class="txt txt-titulo_pagina_login"></h1>
+      </header>
       <form
         class="form-login"
         id="id_form_login"

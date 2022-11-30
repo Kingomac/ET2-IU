@@ -1,3 +1,89 @@
+@import 'general.css';
+
+body {
+  animation: movFondo 5s infinite linear alternate;
+}
+
+@keyframes movFondo {
+  0% { background-color:#2c0529; }
+  25% { background-color: #2e0d2b; }
+  50% { background-color: #491445; }
+  100% { background-color: #250c23; }
+  100% { background-color: #42173f; }
+}
+
+.caja-login h1, .caja-login label {
+  animation: animTitulo 5s infinite linear alternate;
+}
+
+@keyframes animTitulo {
+  0% { color:#2c0529; }
+  25% { color: #2e0d2b; }
+  50% { color: #491445; }
+  100% { color: #250c23; }
+  100% { color: #42173f; }
+}
+
+.caja-login a, .caja-login button {
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid #42173f;
+  padding: 1vh 2vw 1vh 2vw;
+  margin: .5vh .5vw .5vh .5vw;
+  border-radius: 15px;
+  animation: movFondo 5s infinite linear alternate;
+  color: white;
+}
+
+.caja-login a:hover, .caja-login button:hover {
+  cursor: pointer;
+  background-color: #552051;
+  animation: none;
+}
+
+.caja-login a:active, .caja-login button:active {
+  background-color: #250c23;
+}
+
+.caja-login input {
+  padding: 1vh 1vw 1vh 1vw;
+  border-style: groove;
+}
+
+.contenedor.caja-login {
+  margin: auto;
+  width: fit-content;
+  padding: 12vh 4vw 4vh 4vw;
+  border-radius: 25px;
+  animation-name: neon;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  background-color: var(--color-bg1);
+}
+
+@keyframes neon {
+  0% {box-shadow: 0px 0px 58px 5px #E913F6;}
+  10% {box-shadow: 0px 0px 48px 10px #D209DE;}
+  20% {box-shadow: 0px 0px 38px 15px #B307BE;}
+  30% {box-shadow: 0px 0px 28px 11px #85068C;}
+  40% {box-shadow: 0px 0px 38px 15px #B307BE;}
+  50% {box-shadow: 0px 0px 48px 10px #D209DE;}
+  70% {box-shadow: 0px 0px 58px 5px #E913F6;}
+  100% {box-shadow: 0px 0px 68px 0px #EC34F7;}
+}
+
 .form-login {
-  border: red solid 1px;
+  padding: 6vh 3vw 6vh 3vw;
+  align-content: flex-start;
+}
+
+.form-login input,button {
+  margin: 1vh 0vw 1vh 0vw;
+}
+
+.caja-login nav {
+  margin-top: 12vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
