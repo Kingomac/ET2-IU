@@ -1,8 +1,3 @@
-function mostrarCambiarContrasena() {
-  const el = document.getElementById("id_form_cambiar_contrasena");
-  el.style.display = el.style.display == "none" ? "block" : "none";
-}
-
 function peticionBackCambiarContrasena(
   { dni, contrasenaSinEncriptar } = {
     dni: undefined,
@@ -55,7 +50,7 @@ async function cambiarContrasenaLogin() {
   try {
     await peticionBackCambiarContrasena();
     mensajeOK("id_fields_cambiar_contrasena");
-    mostrarCambiarContrasena();
+    document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
     mensajeError({
       idInput: "id_form_cambiar_contrasena",
@@ -71,7 +66,7 @@ async function cambiarContrasenaMenu() {
   try {
     await peticionBackCambiarContrasena({ dni: await getDniUsuario() });
     mensajeOK("id_fields_cambiar_contrasena");
-    mostrarCambiarContrasena();
+    document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
     mensajeError({
       idInput: "id_form_cambiar_contrasena",
