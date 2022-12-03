@@ -81,7 +81,7 @@ function getTextoTitulo(titulo) {
  * @param codigo código del error (siendo este en los locales err_codigo)
  * @param {{idTextDiv: string = 'id_texterror', idCajaDiv: string = 'id_caja_error', idInput?, codigo: string}}
  */
-function mensajeError({
+function mensajeErrorOLD({
   idTextDiv = "id_texterror",
   idCajaDiv = "id_caja_error",
   idInput,
@@ -104,6 +104,19 @@ function getLangClass(classList) {
     if (i.startsWith("txt-")) return i.replace("txt-", "");
   }
   return undefined;
+}
+
+function mensajeError({ codigo, idInput, idResaltar = idInput }) {
+  const elInput = document.getElementById(idInput);
+  const errDiv = elInput.nextElementSibling.classList.contains("err-div")
+    ? elInput.nextElementSibling
+    : document.createElement("div");
+
+  errDiv.classList.add("err-div", "txt", `txt_err_${codigo}`);
+  errDiv.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
+
+  elInput.parentNode.insertBefore(errDiv, elInput.nextSibling);
+  document.getElementById(idResaltar).style.borderColor = "#ff0000";
 }
 
 function removeLangClass(classList) {

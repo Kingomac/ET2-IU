@@ -10,10 +10,17 @@ function setDivInvisible(form) {
   document.getElementById(form).style.display = "none";
 }
 
-function mensajeOK(idElemento) {
+function mensajeOKOLD(idElemento) {
   document.getElementById("id_texterror").innerHTML = "";
   document.getElementById("id_caja_error").style.display = "none";
   document.getElementById(idElemento).style.borderColor = "#00e600";
+}
+
+function mensajeOK(idElemento) {
+  const el = document.getElementById(idElemento);
+  el.style.borderColor = "#00e600";
+  const err = el.nextElementSibling;
+  if (err.classList.contains("err-div")) err.remove();
 }
 
 function size_minimo(idElemento, longitudminima) {
@@ -91,4 +98,12 @@ function scrollFinTabla() {
     800,
     function () {}
   );
+}
+
+function alternarDisplay(id, modo = "block") {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display != "none" ? "none" : modo;
+  setTimeout(() => {
+    if (el.style.display == modo) el.scrollIntoView({ behavior: "smooth" });
+  }, 100);
 }

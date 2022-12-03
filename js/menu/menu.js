@@ -35,6 +35,7 @@ function insertarMenuAcciones({
   nombreUsuario = true,
 } = {}) {
   const nav = document.createElement("nav");
+  nav.classList.add("menu-superior");
 
   if (nombreUsuario && comprobarLogin()) {
     const textoUsuario = document.createElement("span");

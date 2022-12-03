@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/general.css" />
     <link rel="stylesheet" href="css/login.css" />
     <title class="txt txt-titulo_pagina_login">LOGIN</title>
     <script type="text/javascript" src="js/cookies.js"></script>
@@ -9,12 +10,12 @@
     <script type="text/javascript" src="./locale/en.js"></script>
     <script type="text/javascript" src="./locale/ga.js"></script>
     <script type="text/javascript" src="./locale/idioma.js"></script>
-    <script type="text/javascript" src="./js/login/login.js"></script>
     <script type="text/javascript" src="./js/md5.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./js/validacionesComunes.js"></script>
     <script type="text/javascript" src="js/ajaxComun.js"></script>
     <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="./js/login/login.js"></script>
     <script type="text/javascript" src="js/menu/cambioContrasena.js"></script>
     <script
       type="text/javascript"
@@ -24,18 +25,8 @@
   </head>
 
   <body
-    onload="redirigirLoginTrue(PAGINAS.menu);ponerinvisibleerror();mostrarCambiarContrasena();setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
+    onload="redirigirLoginTrue(PAGINAS.menu);/*alternarDisplay('id_caja_cambiar_contrasena');*/setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
   >
-    <div id="id_caja_superior"></div>
-    <div id="id_caja_error">
-      <div id="id_texterror" class="txt"></div>
-      <img
-        src="./images/close.svg"
-        width="50"
-        height="50"
-        onclick="document.getElementById('id_caja_error').style.display = 'none';"
-      />
-    </div>
     <div class="contenedor caja-login">
       <header>
         <h1 class="txt txt-titulo_pagina_login"></h1>
@@ -70,17 +61,28 @@
         <a href="registro.html" class="txt txt-titulo_registrar"></a>
         <a
           href="#"
-          onclick="mostrarCambiarContrasena()"
+          onclick="document.getElementById('modal-recuperar-contrasena').showModal()"
           class="txt txt-recuperar_contrasena"
         ></a>
       </nav>
-      <form
-        id="id_form_cambiar_contrasena"
-        action="javascript:cambiarContrasenaLogin()"
-        method="POST"
-      >
-        <fieldset id="id_fields_cambiar_contrasena">
-          <legend class="txt txt-form_title_registro_usuario"></legend>
+    </div>
+    <div style="height: 100px"></div>
+    <dialog id="modal-recuperar-contrasena">
+      <div class="contenedor caja-login" id="id_caja_cambiar_contrasena">
+        <div class="cabecera-modal">
+          <h2 class="txt txt-recuperar_contrasena"></h2>
+          <img
+            src="images/close.svg"
+            width="40px"
+            onclick="document.getElementById('modal-recuperar-contrasena').close()"
+          />
+        </div>
+        <form
+          id="id_form_cambiar_contrasena"
+          class="form-login"
+          action="javascript:cambiarContrasenaLogin()"
+          method="POST"
+        >
           <label for="cc_dni" class="txt txt-label_dni"></label>
           <input
             type="text"
@@ -109,9 +111,10 @@
             id="cc_contrasena_verificar"
             onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
           />
-        </fieldset>
-        <button type="submit" class="txt txt-btn_cambiar_contrasena"></button>
-      </form>
-    </div>
+          <button type="submit" class="txt txt-btn_cambiar_contrasena"></button>
+        </form>
+      </div>
+    </dialog>
+    <div style="height: 100px"></div>
   </body>
 </html>

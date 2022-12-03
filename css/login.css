@@ -1,5 +1,3 @@
-@import 'general.css';
-
 body {
   animation: movFondo 5s infinite linear alternate;
 }
@@ -53,7 +51,7 @@ body {
 .contenedor.caja-login {
   margin: auto;
   width: fit-content;
-  padding: 12vh 4vw 4vh 4vw;
+  padding: 4vh 4vw 4vh 4vw;
   border-radius: 25px;
   animation-name: neon;
   animation-duration: 2s;

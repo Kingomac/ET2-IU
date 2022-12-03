@@ -1,64 +1,71 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/general.css" />
+    <title class="txt txt-titulo_gestion_usuarios">Gestión Usuario</title>
+    <script type="text/javascript" src="locale/es.js"></script>
+    <script type="text/javascript" src="locale/en.js"></script>
+    <script type="text/javascript" src="locale/ga.js"></script>
+    <script type="text/javascript" src="locale/idioma.js"></script>
+    <script
+      type="text/javascript"
+      src="./js/gestionusuario/usuario.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/gestionusuario/gestion-usuario.js"
+    ></script>
+    <script type="text/javascript" src="./js/validacionesComunes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/ajaxComun.js"></script>
+    <script type="text/javascript" src="js/gestion-roles/roles.js"></script>
+    <script
+      type="text/javascript"
+      src="js/gestionusuario/comprobar_errores_usuario.js"
+    ></script>
+    <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
+    <script type="text/javascript" src="js/menu/menu.js"></script>
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title class="txt txt-titulo_gestion_usuarios">Gestión Usuario</title>
-  <script type="text/javascript" src="locale/es.js"></script>
-  <script type="text/javascript" src="locale/en.js"></script>
-  <script type="text/javascript" src="locale/ga.js"></script>
-  <script type="text/javascript" src="locale/idioma.js"></script>
-  <script type="text/javascript" src="./js/gestionusuario/usuario.js"></script>
-  <script type="text/javascript" src="js/gestionusuario/gestion-usuario.js"></script>
-  <script type="text/javascript" src="./js/validacionesComunes.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="./js/md5.js"></script>
-  <script type="text/javascript" src="js/cookies.js"></script>
-  <script type="text/javascript" src="js/ajaxComun.js"></script>
-  <script type="text/javascript" src="js/gestion-roles/roles.js"></script>
-  <script type="text/javascript" src="js/gestionusuario/comprobar_errores_usuario.js"></script>
-  <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
-  <script type="text/javascript" src="js/menu/menu.js"></script>
-</head>
-
-<body
-  onload="redirigirLoginFalse(PAGINAS.login);ponerinvisibleerror();ponerinvisibleformusuario();setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaUsuarios()">
-
-  <header>
-  <h1 class="txt txt-titulo_gestion_usuarios">Página de gestión</h1>
-</header>
-  <img src='./images/add.svg' class="txt txt-titulo_add" title="Añadir" height="60" width="60"
-    onclick="crearformADDusuario();">
-  <img src='./images/search.svg' class="txt txt-titulo_search" title="Buscar" height="60" width="60"
-    onclick="crearformSEARCHusuario();">
-  <div>
-    <table border='1'>
-      <thead>
-        <tr>
-          <th class="txt txt-label_dni">
-            dni
-          </th>
-          <th class="txt txt-label_usuario">
-            usuario
-            </td>
-          <th class="txt txt-label_rol">
-            rol
-          </th>
-          <th class="txt txt-titulo_edit">
-            editar
-          </th>
-          <th class="txt txt-titulo_delete">
-            borrar
-          </th>
-          <th class="txt txt-titulo_detail">
-            detalle
-          </th>
-        </tr>
-      </thead>
-      <tbody id="table_body">
-
-        <!--<tr>
+  <body
+    onload="redirigirLoginFalse(PAGINAS.login);ponerinvisibleerror();ponerinvisibleformusuario();setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaUsuarios()"
+  >
+    <header>
+      <h1 class="txt txt-titulo_gestion_usuarios">Página de gestión</h1>
+    </header>
+    <img
+      src="./images/add.svg"
+      class="txt txt-titulo_add"
+      title="Añadir"
+      height="60"
+      width="60"
+      onclick="crearformADDusuario();"
+    />
+    <img
+      src="./images/search.svg"
+      class="txt txt-titulo_search"
+      title="Buscar"
+      height="60"
+      width="60"
+      onclick="crearformSEARCHusuario();"
+    />
+    <div>
+      <table border="1">
+        <thead>
+          <tr>
+            <th class="txt txt-label_dni">dni</th>
+            <th class="txt txt-label_usuario">usuario</th>
+            <th class="txt txt-label_rol">rol</th>
+            <th class="txt txt-titulo_edit">editar</th>
+            <th class="txt txt-titulo_delete">borrar</th>
+            <th class="txt txt-titulo_detail">detalle</th>
+          </tr>
+        </thead>
+        <tbody id="table_body">
+          <!--<tr>
         <td>
           11111111A
         </td>
@@ -82,28 +89,34 @@
         </td>
       </tr>
       -->
-      </tbody>
-    </table>
-  </div>
-  <div id='id_caja_error'>
-    <div id='id_texterror' class="txt">adfafaf</div>
-  </div>
-  <div id='id_caja_formulario_usuario'>
-    <form id='id_form_usuario' name='form_usuario' method='post'>
-      <fieldset id="caja_campos_formulario">
-        <legend id="form-accion"></legend>
-        <label class="txt txt-label_dni" for="id_dni">dni</label>
-        <input class="txt txt-formato_dni" type='text' id='id_dni' name='dni' maxlength="9">
-        <br>
-        <label class="txt txt-label_usuario" for="id_usuario">usuario</label>
-        <input type='text' id='id_usuario' name='usuario'>
-        <br>
-        <div id="caja_select_rol"><label class="txt txt-label_rol">rol</label></div>
-
-      </fieldset>
-    </form>
-    <br>
-  </div>
-</body>
-
+        </tbody>
+      </table>
+    </div>
+    <div id="id_caja_error">
+      <div id="id_texterror" class="txt">adfafaf</div>
+    </div>
+    <div id="id_caja_formulario_usuario">
+      <form id="id_form_usuario" name="form_usuario" method="post">
+        <fieldset id="caja_campos_formulario">
+          <legend id="form-accion"></legend>
+          <label class="txt txt-label_dni" for="id_dni">dni</label>
+          <input
+            class="txt txt-formato_dni"
+            type="text"
+            id="id_dni"
+            name="dni"
+            maxlength="9"
+          />
+          <br />
+          <label class="txt txt-label_usuario" for="id_usuario">usuario</label>
+          <input type="text" id="id_usuario" name="usuario" />
+          <br />
+          <div id="caja_select_rol">
+            <label class="txt txt-label_rol">rol</label>
+          </div>
+        </fieldset>
+      </form>
+      <br />
+    </div>
+  </body>
 </html>
