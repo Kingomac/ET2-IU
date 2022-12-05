@@ -62,6 +62,7 @@ const EN = Object.freeze({
   titulo_registrar: "Register",
   recuperar_contrasena: "Password retrieval",
   label_contrasena: "Password",
+  btn_login: "Log in",
 
   // Menú
   titulo_menu: "Menu",

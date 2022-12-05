@@ -1,7 +1,7 @@
 const GA = Object.freeze({
   //Login e gestión usuario
   titulo_gestion_usuarios: "Xestión de usuarios",
-  titulo_pagina_login: "Login",
+  titulo_pagina_login: "Páxina Login",
   titulo_add: "Engadir",
   titulo_search: "Procurar",
   titulo_edit: "Editar",
@@ -65,6 +65,7 @@ const GA = Object.freeze({
   titulo_registrar: "Rexistrar",
   recuperar_contrasena: "Recuperar contrasinal",
   label_contrasena: "Contrasinal",
+  btn_login: "Iniciar sesión",
 
   // Menú
   titulo_menu: "Menú",
