@@ -73,6 +73,10 @@ body {
 .form-login {
   padding: 6vh 3vw 6vh 3vw;
   align-content: flex-start;
+  width: 75%;
+}
+.form-login input {
+  width: 75%;
 }
 
 .form-login input,button {

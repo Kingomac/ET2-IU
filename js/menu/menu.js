@@ -37,6 +37,19 @@ function insertarMenuAcciones({
   const nav = document.createElement("nav");
   nav.classList.add("menu-superior");
 
+  if (selectIdioma) {
+    const select = document.createElement("select");
+    for (const i of Object.entries(IDIOMAS)) {
+      const option = document.createElement("option");
+      option.value = i[0];
+      option.innerText = i[1].texto;
+      select.append(option);
+    }
+    select.onchange = (e) => setLang(e.target.value);
+    select.value = readCookie(COOKIE_LANG);
+    nav.append(select);
+  }
+
   if (nombreUsuario && comprobarLogin()) {
     const textoUsuario = document.createElement("span");
     textoUsuario.innerText = `Conectado como ${getUsuarioConectado()}`;
@@ -62,18 +75,6 @@ function insertarMenuAcciones({
     btnVolver.classList.add("txt-titulo_volver");
     btnVolver.href = "menu.html";
     nav.append(btnVolver);
-  }
-  if (selectIdioma) {
-    const select = document.createElement("select");
-    for (const i of Object.entries(IDIOMAS)) {
-      const option = document.createElement("option");
-      option.value = i[0];
-      option.innerText = i[1].texto;
-      select.append(option);
-    }
-    select.onchange = (e) => setLang(e.target.value);
-    select.value = readCookie(COOKIE_LANG);
-    nav.append(select);
   }
 
   document.body.prepend(nav);

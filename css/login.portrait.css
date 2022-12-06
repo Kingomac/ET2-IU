@@ -1,0 +1,29 @@
+/*@media (orientation: portrait) {*/
+@media (min-resolution: 150dpi) {
+  option {
+    font-size: medium;
+  }
+
+  body,
+  select,
+  input,
+  .caja-login a,
+  .caja-login button {
+    font-size: xx-large;
+  }
+
+  .caja-login img {
+    width: 80px;
+  }
+}
+
+.contenedor.caja-login {
+  width: 80%;
+}
+
+.form-login,
+.form-login input {
+  width: 100%;
+}
+
+/*}*/

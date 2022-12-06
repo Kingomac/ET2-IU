@@ -13,7 +13,6 @@ header h1 {
 .err-div {
   color: red;
   font-weight: bold;
-  border-bottom: 1px solid red;
   margin-bottom: 6vh;
 }
 
@@ -50,7 +49,7 @@ form button {
 select {
   margin: 1vh 1vw 1vh 1vw;
   padding:1vh .5vw 1vh .5vw;
-  border: .5px darkgray solid;
+  border: .5px rgb(75,75,75) solid;
   color: rgb(75,75,75);
 
 }
@@ -59,6 +58,8 @@ select {
   background-color: whitesmoke;
   margin: 0 0 5vh 0;
   padding: 1vh 1vw 1vh 1vw;
+  display: flex;
+  flex-direction: row;
 }
 
 .menu-superior * {
