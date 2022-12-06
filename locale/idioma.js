@@ -117,6 +117,7 @@ function mensajeError({ codigo, idInput, idResaltar = idInput }) {
 
   elInput.parentNode.insertBefore(errDiv, elInput.nextSibling);
   document.getElementById(idResaltar).style.borderColor = "#ff0000";
+  throw new Error("Error en " + idInput, { cause: codigo });
 }
 
 function removeLangClass(classList) {

@@ -63,6 +63,7 @@ function loginAjaxPromesa() {
 async function login() {
   await loginAjaxPromesa()
     .then((res) => {
+      mensajeOK("id_form_login");
       conectarUsuario({
         token: res,
         usuarioSistema: document.getElementById("id_usuario").value,
@@ -70,7 +71,7 @@ async function login() {
       window.location.href = "menu.html";
     })
     .catch((res) => {
-      mensajeError({ idInput: "id_form_login", codigo: res.code });
+      mensajeError({ idInput: "id_form_login", codigo: res });
       //eliminarcampo('controlador');
       //eliminarcampo('action');
       //setLang(idioma);
