@@ -47,12 +47,24 @@ function insertarMenuAcciones({
     }
     select.onchange = (e) => setLang(e.target.value);
     select.value = readCookie(COOKIE_LANG);
+    select.classList.add("uno");
     nav.append(select);
+  }
+
+  if (volver) {
+    const btnVolver = document.createElement("a");
+    btnVolver.innerText = getTextoTitulo("volver");
+    btnVolver.classList.add("txt");
+    btnVolver.classList.add("txt-titulo_volver");
+    btnVolver.href = "menu.html";
+    btnVolver.classList.add("dos");
+    nav.append(btnVolver);
   }
 
   if (nombreUsuario && comprobarLogin()) {
     const textoUsuario = document.createElement("span");
     textoUsuario.innerText = `Conectado como ${getUsuarioConectado()}`;
+    textoUsuario.classList.add("tres");
     nav.append(textoUsuario);
   }
 
@@ -66,15 +78,8 @@ function insertarMenuAcciones({
       desconectarUsuario();
       window.location.href = "login.html";
     };
+    btnDesconectar.classList.add("cuatro");
     nav.append(btnDesconectar);
-  }
-  if (volver) {
-    const btnVolver = document.createElement("a");
-    btnVolver.innerText = getTextoTitulo("volver");
-    btnVolver.classList.add("txt");
-    btnVolver.classList.add("txt-titulo_volver");
-    btnVolver.href = "menu.html";
-    nav.append(btnVolver);
   }
 
   document.body.prepend(nav);

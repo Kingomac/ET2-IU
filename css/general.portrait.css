@@ -1,5 +1,6 @@
 @media (min-resolution: 150dpi) {
   .menu-superior {
+    display: flex;
     flex-direction: column;
   }
 
