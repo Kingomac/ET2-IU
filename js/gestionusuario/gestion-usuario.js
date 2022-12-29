@@ -133,6 +133,8 @@ async function crearformADDusuario() {
       accion: "add",
       click: () => document.getElementById("id_form_usuario").submit(),
       onsubmit: () => comprobar_form_usuario_add(),
+      id: "id_imagen_enviar_form",
+      clase: "boton-fondo-blanco",
     })
   );
 
@@ -183,6 +185,7 @@ async function crearformEDITusuario(dni, usuario, rol) {
       accion: "edit",
       click: () => document.getElementById("id_form_usuario").submit(),
       onsubmit: () => comprobar_form_usuario_add(),
+      clase: "boton-fondo-blanco",
     })
   );
 
@@ -228,6 +231,7 @@ async function crearformDELETEusuario(dni, usuario, rol) {
       id: "id_imagen_enviar_form",
       accion: "delete",
       click: () => document.getElementById("id_form_usuario").submit(),
+      clase: "boton-fondo-blanco",
     })
   );
 
@@ -274,6 +278,7 @@ async function crearformSEARCHusuario() {
       accion: "search",
       click: () => document.getElementById("id_form_usuario").submit(),
       onsubmit: () => comprobar_form_usuario_search(),
+      clase: "boton-fondo-blanco",
     })
   );
 
@@ -311,6 +316,7 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
       id: "id_imagen_enviar_form",
       accion: "close",
       click: () => ponerinvisibleformusuario(),
+      clase: "boton-fondo-blanco",
     })
   );
 

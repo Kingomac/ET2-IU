@@ -1,10 +1,13 @@
-:root {
+body {
 
   --fuente-primaria: Verdana, Geneva, Tahoma, sans-serif;
 
-  --color-bg1: #EAE1FC;
-  --color-bg2: #C0B8F2;
-  --color-bg3: #CBACE6;
-  --color-principal: #A458BF;
-  --color-destacar: #E942F5;
+  --color-fondo: #c3a7f6;
+  --color-barra-superior: #8f5aee;
+  --color-fondo-thead: #8f5aee;
+  --color-fondo-tbody: #f8f4fe;
+}
+
+body.oscuro {
+
 }
