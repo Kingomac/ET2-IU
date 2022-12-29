@@ -28,13 +28,14 @@ function crearBotonCRUD({
   height = 50,
   src,
   id,
+  clase = "",
 }) {
   const btn = document.createElement("img");
   if (id != null) btn.id = id;
   btn.src = src || `images/${accion}.svg`;
   btn.width = width;
   btn.height = height;
-  btn.className = `txt txt-titulo_${accion}`;
+  btn.className = `txt txt-titulo_${accion} ${clase}`;
   btn.title = getTextoTitulo(accion);
   btn.onclick = click;
   btn.onsubmit = onsubmit;
