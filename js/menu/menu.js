@@ -38,6 +38,7 @@ function insertarMenuAcciones({
   nav.classList.add("menu-superior");
 
   if (selectIdioma) {
+    const divIdiomas = document.createElement("div");
     const select = document.createElement("select");
     for (const i of Object.entries(IDIOMAS)) {
       const option = document.createElement("option");
@@ -48,7 +49,8 @@ function insertarMenuAcciones({
     select.onchange = (e) => setLang(e.target.value);
     select.value = readCookie(COOKIE_LANG);
     select.classList.add("uno");
-    nav.append(select);
+    divIdiomas.append(select);
+    nav.append(divIdiomas);
   }
 
   if (volver) {

@@ -87,7 +87,7 @@ select {
   background-color: var(--color-barra-superior);
   padding: 0vh 1vw 0vh 1vw;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(3vh,auto);
   align-items: center;
@@ -99,7 +99,6 @@ select {
 .menu-superior .uno {
   grid-column: 1;
   grid-row: 1;
-  width: fit-content;
 }
 .menu-superior .dos {
   grid-column: 2;
@@ -116,6 +115,7 @@ select {
 
 .menu-superior * {
   margin: 0;
+  text-align: center;
 }
 
 dialog {

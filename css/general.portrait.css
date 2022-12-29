@@ -2,6 +2,8 @@
   .menu-superior {
     display: flex;
     flex-direction: column;
+    height: auto;
+    padding: 2vh 0 2vh 0;
   }
 
 }
