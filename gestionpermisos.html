@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/gestionpermisos.css" />
     <title class="txt txt-titulo_gestion_permisos"></title>
     <script type="text/javascript" src="locale/es.js"></script>
     <script type="text/javascript" src="locale/en.js"></script>
@@ -37,7 +38,7 @@
     <div id="id_caja_error">
       <div id="id_texterror"></div>
     </div>
-    <div>
+    <div class="contenedor">
       <form
         action="javascript:searchFuncionalidad()"
         method="post"
@@ -60,15 +61,17 @@
         <input type="hidden" name="action" value="SEARCH" />
       </form>
     </div>
-    <progress id="loading_bar"></progress>
-    <table border="1" id="tabla_showall">
-      <thead>
-        <tr id="table_title">
-          <th class="txt txt-permisos_titulo_funcionalidad"></th>
-          <th class="txt txt-permisos_titulo_accion"></th>
-        </tr>
-      </thead>
-      <tbody id="table_body"></tbody>
-    </table>
+    <div class="contenedor">
+      <progress id="loading_bar"></progress>
+      <table border="1" id="tabla_showall">
+        <thead>
+          <tr id="table_title">
+            <th class="txt txt-permisos_titulo_funcionalidad"></th>
+            <th class="txt txt-permisos_titulo_accion"></th>
+          </tr>
+        </thead>
+        <tbody id="table_body"></tbody>
+      </table>
+    </div>
   </body>
 </html>

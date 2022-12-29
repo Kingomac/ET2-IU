@@ -1,0 +1,6 @@
+.caja-botones-permisos {
+  display: grid;
+  grid-template-columns: 35px 35px;
+  column-gap: 5px;
+  justify-content: center;
+}

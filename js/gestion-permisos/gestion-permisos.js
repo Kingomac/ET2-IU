@@ -123,6 +123,9 @@ function crearBtnAddDelete({
   id_accion,
   id_rol,
 }) {
+  const divGrid = document.createElement("div");
+  divGrid.classList.add("caja-botones-permisos");
+
   const btnTick = document.createElement("img");
   btnTick.className = "txt txt-titulo_permiso_add";
   btnTick.title = getTextoTitulo("permiso_add");
@@ -147,7 +150,9 @@ function crearBtnAddDelete({
       addRolAccionFuncionalidad({ id_accion, id_funcionalidad, id_rol });
   }
 
-  return [btnTick, btnDelete];
+  divGrid.append(btnTick, btnDelete);
+
+  return [divGrid];
 }
 
 async function deleteRolAccionFuncionalidad({
