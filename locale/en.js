@@ -68,6 +68,7 @@ const EN = Object.freeze({
   titulo_menu: "Menu",
   titulo_desconectar: "Disconnect",
   titulo_volver: "Back",
+  titulo_conectado_como: "Connected as",
 
   //Permisos
   titulo_gestion_permisos: "Permissions management",
@@ -85,7 +86,8 @@ const EN = Object.freeze({
   label_contrasena_verificar: "Verify password",
 
   // Cambiar contraseña
-  btn_cambiar_contrasena: "Cambiar contraseña",
+  btn_cambiar_contrasena: "Change password",
+  fields_nueva_contrasena: "Write your new password",
 
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción largo",

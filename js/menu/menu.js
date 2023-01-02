@@ -65,8 +65,12 @@ function insertarMenuAcciones({
 
   if (nombreUsuario && comprobarLogin()) {
     const textoUsuario = document.createElement("span");
-    textoUsuario.innerText = `Conectado como ${getUsuarioConectado()}`;
+    const textoconectado = document.createElement("span");
+    textoconectado.classList.add("tres", "txt", "txt-titulo_conectado_como");
+    textoconectado.innerText = getTextoTitulo("conectado_como");
+    textoUsuario.innerText = " " + getUsuarioConectado();
     textoUsuario.classList.add("tres");
+    textoUsuario.prepend(textoconectado);
     nav.append(textoUsuario);
   }
 

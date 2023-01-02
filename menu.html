@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link
       rel="stylesheet"
       media="(orientation: portrait)"
       href="css/general.portrait.css"
     />
+    <link rel="stylesheet" href="css/menu.css" />
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="./locale/es.js"></script>
     <script type="text/javascript" src="./locale/en.js"></script>
@@ -30,99 +32,116 @@
   </head>
 
   <body
-    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});mostrarCambiarContrasena();"
+    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
   >
     <header>
       <h1 class="txt txt-titulo_menu">ET2</h1>
     </header>
     <nav>
-      <ul>
+      <ul class="grid-menu">
         <li>
-          <a
-            href="gestionusuario.html"
-            class="txt txt-titulo_gestion_usuarios"
-          ></a>
+          <a href="gestionusuario.html">
+            <img src="images/gestion-usuario.svg" />
+            <span class="txt txt-titulo_gestion_usuarios"></span>
+          </a>
         </li>
         <li>
-          <a
-            href="gestionpersonas.html"
-            class="txt txt-titulo_gestion_personas"
-          ></a>
+          <a href="gestionpersonas.html">
+            <img src="images/gestion-persona.svg" />
+            <span class="txt txt-titulo_gestion_personas"></span>
+          </a>
         </li>
         <li>
-          <a href="gestionroles.html" class="txt txt-titulo_gestion_roles"></a>
+          <a href="gestionroles.html">
+            <img src="images/gestion-roles.svg" />
+            <span class="txt txt-titulo_gestion_roles"></span>
+          </a>
         </li>
         <li>
-          <a
-            href="gestionaccion.html"
-            class="txt txt-titulo_gestion_acciones"
-          ></a>
+          <a href="gestionaccion.html">
+            <img src="images/gestion-acciones.svg" />
+            <span class="txt txt-titulo_gestion_acciones"></span>
+          </a>
         </li>
         <li>
-          <a
-            href="gestionfuncionalidad.html"
-            class="txt txt-titulo_gestion_funcionalidades"
-          ></a>
+          <a href="gestionfuncionalidad.html">
+            <img src="images/gestion-funcionalidad.svg" />
+            <span class="txt txt-titulo_gestion_funcionalidades"></span>
+          </a>
         </li>
         <li>
-          <a
-            href="gestionpermisos.html"
-            class="txt txt-titulo_gestion_permisos"
-          ></a>
+          <a href="gestionpermisos.html">
+            <img src="images/gestion-permisos.svg" />
+            <span class="txt txt-titulo_gestion_permisos"></span>
+          </a>
         </li>
+        <li></li>
         <li>
           <a
             href="#"
-            onclick="mostrarCambiarContrasena()"
-            class="txt txt-btn_cambiar_contrasena"
-          ></a>
+            onclick="document.getElementById('modal-recuperar-contrasena').showModal()"
+          >
+            <img src="images/cambiar-contrasena.svg" />
+            <span class="txt txt-btn_cambiar_contrasena"></span>
+          </a>
         </li>
+        <li></li>
       </ul>
     </nav>
-    <div id="id_caja_error" style="display: none">
-      <div id="id_texterror" class="txt"></div>
-      <img
-        src="./images/close.svg"
-        width="50"
-        height="50"
-        onclick="document.getElementById('id_caja_error').style.display = 'none';"
-      />
-    </div>
-    <form
-      id="id_form_cambiar_contrasena"
-      action="javascript:cambiarContrasenaMenu()"
-    >
-      <fieldset id="id_fields_cambiar_contrasena">
-        <legend class="txt txt-fields_nueva_contrasena">
-          Escribe una nueva contraseña
-        </legend>
-        <label
-          for="cc_contrasena_noencriptada"
-          class="txt txt-label_contrasena"
-        ></label>
-        <input
-          type="password"
-          id="cc_contrasena_noencriptada"
-          onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
-          autocomplete="new-password"
-        />
-        <br />
-        <label
-          for="cc_contrasena_verificar"
-          class="txt txt-label_contrasena_verificar"
-        ></label>
-        <input
-          type="password"
-          id="cc_contrasena_verificar"
-          onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
-          autocomplete="off"
-        />
+    <dialog id="modal-recuperar-contrasena">
+      <div id="id_caja_error" style="display: none">
+        <div id="id_texterror" class="txt"></div>
         <img
-          src="images/edit.svg"
-          class="txt txt-btn_cambiar_contrasena"
-          onclick="document.getElementById('id_form_cambiar_contrasena').submit()"
+          src="./images/close.svg"
+          width="50"
+          height="50"
+          onclick="document.getElementById('id_caja_error').style.display = 'none';"
         />
-      </fieldset>
-    </form>
+      </div>
+      <div class="caja-login contenedor">
+        <div class="cabecera-modal">
+          <h2 class="txt txt-fields_nueva_contrasena"></h2>
+          <img
+            src="images/close.svg"
+            width="40px"
+            onclick="document.getElementById('modal-recuperar-contrasena').close()"
+          />
+        </div>
+        <form
+          id="id_form_cambiar_contrasena"
+          action="javascript:cambiarContrasenaMenu()"
+          class="form-login"
+        >
+          <label
+            for="cc_contrasena_noencriptada"
+            class="txt txt-label_contrasena"
+          ></label>
+          <input
+            type="password"
+            id="cc_contrasena_noencriptada"
+            onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
+            autocomplete="new-password"
+          />
+          <br />
+          <label
+            for="cc_contrasena_verificar"
+            class="txt txt-label_contrasena_verificar"
+          ></label>
+          <input
+            type="password"
+            id="cc_contrasena_verificar"
+            onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
+            autocomplete="off"
+          />
+          <img
+            src="images/edit.svg"
+            class="txt txt-btn_cambiar_contrasena"
+            width="60"
+            height="60"
+            onclick="document.getElementById('id_form_cambiar_contrasena').submit()"
+          />
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>

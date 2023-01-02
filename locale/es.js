@@ -69,6 +69,7 @@ const ES = Object.freeze({
   titulo_menu: "Menú",
   titulo_desconectar: "Desconectar",
   titulo_volver: "Volver",
+  titulo_conectado_como: "Conectado como",
 
   //Permisos
   titulo_gestion_permisos: "Gestión permisos",

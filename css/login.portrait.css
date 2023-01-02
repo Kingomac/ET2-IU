@@ -1,6 +1,6 @@
 /*@media (orientation: portrait) {*/
 @media (min-resolution: 150dpi) {
-  option {
+  /*option {
     font-size: medium;
   }
 
@@ -10,15 +10,11 @@
   .caja-login a,
   .caja-login button {
     font-size: xx-large;
-  }
-
-  .caja-login img {
-    width: 80px;
-  }
+  }*/
 }
 
 .contenedor.caja-login {
-  width: 80%;
+  width: 85%;
 }
 
 .form-login,
