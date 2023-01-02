@@ -26,13 +26,14 @@ function crearLista(...elems) {
 
 /**
  * Crea e inserta el menú de acciones para usuarios logueados
- * @param {{desconectar?: boolean, volver?: boolean, selectIdioma?:boolean}} params
+ * @param {{desconectar?: boolean, volver?: boolean, selectIdioma?:boolean, tema?:boolean}} params
  */
 function insertarMenuAcciones({
   desconectar = true,
   volver = true,
   selectIdioma = true,
   nombreUsuario = true,
+  tema = true,
 } = {}) {
   const nav = document.createElement("nav");
   nav.classList.add("menu-superior");
@@ -48,7 +49,7 @@ function insertarMenuAcciones({
     }
     select.onchange = (e) => setLang(e.target.value);
     select.value = readCookie(COOKIE_LANG);
-    select.classList.add("uno");
+    select.classList.add("dos");
     divIdiomas.append(select);
     nav.append(divIdiomas);
   }
@@ -59,7 +60,7 @@ function insertarMenuAcciones({
     btnVolver.classList.add("txt");
     btnVolver.classList.add("txt-titulo_volver");
     btnVolver.href = "menu.html";
-    btnVolver.classList.add("dos");
+    btnVolver.classList.add("uno");
     nav.append(btnVolver);
   }
 
@@ -84,8 +85,33 @@ function insertarMenuAcciones({
       desconectarUsuario();
       window.location.href = "login.html";
     };
-    btnDesconectar.classList.add("cuatro");
+    btnDesconectar.classList.add("cinco");
     nav.append(btnDesconectar);
+  }
+
+  if (tema) {
+    let leerTema = window.localStorage.getItem("tema");
+    if (!leerTema)
+      leerTema =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "oscuro"
+          : "claro";
+    const btnTema = document.createElement("img");
+    btnTema.classList.add("cuatro");
+    btnTema.src =
+      leerTema == "claro" ? "images/modo-claro.svg" : "images/modo-oscuro.svg";
+    btnTema.onclick = () => {
+      leerTema = leerTema == "claro" ? "oscuro" : "claro";
+      window.localStorage.setItem("tema", leerTema);
+      document.body.classList.remove("oscuro");
+      if (leerTema == "oscuro") document.body.classList.add(leerTema);
+      btnTema.src =
+        leerTema == "claro"
+          ? "images/modo-claro.svg"
+          : "images/modo-oscuro.svg";
+    };
+    nav.append(btnTema);
   }
 
   document.body.prepend(nav);

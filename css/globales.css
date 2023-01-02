@@ -6,8 +6,19 @@ body {
   --color-barra-superior: #8f5aee;
   --color-fondo-thead: #8f5aee;
   --color-fondo-tbody: #f8f4fe;
+  
+  --color-menu-boton-borde: #5715cd;
+  --color-menu-boton-fondo: #e3d5fb;
 }
 
 body.oscuro {
+  --fuente-primaria: Comic Sans MS;
 
+  --color-fondo: red;
+  --color-barra-superior: #8f5aee;
+  --color-fondo-thead: #8f5aee;
+  --color-fondo-tbody: #f8f4fe;
+  
+  --color-menu-boton-borde: #5715cd;
+  --color-menu-boton-fondo: #e3d5fb;
 }

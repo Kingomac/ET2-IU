@@ -111,6 +111,12 @@ select {
 .menu-superior .cuatro {
   grid-column: 4;
   grid-row: 1;
+  background-color: white;
+  border-radius: 50%;
+}
+.menu-superior .cinco {
+  grid-column: 5;
+  grid-row: 1;
 }
 
 .menu-superior * {
