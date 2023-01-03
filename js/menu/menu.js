@@ -90,6 +90,7 @@ function insertarMenuAcciones({
   }
 
   if (tema) {
+    //Leer tema del localStorage
     let leerTema = window.localStorage.getItem("tema");
     if (!leerTema)
       leerTema =
@@ -97,6 +98,11 @@ function insertarMenuAcciones({
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "oscuro"
           : "claro";
+    // Aplicar tema
+    document.body.classList.remove("oscuro");
+    if (leerTema == "oscuro") document.body.classList.add(leerTema);
+
+    // Crear botón de cambio de tema
     const btnTema = document.createElement("img");
     btnTema.classList.add("cuatro");
     btnTema.src =
