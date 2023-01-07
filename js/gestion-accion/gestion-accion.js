@@ -50,8 +50,9 @@ function resetOnBlurAcciones() {
 function crearFormAddAccion() {
   resetForm("id_form_accion");
   resetOnBlurAcciones();
+  limpiarErrores("id_form_accion");
 
-  document.getElementById("id_caja_formulario_accion").style.display = "block";
+  document.getElementById("form-modal").showModal();
   document.getElementById("caja_id_accion").style.display = "none";
 
   const submitImg = document.getElementById("img_form_submit");
@@ -77,6 +78,7 @@ async function addAccion() {
     });
     await actualizarTablaAcciones();
     resetForm("id_form_accion");
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -115,11 +117,11 @@ function peticionBackAddAccion() {
 
 function crearFormEditAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-
+  limpiarErrores("id_form_accion");
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
-  document.getElementById("id_caja_formulario_accion").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/edit.svg";
@@ -140,6 +142,7 @@ async function editAccion() {
     await peticionEditAccion();
     resetForm("id_form_accion");
     await actualizarTablaAcciones();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -178,11 +181,11 @@ function peticionEditAccion() {
 
 function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-
+  limpiarErrores("id_form_accion");
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
-  document.getElementById("id_caja_formulario_accion").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/delete.svg";
@@ -207,8 +210,8 @@ async function deleteAccion() {
   }
   try {
     await peticionBackDeleteAccion();
-    document.getElementById("id_caja_formulario_accion").style.display = "none";
     await actualizarTablaAcciones();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -247,11 +250,11 @@ function peticionBackDeleteAccion() {
 
 function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-
+  limpiarErrores("id_form_accion");
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
-  document.getElementById("id_caja_formulario_accion").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/close.svg";
@@ -279,7 +282,7 @@ function crearFormSearchAccion() {
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
-  document.getElementById("id_caja_formulario_accion").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/search.svg";
@@ -305,6 +308,7 @@ async function searchAccion() {
     const entradas = await peticionBackSearchAccion();
     resetForm("id_form_accion");
     await actualizarTablaAcciones(entradas);
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
