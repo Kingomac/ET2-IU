@@ -9,6 +9,7 @@ async function add_usuario() {
       await peticionADDusuarioBack();
       await crearformADDusuario();
       await actualizarTablaUsuarios();
+      document.getElementById("form-modal").close();
     } catch (err) {
       mensajeError({
         codigo: err,
@@ -28,6 +29,7 @@ async function edit_usuario() {
       await peticionEDITusuarioBack();
       await crearformEDITusuario();
       await actualizarTablaUsuarios();
+      document.getElementById("form-modal").close();
     } catch (err) {
       mensajeError({
         codigo: err,

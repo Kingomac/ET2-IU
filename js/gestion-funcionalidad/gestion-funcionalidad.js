@@ -48,11 +48,11 @@ function resetOnBlurFuncionalidades() {
 //#region FORM ADD
 
 function crearFormAddFuncionalidad() {
+  limpiarErrores("id_form_funcionalidad");
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
 
-  document.getElementById("id_caja_formulario_funcionalidad").style.display =
-    "block";
+  document.getElementById("form-modal").showModal();
   document.getElementById("caja_id_funcionalidad").style.display = "none";
 
   const submitImg = document.getElementById("img_form_submit");
@@ -81,6 +81,7 @@ async function addFuncionalidad() {
         .value,
     });
     resetForm("id_form_funcionalidad");
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -123,19 +124,17 @@ function crearFormEditFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-
+  limpiarErrores("id_form_funcionalidad");
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
 
-  document.getElementById("id_caja_formulario_funcionalidad").style.display =
-    "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/edit.svg";
   submitImg.onclick = editFuncionalidad;
 
-  document.getElementById("form-funcionalidad").innerText =
-    getTextoTitulo("edit");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("edit");
 
   $("#id_funcionalidad").val(id_funcionalidad);
   $("#nombre_funcionalidad").val(nombre_funcionalidad);
@@ -150,6 +149,7 @@ async function editFuncionalidad() {
     await peticionEditFuncionalidad();
     resetForm("id_form_funcionalidad");
     await actualizarTablaFuncionalidades();
+    document.getElementById("form-modal").close();
   } catch (err) {
     mensajeError({
       codigo: err,
@@ -192,19 +192,17 @@ function crearFormDeleteFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-
+  limpiarErrores("id_form_funcionalidad");
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
 
-  document.getElementById("id_caja_formulario_funcionalidad").style.display =
-    "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/delete.svg";
   submitImg.onclick = deleteFuncionalidad;
 
-  document.getElementById("form-funcionalidad").innerText =
-    getTextoTitulo("delete");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("delete");
 
   $("#id_funcionalidad").val(id_funcionalidad);
   $("#nombre_funcionalidad").val(nombre_funcionalidad);
@@ -224,9 +222,8 @@ async function deleteFuncionalidad() {
   }
   try {
     await peticionBackDeleteFuncionalidad();
-    document.getElementById("id_caja_formulario_funcionalidad").style.display =
-      "none";
     await actualizarTablaFuncionalidades();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -269,19 +266,18 @@ function crearFormDetailFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-
+  limpiarErrores("id_form_funcionalidad");
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
 
-  document.getElementById("id_caja_formulario_funcionalidad").style.display =
-    "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
+  submitImg.style.display = "none";
   submitImg.src = "images/close.svg";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_funcionalidad");
 
-  document.getElementById("form-funcionalidad").innerText =
-    getTextoTitulo("detail");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
 
   $("#id_funcionalidad").val(id_funcionalidad);
   $("#nombre_funcionalidad").val(nombre_funcionalidad);
@@ -299,19 +295,17 @@ function crearFormDetailFuncionalidad({
 //#region FORM SEARCH
 function crearFormSearchFuncionalidad() {
   //Reset formulario
-
+  limpiarErrores("id_form_funcionalidad");
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
 
-  document.getElementById("id_caja_formulario_funcionalidad").style.display =
-    "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/search.svg";
   submitImg.onclick = searchFuncionalidad;
 
-  document.getElementById("form-funcionalidad").innerText =
-    getTextoTitulo("search");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("search");
 
   $("#id_funcionalidad").blur(comprobarIdFuncionalidadSearch);
   $("#nombre_funcionalidad").blur(comprobarNombreFuncionalidadSearch);
@@ -332,6 +326,7 @@ async function searchFuncionalidad() {
     const entradas = await peticionBackSearchFuncionalidad();
     resetForm("id_form_funcionalidad");
     await actualizarTablaFuncionalidades(entradas);
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,

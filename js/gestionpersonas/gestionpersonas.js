@@ -116,6 +116,7 @@ async function addPersona() {
     await peticionBackAddPersona();
     resetForm("id_form_persona");
     await actualizarTablaPersonas();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -192,6 +193,7 @@ async function editPersona() {
     await peticionEditPersona();
     resetForm("id_form_persona");
     await actualizarTablaPersonas();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
@@ -267,6 +269,7 @@ async function deletePersona() {
     document.getElementById("id_caja_formulario_persona").style.display =
       "none";
     await actualizarTablaPersonas();
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,

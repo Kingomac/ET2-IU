@@ -258,6 +258,7 @@ function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/close.svg";
+  submitImg.style.display = "none";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_accion");
 
   document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
@@ -278,7 +279,7 @@ function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
 //#region FORM SEARCH
 function crearFormSearchAccion() {
   //Reset formulario
-
+  limpiarErrores("id_form_accion");
   resetForm("id_form_accion");
   resetOnBlurAcciones();
 
