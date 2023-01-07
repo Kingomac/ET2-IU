@@ -48,10 +48,8 @@ function resetOnBlurFuncionalidades() {
 //#region FORM ADD
 
 function crearFormAddFuncionalidad() {
-  scrollFinTabla();
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -125,10 +123,9 @@ function crearFormEditFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -195,10 +192,9 @@ function crearFormDeleteFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -273,10 +269,9 @@ function crearFormDetailFuncionalidad({
   descrip_funcionalidad,
 }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";
@@ -304,10 +299,9 @@ function crearFormDetailFuncionalidad({
 //#region FORM SEARCH
 function crearFormSearchFuncionalidad() {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_funcionalidad");
   resetOnBlurFuncionalidades();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_funcionalidad").style.display =
     "block";

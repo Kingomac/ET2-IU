@@ -12,7 +12,7 @@ async function add_usuario() {
     } catch (err) {
       mensajeError({
         codigo: err,
-        idInput: "caja_campos_formulario",
+        idInput: "id_form_usuario",
       });
     }
   }
@@ -31,7 +31,7 @@ async function edit_usuario() {
     } catch (err) {
       mensajeError({
         codigo: err,
-        idInput: "caja_campos_formulario",
+        idInput: "id_form_usuario",
       });
     }
   }
@@ -44,13 +44,12 @@ async function edit_usuario() {
 async function delete_usuario() {
   try {
     await peticionDELETEusuarioBack();
-    document.getElementById("id_caja_formulario_usuario").style.display =
-      "none";
+    document.getElementById("form-modal").close();
     await actualizarTablaUsuarios();
   } catch (err) {
     mensajeError({
       codigo: err,
-      idInput: "caja_campos_formulario",
+      idInput: "id_form_usuario",
     });
   }
 }
@@ -63,10 +62,11 @@ async function search_usuario() {
     try {
       const peticion = await peticionSEARCHusuarioBack();
       await actualizarTablaUsuarios(peticion.resource);
+      document.getElementById("form-modal").close();
     } catch (err) {
       mensajeError({
         codigo: err,
-        idInput: "caja_campos_formulario",
+        idInput: "id_form_usuario",
       });
     }
   }
@@ -76,6 +76,10 @@ async function search_usuario() {
 // esta función se usa para inicializar el formulario y siempre este de la misma manera antes de entrar en las funciones que construyen los formularios de acciones
 // aqui solo eliminamos el select. Podriamos tambien hacer un remove() en vez de desasignarlo
 function resetearformusuario() {
+  document
+    .getElementById("id_form_usuario")
+    .querySelectorAll(".err-div")
+    .forEach((e) => (e.textContent = ""));
   // eliminar el select
   selectviejorol = document.getElementById("id_id_rol");
   if (!(selectviejorol === null)) {
@@ -95,7 +99,6 @@ function resetearformusuario() {
   // $("#id_imagen_enviar_form").remove();
 
   // // se pone visible el formulario
-  // $("#id_caja_formulario_usuario").attr("style", "display: none");
 }
 
 // crearformADDusuario() creado con javascript
@@ -106,19 +109,19 @@ function resetearformusuario() {
 
 async function crearformADDusuario() {
   // resetear el formulario
-  scrollFinTabla();
-  resetearformusuario();
-  document.getElementById("id_caja_error").style.display = "none";
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("add");
-  document.getElementById("form-accion").className = "txt txt-titulo_add";
+  resetearformusuario();
+  document.getElementById("form-modal").showModal();
+
+  document.getElementById("titulo-form").innerText = getTextoTitulo("add");
+  document.getElementById("titulo-form").className = "txt txt-titulo_add";
 
   // se coloca el onblur del dni y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-  document.getElementById("id_dni").onblur = comprobar_dni;
+  document.getElementById("id_dni").onblur = () => comprobar_dni();
   document.getElementById("id_dni").value = "";
 
   // se coloca el onblur del usuario y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-  document.getElementById("id_usuario").onblur = comprobar_usuario;
+  document.getElementById("id_usuario").onblur = () => comprobar_usuario();
   document.getElementById("id_usuario").value = "";
 
   // se crea un array con los roles como si viniera del back
@@ -128,7 +131,7 @@ async function crearformADDusuario() {
   document.getElementById("id_form_usuario").action =
     "javascript:add_usuario()";
 
-  $("#caja_campos_formulario").append(
+  $("#id_form_usuario").append(
     crearBotonCRUD({
       accion: "add",
       click: () => document.getElementById("id_form_usuario").submit(),
@@ -137,9 +140,6 @@ async function crearformADDusuario() {
       clase: "boton-fondo-blanco",
     })
   );
-
-  // se muestra el formulario
-  document.getElementById("id_caja_formulario_usuario").style.display = "block";
 }
 
 // crearformEDITusuario() creado con jquery
@@ -149,13 +149,14 @@ async function crearformADDusuario() {
 // y se ejecuta el action
 
 async function crearformEDITusuario(dni, usuario, rol) {
-  document.getElementById("form-accion").innerText = getTextoTitulo("edit");
-  document.getElementById("form-accion").className = "txt txt-titulo_edit";
+  document.getElementById("titulo-form").innerText = getTextoTitulo("edit");
+  document.getElementById("titulo-form").className = "txt txt-titulo_edit";
 
   // resetear al formulario
-  scrollFinTabla();
+
   resetearformusuario();
-  document.getElementById("id_caja_error").style.display = "none";
+
+  document.getElementById("form-modal").showModal();
 
   // se crea el action del formulario
   $("#id_form_usuario").attr("action", "http://193.147.87.202/procesaform.php");
@@ -163,11 +164,11 @@ async function crearformEDITusuario(dni, usuario, rol) {
   // se pone no editable el dni al ser clave primaria y no querer que se modifique por el usuario
   // se pone la funcion de comprobación aunque no sea necesaria y se pone el valor por defecto que se proporciona como parametro
   $("#id_dni").attr("readonly", true);
-  $("#id_dni").blur(comprobar_dni);
+  $("#id_dni").blur(() => comprobar_dni());
   $("#id_dni").val(dni);
 
   // se pone la función de validación de usuario y se pone el valor por defecto proporcionado como parametro
-  $("#id_usuario").on("blur", comprobar_usuario);
+  $("#id_usuario").on("blur", () => comprobar_usuario);
   $("#id_usuario").val(usuario);
 
   // se crea un array de roles como vendría del back
@@ -179,7 +180,7 @@ async function crearformEDITusuario(dni, usuario, rol) {
   document.getElementById("id_form_usuario").action =
     "javascript:edit_usuario()";
 
-  $("#caja_campos_formulario").append(
+  $("#id_form_usuario").append(
     crearBotonCRUD({
       id: "id_imagen_enviar_form",
       accion: "edit",
@@ -190,7 +191,6 @@ async function crearformEDITusuario(dni, usuario, rol) {
   );
 
   // se muestra el formulario
-  $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
 
 // crearformDELETEusuario() creado con jquery
@@ -200,12 +200,12 @@ async function crearformEDITusuario(dni, usuario, rol) {
 // y se ejecuta el action
 
 async function crearformDELETEusuario(dni, usuario, rol) {
-  document.getElementById("form-accion").innerText = getTextoTitulo("delete");
-  document.getElementById("form-accion").className = "txt txt-titulo_delete";
+  document.getElementById("titulo-form").innerText = getTextoTitulo("delete");
+  document.getElementById("titulo-form").className = "txt txt-titulo_delete";
 
-  scrollFinTabla();
   resetearformusuario();
-  document.getElementById("id_caja_error").style.display = "none";
+
+  document.getElementById("form-modal").showModal();
 
   $("#id_dni").off("blur");
   $("#id_usuario").off("blur");
@@ -226,7 +226,7 @@ async function crearformDELETEusuario(dni, usuario, rol) {
   document.getElementById("id_form_usuario").action =
     "javascript:delete_usuario()";
 
-  $("#caja_campos_formulario").append(
+  $("#id_form_usuario").append(
     crearBotonCRUD({
       id: "id_imagen_enviar_form",
       accion: "delete",
@@ -234,8 +234,6 @@ async function crearformDELETEusuario(dni, usuario, rol) {
       clase: "boton-fondo-blanco",
     })
   );
-
-  $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
 
 // crearformSEARCHusuario() creado con jquery (except el option que utiliza javascript)
@@ -245,13 +243,14 @@ async function crearformDELETEusuario(dni, usuario, rol) {
 // cuando esta función devuelve true se ejecuta el action
 
 async function crearformSEARCHusuario() {
-  document.getElementById("form-accion").innerText = getTextoTitulo("search");
-  document.getElementById("form-accion").className = "txt txt-titulo_search";
+  document.getElementById("titulo-form").innerText = getTextoTitulo("search");
+  document.getElementById("titulo-form").className = "txt txt-titulo_search";
 
   // reseteo el formulario
-  scrollFinTabla();
+
   resetearformusuario();
-  document.getElementById("id_caja_error").style.display = "none";
+
+  document.getElementById("form-modal").showModal();
 
   $("#id_form_usuario")[0].reset();
 
@@ -272,7 +271,7 @@ async function crearformSEARCHusuario() {
     "javascript:search_usuario()";
 
   // coloco la imagen para submit en el formulario
-  $("#caja_campos_formulario").append(
+  $("#id_form_usuario").append(
     crearBotonCRUD({
       id: "id_imagen_enviar_form",
       accion: "search",
@@ -283,17 +282,17 @@ async function crearformSEARCHusuario() {
   );
 
   // se pone visible el formulario
-  $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
 
 async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
-  document.getElementById("form-accion").innerText = getTextoTitulo("detail");
-  document.getElementById("form-accion").className = "txt txt-titulo_detail";
+  document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
+  document.getElementById("titulo-form").className = "txt txt-titulo_detail";
 
   // reseteo el formulario
-  scrollFinTabla();
+
   resetearformusuario();
-  document.getElementById("id_caja_error").style.display = "none";
+
+  document.getElementById("form-modal").showModal();
 
   $("#id_dni").val(dni);
   $("#id_dni").attr("readonly", true);
@@ -310,17 +309,6 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
   $("#caja_select_rol").append(rolSelect);
 
   $("#id_id_rol").val(rol);
-
-  $("#caja_campos_formulario").append(
-    crearBotonCRUD({
-      id: "id_imagen_enviar_form",
-      accion: "close",
-      click: () => ponerinvisibleformusuario(),
-      clase: "boton-fondo-blanco",
-    })
-  );
-
-  $("#id_caja_formulario_usuario").attr("style", "display: block");
 }
 
 /**
@@ -338,7 +326,7 @@ async function actualizarTablaUsuarios(datos) {
   try {
     datos ??= await peticionBackSHOWALLusuario();
   } catch (err) {
-    mensajeError({ codigo: err, idInput: "caja_campos_formulario" });
+    mensajeError({ codigo: err, idInput: "id_form_usuario" });
   }
   const roles = await getRoles();
   for (const i of datos) {

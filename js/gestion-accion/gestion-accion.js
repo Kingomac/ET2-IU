@@ -48,10 +48,8 @@ function resetOnBlurAcciones() {
 //#region FORM ADD
 
 function crearFormAddAccion() {
-  scrollFinTabla();
   resetForm("id_form_accion");
   resetOnBlurAcciones();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_accion").style.display = "block";
   document.getElementById("caja_id_accion").style.display = "none";
@@ -60,8 +58,8 @@ function crearFormAddAccion() {
   submitImg.src = "images/add.svg";
   submitImg.onclick = addAccion;
 
-  $("#form-accion").text(getTextoTitulo("add"));
-  document.getElementById("form-accion").className = "txt txt-titulo_add";
+  $("#titulo-form").text(getTextoTitulo("add"));
+  document.getElementById("titulo-form").className = "txt txt-titulo_add";
 }
 
 async function addAccion() {
@@ -117,10 +115,9 @@ function peticionBackAddAccion() {
 
 function crearFormEditAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_accion");
   resetOnBlurAcciones();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_accion").style.display = "block";
 
@@ -128,7 +125,7 @@ function crearFormEditAccion({ id_accion, nombre_accion, descrip_accion }) {
   submitImg.src = "images/edit.svg";
   submitImg.onclick = editAccion;
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("edit");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("edit");
 
   $("#id_accion").val(id_accion);
   $("#nombre_accion").val(nombre_accion);
@@ -181,10 +178,9 @@ function peticionEditAccion() {
 
 function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_accion");
   resetOnBlurAcciones();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_accion").style.display = "block";
 
@@ -192,7 +188,7 @@ function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
   submitImg.src = "images/delete.svg";
   submitImg.onclick = deleteAccion;
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("delete");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("delete");
 
   $("#id_accion").val(id_accion);
   $("#nombre_accion").val(nombre_accion);
@@ -251,10 +247,9 @@ function peticionBackDeleteAccion() {
 
 function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_accion");
   resetOnBlurAcciones();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_accion").style.display = "block";
 
@@ -262,7 +257,7 @@ function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
   submitImg.src = "images/close.svg";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_accion");
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("detail");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
 
   $("#id_accion").val(id_accion);
   $("#nombre_accion").val(nombre_accion);
@@ -280,10 +275,9 @@ function crearFormDetailAccion({ id_accion, nombre_accion, descrip_accion }) {
 //#region FORM SEARCH
 function crearFormSearchAccion() {
   //Reset formulario
-  scrollFinTabla();
+
   resetForm("id_form_accion");
   resetOnBlurAcciones();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_accion").style.display = "block";
 
@@ -291,7 +285,7 @@ function crearFormSearchAccion() {
   submitImg.src = "images/search.svg";
   submitImg.onclick = searchAccion;
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("search");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("search");
 
   $("#id_accion").blur(comprobarIdAccionSearch);
   $("#nombre_accion").blur(comprobarNombreAccionSearch);

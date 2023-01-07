@@ -49,9 +49,8 @@ function resetOnBlurRoles() {
 
 function crearFormAddRol() {
   resetForm("id_form_rol");
-  scrollFinTabla();
+
   resetOnBlurRoles();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("caja_id_rol").style.display = "none";
@@ -63,8 +62,8 @@ function crearFormAddRol() {
   submitImg.src = "images/add.svg";
   submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
-  $("#form-accion").text(getTextoTitulo("add"));
-  document.getElementById("form-accion").className = "txt txt-titulo_add";
+  $("#titulo-form").text(getTextoTitulo("add"));
+  document.getElementById("titulo-form").className = "txt txt-titulo_add";
 }
 
 async function addRol() {
@@ -117,9 +116,8 @@ function peticionBackAddRol() {
 function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
-  scrollFinTabla();
+
   resetOnBlurRoles();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_form_rol").action = "javascript:editRol()";
   document.getElementById("id_form_rol").onsubmit = () =>
@@ -131,7 +129,7 @@ function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   submitImg.src = "images/edit.svg";
   submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("edit");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("edit");
 
   $("#id_rol").val(id_rol);
   $("#nombre_rol").val(nombre_rol);
@@ -185,9 +183,8 @@ function peticionEditRol() {
 function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
-  scrollFinTabla();
+
   resetOnBlurRoles();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("id_form_rol").action = "javascript:deleteRol()";
@@ -196,7 +193,7 @@ function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   submitImg.src = "images/delete.svg";
   submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("delete");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("delete");
 
   $("#id_rol").val(id_rol);
   $("#nombre_rol").val(nombre_rol);
@@ -216,7 +213,7 @@ async function deleteRol() {
   }
   try {
     await peticionBackDeleteRol();
-    document.getElementById('id_caja_formulario_rol').style.display = 'none'
+    document.getElementById("id_caja_formulario_rol").style.display = "none";
     await actualizarTablaRoles();
   } catch (e) {
     mensajeError({
@@ -257,9 +254,8 @@ function peticionBackDeleteRol() {
 function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
   resetForm("id_form_rol");
-  scrollFinTabla();
+
   resetOnBlurRoles();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
 
@@ -267,7 +263,7 @@ function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
   submitImg.src = "images/close.svg";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_rol");
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("detail");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
 
   $("#id_rol").val(id_rol);
   $("#nombre_rol").val(nombre_rol);
@@ -286,9 +282,8 @@ function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
 function crearFormSearchRol() {
   //Reset formulario
   resetForm("id_form_rol");
-  scrollFinTabla();
+
   resetOnBlurRoles();
-  document.getElementById("id_caja_error").style.display = "none";
 
   document.getElementById("id_caja_formulario_rol").style.display = "block";
   document.getElementById("id_form_rol").action = "javascript:searchRol()";
@@ -301,7 +296,7 @@ function crearFormSearchRol() {
   submitImg.src = "images/search.svg";
   submitImg.onclick = () => document.getElementById("id_form_rol").submit();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("search");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("search");
 
   $("#id_rol").blur(comprobarIdRolSearch);
   $("#nombre_rol").blur(comprobarNombreRolSearch);

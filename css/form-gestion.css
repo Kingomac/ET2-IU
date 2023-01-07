@@ -6,7 +6,7 @@
   padding-right: 30px;
   text-align: center;
   overflow: auto;
-  height: 90vh;
+  max-height: 90vh;
   width: 50%;
   margin: auto;
 }

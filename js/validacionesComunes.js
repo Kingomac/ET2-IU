@@ -1,6 +1,4 @@
-function ponerinvisibleerror() {
-  document.getElementById("id_caja_error").style.display = "none";
-}
+function ponerinvisibleerror() {}
 
 function ponerinvisibleformusuario() {
   document.getElementById("id_caja_formulario_usuario").style.display = "none";
@@ -12,7 +10,7 @@ function setDivInvisible(form) {
 
 function mensajeOKOLD(idElemento) {
   document.getElementById("id_texterror").innerHTML = "";
-  document.getElementById("id_caja_error").style.display = "none";
+
   document.getElementById(idElemento).style.borderColor = "#00e600";
 }
 
