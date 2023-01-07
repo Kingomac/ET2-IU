@@ -48,11 +48,11 @@ function resetOnBlurRoles() {
 //#region FORM ADD
 
 function crearFormAddRol() {
+  limpiarErrores("id_form_rol");
   resetForm("id_form_rol");
-
   resetOnBlurRoles();
 
-  document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("form-modal").showModal();
   document.getElementById("caja_id_rol").style.display = "none";
 
   document.getElementById("id_form_rol").action = "javascript:addRol()";
@@ -115,15 +115,15 @@ function peticionBackAddRol() {
 
 function crearFormEditRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
+  limpiarErrores("id_form_rol");
   resetForm("id_form_rol");
-
   resetOnBlurRoles();
+
+  document.getElementById("form-modal").showModal();
 
   document.getElementById("id_form_rol").action = "javascript:editRol()";
   document.getElementById("id_form_rol").onsubmit = () =>
     comprobarNombreRol() && comprobarDescripRol();
-
-  document.getElementById("id_caja_formulario_rol").style.display = "block";
 
   const submitImg = document.getElementById("img_form_submit");
   submitImg.src = "images/edit.svg";
@@ -182,11 +182,12 @@ function peticionEditRol() {
 
 function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
+  limpiarErrores("id_form_rol");
   resetForm("id_form_rol");
-
   resetOnBlurRoles();
 
-  document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("form-modal").showModal();
+
   document.getElementById("id_form_rol").action = "javascript:deleteRol()";
 
   const submitImg = document.getElementById("img_form_submit");
@@ -253,13 +254,13 @@ function peticionBackDeleteRol() {
 
 function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
   //Reset formulario
+  limpiarErrores("id_form_rol");
   resetForm("id_form_rol");
-
   resetOnBlurRoles();
-
-  document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
+  submitImg.style.display = "none";
   submitImg.src = "images/close.svg";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_rol");
 
@@ -281,11 +282,12 @@ function crearFormDetailRol({ id_rol, nombre_rol, descrip_rol }) {
 //#region FORM SEARCH
 function crearFormSearchRol() {
   //Reset formulario
+  limpiarErrores("id_form_rol");
   resetForm("id_form_rol");
-
   resetOnBlurRoles();
 
-  document.getElementById("id_caja_formulario_rol").style.display = "block";
+  document.getElementById("form-modal").showModal();
+
   document.getElementById("id_form_rol").action = "javascript:searchRol()";
   document.getElementById("id_form_rol").onsubmit = () =>
     comprobarIdRolSearch() &&
@@ -317,6 +319,7 @@ async function searchRol() {
     const entradas = await peticionBackSearchRol();
     resetForm("id_form_rol");
     await actualizarTablaRoles(entradas);
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,

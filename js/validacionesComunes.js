@@ -18,8 +18,8 @@ function mensajeOK(idElemento) {
   const el = document.getElementById(idElemento);
   el.style.borderColor = "#00e600";
   const err = el.nextElementSibling;
-  if (err.classList.contains("err-div")) err.remove();
-  if (err.classList.contains("error-div")) err.textContent = "";
+  if (err && err.classList.contains("err-div")) err.remove();
+  if (err && err.classList.contains("error-div")) err.textContent = "";
 }
 
 function size_minimo(idElemento, longitudminima) {
