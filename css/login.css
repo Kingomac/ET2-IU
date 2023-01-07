@@ -31,7 +31,7 @@
 
 .contenedor.caja-login {
   margin: 8vh auto 0 auto;
-  width: fit-content;
+  width: 40vw;
   padding: 4vh 4vw 4vh 4vw;
   border-radius: 25px;
   background-color: var(--color-fondo-tbody);

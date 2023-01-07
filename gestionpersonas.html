@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/form-gestion.css" />
+    <link
+      rel="stylesheet"
+      media="(orientation: portrait)"
+      href="css/general.portrait.css"
+    />
+    <link
+      rel="stylesheet"
+      media="(orientation: portrait)"
+      href="css/form-gestion.portrait.css"
+    />
     <title class="txt txt-titulo_gestion_personas"></title>
     <script type="text/javascript" src="locale/es.js"></script>
     <script type="text/javascript" src="locale/en.js"></script>
@@ -36,7 +47,7 @@
   </head>
 
   <body
-    onload="redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setDivInvisible('id_caja_formulario_persona');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPersonas();"
+    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPersonas();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_personas"></h1>
@@ -79,13 +90,17 @@
         <tbody id="table_body"></tbody>
       </table>
     </div>
-    <div id="id_caja_error">
-      <div id="id_texterror" class="txt">adfafaf</div>
-    </div>
-    <div id="id_caja_formulario_persona">
-      <form id="id_form_persona" name="form_persona" method="post">
-        <fieldset id="caja_campos_formulario">
-          <legend id="form-accion"></legend>
+    <dialog id="form-modal">
+      <div class="caja-modal" id="id_caja_formulario_persona">
+        <div class="cabecera-modal">
+          <h2 id="titulo-form" class="txt txt-titulo_add"></h2>
+          <img
+            width="50"
+            src="images/close.svg"
+            onclick="document.getElementById('form-modal').close()"
+          />
+        </div>
+        <form id="id_form_persona" name="form_persona" method="post">
           <label class="txt txt-label_dni" for="id_dni">dni</label>
           <input
             class="txt txt-formato_dni"
@@ -94,7 +109,7 @@
             name="dni"
             maxlength="9"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="nombre_persona"
             class="txt txt-label_nombre_persona"
@@ -105,7 +120,7 @@
             id="nombre_persona"
             name="nombre_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="apellidos_persona"
             class="txt txt-label_apellidos_persona"
@@ -116,7 +131,7 @@
             name="apellidos_persona"
             id="apellidos_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="fechaNacimiento_persona"
             class="txt txt-label_fecha_nacimiento_persona"
@@ -126,7 +141,7 @@
             name="fechaNacimiento_persona"
             id="fechaNacimiento_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="direccion_persona"
             class="txt txt-label_direccion_persona"
@@ -137,7 +152,7 @@
             name="direccion_persona"
             id="direccion_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="telefono_persona"
             class="txt txt-label_telefono_persona"
@@ -148,7 +163,7 @@
             name="telefono_persona"
             id="telefono_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label
             for="email_persona"
             class="txt txt-label_email_persona"
@@ -159,7 +174,7 @@
             name="email_persona"
             id="email_persona"
           />
-          <br />
+          <div class="error-div"></div>
           <label for="foto_persona" class="txt txt-label_foto_persona"></label>
           <input
             maxlength="45"
@@ -167,7 +182,6 @@
             name="foto_persona"
             id="foto_persona"
           />
-          <br />
           <img
             width="50"
             height="50"
@@ -175,9 +189,8 @@
             alt="submit"
             id="img_form_submit"
           />
-        </fieldset>
-      </form>
-      <br />
-    </div>
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>

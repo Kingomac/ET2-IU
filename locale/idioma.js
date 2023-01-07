@@ -115,7 +115,14 @@ function mensajeError({ codigo, idInput, idResaltar = idInput }) {
   errDiv.classList.add("err-div", "txt", `txt_err_${codigo}`);
   errDiv.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
 
-  elInput.parentNode.insertBefore(errDiv, elInput.nextSibling);
+  const nextEl = elInput.nextElementSibling;
+  if (nextEl.classList.contains("error-div")) {
+    nextEl.textContent = "";
+    nextEl.append(errDiv);
+  } else {
+    if (!nextEl.classList.contains("err-div"))
+      elInput.parentNode.insertBefore(errDiv, nextEl);
+  }
   document.getElementById(idResaltar).style.borderColor = "#ff0000";
   throw new Error("Error en " + idInput, { cause: codigo });
 }

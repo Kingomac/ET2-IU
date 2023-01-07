@@ -21,6 +21,7 @@ function mensajeOK(idElemento) {
   el.style.borderColor = "#00e600";
   const err = el.nextElementSibling;
   if (err.classList.contains("err-div")) err.remove();
+  if (err.classList.contains("error-div")) err.textContent = "";
 }
 
 function size_minimo(idElemento, longitudminima) {
@@ -88,6 +89,12 @@ function resetForm(idForm) {
   for (const i of form.querySelectorAll("fieldset")) {
     i.style.borderColor = "";
   }
+}
+
+function limpiarErrores(idForm) {
+  document.getElementById("img_form_submit").style.display = "block";
+  const form = document.getElementById(idForm);
+  form.querySelectorAll(".err-div").forEach((e) => (e.textContent = ""));
 }
 
 function scrollFinTabla() {

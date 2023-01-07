@@ -75,12 +75,11 @@ function resetOnBlur() {
 
 function crearFormAddPersona() {
   //Reset formulario
-  scrollFinTabla();
+  limpiarErrores("id_form_persona");
   resetForm("id_form_persona");
   resetOnBlur();
-  document.getElementById("id_caja_error").style.display = "none";
+  document.getElementById("form-modal").showModal();
 
-  document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action = "javascript:addPersona()";
 
   const submitImg = document.getElementById("img_form_submit");
@@ -96,7 +95,7 @@ function crearFormAddPersona() {
     comprobarFotoPersona() &&
     comprobarFechaNacimientoPersona();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("add");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("add");
 }
 
 async function addPersona() {
@@ -140,12 +139,11 @@ function crearFormEditPersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
-  scrollFinTabla();
+  limpiarErrores("id_form_persona");
   resetForm("id_form_persona");
   resetOnBlur();
-  document.getElementById("id_caja_error").style.display = "none";
+  document.getElementById("form-modal").showModal();
 
-  document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =
     "javascript:editPersona()";
 
@@ -162,7 +160,7 @@ function crearFormEditPersona({
     comprobarFotoPersona() &&
     comprobarFechaNacimientoPersona();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("edit");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("edit");
 
   $("#id_dni").val(dni);
   $("#nombre_persona").val(nombre_persona);
@@ -217,12 +215,11 @@ function crearFormDeletePersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
-  scrollFinTabla();
+  limpiarErrores("id_form_persona");
   resetForm("id_form_persona");
   resetOnBlur();
-  document.getElementById("id_caja_error").style.display = "none";
+  document.getElementById("form-modal").showModal();
 
-  document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =
     "javascript:deletePersona()";
 
@@ -231,7 +228,7 @@ function crearFormDeletePersona({
   submitImg.onclick = () => document.getElementById("id_form_persona").submit();
   submitImg.onsubmit = () => true;
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("delete");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("delete");
 
   $("#id_dni").val(dni);
   $("#nombre_persona").val(nombre_persona);
@@ -293,18 +290,17 @@ function crearFormDetailPersona({
   fechaNacimiento_persona,
 }) {
   //Reset formulario
-  scrollFinTabla();
+  limpiarErrores("id_form_persona");
   resetForm("id_form_persona");
   resetOnBlur();
-  document.getElementById("id_caja_error").style.display = "none";
-
-  document.getElementById("id_caja_formulario_persona").style.display = "block";
+  document.getElementById("form-modal").showModal();
 
   const submitImg = document.getElementById("img_form_submit");
+  submitImg.style.display = "none";
   submitImg.src = "images/close.svg";
   submitImg.onclick = () => setDivInvisible("id_caja_formulario_persona");
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("detail");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("detail");
 
   $("#id_dni").val(dni);
   $("#nombre_persona").val(nombre_persona);
@@ -340,12 +336,11 @@ function crearFormDetailPersona({
 //#region FORM SEARCH
 function crearFormSearchPersona() {
   //Reset formulario
-  scrollFinTabla();
+  limpiarErrores("id_form_persona");
   resetForm("id_form_persona");
   resetOnBlur();
-  document.getElementById("id_caja_error").style.display = "none";
+  document.getElementById("form-modal").showModal();
 
-  document.getElementById("id_caja_formulario_persona").style.display = "block";
   document.getElementById("id_form_persona").action =
     "javascript:searchPersona()";
 
@@ -362,7 +357,7 @@ function crearFormSearchPersona() {
     comprobarFotoPersonaSearch() &&
     comprobarFechaNacimientoPersonaSearch();
 
-  document.getElementById("form-accion").innerText = getTextoTitulo("search");
+  document.getElementById("titulo-form").innerText = getTextoTitulo("search");
 
   $("#id_dni").blur(comprobar_dni_search);
   $("#nombre_persona").blur(comprobarNombrePersonaSearch);
@@ -392,6 +387,7 @@ async function searchPersona() {
     const entradas = await peticionBackSearchPersona();
     resetForm("id_form_persona");
     await actualizarTablaPersonas(entradas);
+    document.getElementById("form-modal").close();
   } catch (e) {
     mensajeError({
       codigo: e,
