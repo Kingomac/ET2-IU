@@ -68,14 +68,21 @@
           onblur="comprobar_contrasena({idInput: 'id_contrasena_noencriptada'});"
         />
 
-        <button type="submit" id="btn-login-uepa" class="txt txt-btn_login"></button>
+        <button
+          type="submit"
+          id="btn-login-uepa"
+          class="txt txt-btn_login boton-login"
+        ></button>
       </form>
       <nav>
-        <a href="registro.html" class="txt txt-titulo_registrar"></a>
+        <a
+          href="registro.html"
+          class="txt txt-titulo_registrar boton-login"
+        ></a>
         <a
           href="#"
           onclick="document.getElementById('modal-recuperar-contrasena').showModal()"
-          class="txt txt-recuperar_contrasena"
+          class="txt txt-recuperar_contrasena boton-login"
         ></a>
       </nav>
     </div>
@@ -84,12 +91,12 @@
         <div class="cabecera-modal">
           <h2 class="txt txt-recuperar_contrasena"></h2>
           <img
+            class="boton-redondo"
             src="images/close.svg"
             width="40px"
             onclick="document.getElementById('modal-recuperar-contrasena').close()"
           />
         </div>
-        <div>
         <form
           id="id_form_cambiar_contrasena"
           class="form-login"
@@ -124,7 +131,10 @@
             id="cc_contrasena_verificar"
             onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
           />
-          <button type="submit" class="txt txt-btn_cambiar_contrasena"></button>
+          <button
+            type="submit"
+            class="txt txt-btn_cambiar_contrasena boton-login"
+          ></button>
         </form>
       </div>
     </dialog>

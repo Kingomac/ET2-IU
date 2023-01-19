@@ -103,8 +103,10 @@ function insertarMenuAcciones({
     if (leerTema == "oscuro") document.body.classList.add(leerTema);
 
     // Crear botón de cambio de tema
+    const divBtnTema = document.createElement("div");
+    divBtnTema.classList.add("cuatro");
     const btnTema = document.createElement("img");
-    btnTema.classList.add("cuatro");
+    btnTema.classList.add("boton-redondo");
     btnTema.src =
       leerTema == "claro" ? "images/modo-claro.svg" : "images/modo-oscuro.svg";
     btnTema.onclick = () => {
@@ -117,7 +119,8 @@ function insertarMenuAcciones({
           ? "images/modo-claro.svg"
           : "images/modo-oscuro.svg";
     };
-    nav.append(btnTema);
+    divBtnTema.append(btnTema);
+    nav.append(divBtnTema);
   }
 
   document.body.prepend(nav);

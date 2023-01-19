@@ -106,6 +106,10 @@ function getLangClass(classList) {
   return undefined;
 }
 
+/**
+ * Muestra mensaje de error después del campo
+ * @param {{codigo: string, idInput: string, idResaltar?: string}} params
+ */
 function mensajeError({ codigo, idInput, idResaltar = idInput }) {
   const elInput = document.getElementById(idInput);
   const errDiv = elInput.nextElementSibling.classList.contains("err-div")
@@ -131,6 +135,44 @@ function removeLangClass(classList) {
   for (const i of classList) {
     if (i.startsWith("txt-")) classList.remove(i);
   }
+}
+
+/**
+ *
+ * @param {{codigo: string, mensaje?: string}} x
+ */
+function mensajeErrorModal({ codigo, mensaje }) {
+  const modal = document.createElement("dialog");
+  const divModal = document.createElement("div");
+  const cabeceraModal = document.createElement("div");
+
+  cabeceraModal.classList.add("cabecera-modal");
+  divModal.classList.add("caja-modal");
+
+  const tituloModal = document.createElement("h2");
+  tituloModal.classList.add("txt", "txt-titulo_error_modal");
+  tituloModal.innerText = getTextoTitulo("error_modal");
+  const cerrarModal = document.createElement("img");
+  cerrarModal.classList.add("boton-redondo");
+  cerrarModal.src = "images/close.svg";
+  cerrarModal.width = "50";
+  cerrarModal.onclick = () => modal.close();
+  cabeceraModal.append(tituloModal, cerrarModal);
+
+  const divErr = document.createElement("div");
+  divErr.classList.add("txt");
+  divErr.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
+
+  const detalleError = document.createElement("span");
+  detalleError.innerText = mensaje;
+
+  const divRelleno = document.createElement("div");
+  divRelleno.style.height = "3rem";
+
+  divModal.append(cabeceraModal, divErr, detalleError, divRelleno);
+  modal.append(divModal);
+  document.body.append(modal);
+  modal.showModal();
 }
 
 // function crearSelectIdioma() {

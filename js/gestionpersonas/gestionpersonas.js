@@ -15,7 +15,7 @@ async function actualizarTablaPersonas(datos) {
   try {
     datos ??= await peticionBackShowAllPersona();
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: err,
       idInput: "caja_campos_formulario",
     });
@@ -118,7 +118,7 @@ async function addPersona() {
     await actualizarTablaPersonas();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -195,7 +195,7 @@ async function editPersona() {
     await actualizarTablaPersonas();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -271,7 +271,7 @@ async function deletePersona() {
     await actualizarTablaPersonas();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -392,7 +392,7 @@ async function searchPersona() {
     await actualizarTablaPersonas(entradas);
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });

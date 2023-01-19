@@ -89,6 +89,9 @@ const EN = Object.freeze({
   btn_cambiar_contrasena: "Change password",
   fields_nueva_contrasena: "Write your new password",
 
+  //Errores
+  titulo_error_modal: "Error",
+  err_rol_desconocido: "Unknown role with ID:",
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción largo",
   //err_id_accion_negativo: "ID de acción no puede ser negativo",

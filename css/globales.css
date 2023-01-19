@@ -1,6 +1,7 @@
 body {
 
   --fuente-primaria: Verdana, Geneva, Tahoma, sans-serif;
+  --color-fuente: black;
 
   --color-fondo: #c3a7f6;
   --color-barra-superior: #8f5aee;
@@ -9,16 +10,21 @@ body {
   
   --color-menu-boton-borde: #1e0746;
   --color-menu-boton-fondo: #e3d5fb;
+
+  --filtro-invert: invert(0%);
 }
 
 body.oscuro {
-  --fuente-primaria: Comic Sans MS;
+  --fuente-primaria: Verdana, Geneva, Tahoma, sans-serif;
+  --color-fuente: white;
 
-  --color-fondo: red;
-  --color-barra-superior: #8f5aee;
-  --color-fondo-thead: #8f5aee;
-  --color-fondo-tbody: #f8f4fe;
+  --color-fondo: rgb(44, 43, 43);
+  --color-barra-superior: #563691;
+  --color-fondo-thead: #332054;
+  --color-fondo-tbody: #39383b;
   
-  --color-menu-boton-borde: #5715cd;
-  --color-menu-boton-fondo: #e3d5fb;
+  --color-menu-boton-borde: #330c75;
+  --color-menu-boton-fondo: #231e2d;
+
+  --filtro-invert: invert(100%);
 }

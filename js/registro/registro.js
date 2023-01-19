@@ -34,7 +34,7 @@ async function registrar() {
     await peticionBackRegistrar();
     window.location.href = "login.html";
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: err,
       idInput: "id_form_registro",
     });

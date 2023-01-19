@@ -32,7 +32,7 @@ function peticionBackCambiarContrasena(
         }
       })
       .fail(function (jqXHR) {
-        mensajeError({
+        mensajeErrorModal({
           idInput: "id_form_cambiar_contrasena",
           codigo: `http_status_${jqXHR}`,
         });
@@ -52,7 +52,7 @@ async function cambiarContrasenaLogin() {
     mensajeOK("id_fields_cambiar_contrasena");
     document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       idInput: "id_form_cambiar_contrasena",
       codigo: err,
     });
@@ -68,7 +68,7 @@ async function cambiarContrasenaMenu() {
     mensajeOK("id_fields_cambiar_contrasena");
     document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       idInput: "id_form_cambiar_contrasena",
       codigo: err,
     });

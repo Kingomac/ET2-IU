@@ -3,7 +3,7 @@
   animation: animTitulo 5s infinite linear alternate;
 }
 
-.caja-login a, .caja-login button {
+.boton-login {
   font-size: 14px;
   text-decoration: none;
   padding: 1vh 2vw 1vh 2vw;
@@ -14,13 +14,13 @@
   background-color: var(--color-fondo-thead);
 }
 
-.caja-login a:hover, .caja-login button:hover {
+.boton-login:hover {
   cursor: pointer;
   background-color: #552051;
   animation: none;
 }
 
-.caja-login a:active, .caja-login button:active {
+.boton-login:active {
   background-color: #250c23;
 }
 

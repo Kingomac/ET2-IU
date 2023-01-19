@@ -41,7 +41,7 @@ async function getRoles() {
   try {
     const peticion = await peticionRolesBack();
     if (peticion.code != "RECORDSET_DATOS") {
-      mensajeError({
+      mensajeErrorModal({
         codigo: peticion.code,
         idInput: "caja_campos_formulario",
       });
@@ -49,7 +49,7 @@ async function getRoles() {
     }
     return peticion.resource;
   } catch (err) {
-    mensajeError({ codigo: `get_roles_${err.code}` });
+    mensajeErrorModal({ codigo: `get_roles_${err.code}` });
     return undefined;
   }
 }
@@ -76,7 +76,7 @@ function peticionRolesBack() {
         } else resolve(res);
       })
       .fail((res) => {
-        mensajeError({
+        mensajeErrorModal({
           codigo: `http_status_${res.status}`,
           idInput: "caja_campos_formulario",
         });

@@ -11,7 +11,7 @@ async function add_usuario() {
       await actualizarTablaUsuarios();
       document.getElementById("form-modal").close();
     } catch (err) {
-      mensajeError({
+      mensajeErrorModal({
         codigo: err,
         idInput: "id_form_usuario",
       });
@@ -31,7 +31,7 @@ async function edit_usuario() {
       await actualizarTablaUsuarios();
       document.getElementById("form-modal").close();
     } catch (err) {
-      mensajeError({
+      mensajeErrorModal({
         codigo: err,
         idInput: "id_form_usuario",
       });
@@ -49,7 +49,7 @@ async function delete_usuario() {
     document.getElementById("form-modal").close();
     await actualizarTablaUsuarios();
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: err,
       idInput: "id_form_usuario",
     });
@@ -66,7 +66,7 @@ async function search_usuario() {
       await actualizarTablaUsuarios(peticion.resource);
       document.getElementById("form-modal").close();
     } catch (err) {
-      mensajeError({
+      mensajeErrorModal({
         codigo: err,
         idInput: "id_form_usuario",
       });
@@ -315,7 +315,7 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
 
 /**
  * Actualiza la tabla de usuarios con datos enviados como parámetro o se piden al back con ajax
- * @param {{dni: string, contrasena: string, id_rol: number|{id_rol: number, nombre_rol: string, descrip_rol: string}, usuario: string}} datos
+ * @param {{dni: string, contrasena: string, id_rol: number|{id_rol: number, nombre_rol: string, descrip_rol: string}, usuario: string}[]} datos
  */
 async function actualizarTablaUsuarios(datos) {
   const tbody = document.getElementById("table_body");
@@ -328,25 +328,14 @@ async function actualizarTablaUsuarios(datos) {
   try {
     datos ??= await peticionBackSHOWALLusuario();
   } catch (err) {
-    mensajeError({ codigo: err, idInput: "id_form_usuario" });
+    mensajeErrorModal({ codigo: err, idInput: "id_form_usuario" });
   }
-  const roles = await getRoles();
   for (const i of datos) {
-    const idRol = i.id_rol.id_rol || i.id_rol;
-    let irol = 0;
-    while (irol < roles.length && roles[irol].id_rol != idRol) {
-      irol++;
-    }
-
-    if (irol == roles.length) {
-      irol = i.id_rol;
-    }
-
     tbody.append(
       crearTR(
         i.dni,
         i.usuario,
-        getTextosRoles(roles[irol].nombre_rol) || roles[irol].nombre_rol,
+        i.id_rol.nombre_rol || errorRolDesconocido(i.id_rol),
         crearBotonCRUD({
           accion: "edit",
           click: () => crearformEDITusuario(i.dni, i.usuario, i.id_rol.id_rol),
@@ -365,4 +354,12 @@ async function actualizarTablaUsuarios(datos) {
     );
   }
   trLoadingBar.remove();
+}
+
+function errorRolDesconocido(id) {
+  mensajeErrorModal({ codigo: "rol_desconocido", mensaje: id });
+  const i = document.createElement("span");
+  i.innerText = id;
+  i.style.color = "red";
+  return i;
 }

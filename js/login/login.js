@@ -52,7 +52,7 @@ function loginAjaxPromesa() {
         }
       })
       .fail(function (jqXHR) {
-        mensajeError({
+        mensajeErrorModal({
           idInput: "id_form_login",
           codigo: `http_status_${jqXHR}`,
         });
@@ -71,7 +71,7 @@ async function login() {
       window.location.href = "menu.html";
     })
     .catch((res) => {
-      mensajeError({ idInput: "id_form_login", codigo: res });
+      mensajeErrorModal({ idInput: "id_form_login", codigo: res });
       //eliminarcampo('controlador');
       //eliminarcampo('action');
       //setLang(idioma);

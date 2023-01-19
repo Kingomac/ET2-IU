@@ -6,7 +6,7 @@ async function getFuncionalidades() {
   try {
     const peticion = await peticionFuncionalidadesBack();
     if (peticion.code != "RECORDSET_DATOS") {
-      mensajeError({
+      mensajeErrorModal({
         codigo: peticion.code,
         idInput: "caja_campos_formulario",
       });
@@ -14,7 +14,7 @@ async function getFuncionalidades() {
     }
     return peticion.resource;
   } catch (err) {
-    mensajeError({ codigo: `get_funcionalidades_${err.code}` });
+    mensajeErrorModal({ codigo: `get_funcionalidades_${err.code}` });
     return undefined;
   }
 }
@@ -41,7 +41,7 @@ function peticionFuncionalidadesBack() {
         } else resolve(res);
       })
       .fail((res) => {
-        mensajeError({
+        mensajeErrorModal({
           codigo: `http_status_${res.status}`,
           idInput: "caja_campos_formulario",
         });

@@ -91,6 +91,9 @@ const GA = Object.freeze({
   // Cambiar contraseña
   btn_cambiar_contrasena: "Cambiar contrasinal",
 
+  //Errores
+  titulo_error_modal: "Erro",
+  err_rol_desconocido: "Rol descoñecido con ID:",
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción longo",
   //err_id_accion_negativo: "ID de acción non pode ser negativo",

@@ -80,7 +80,7 @@ async function addAccion() {
     resetForm("id_form_accion");
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -144,7 +144,7 @@ async function editAccion() {
     await actualizarTablaAcciones();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -213,7 +213,7 @@ async function deleteAccion() {
     await actualizarTablaAcciones();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -311,7 +311,7 @@ async function searchAccion() {
     await actualizarTablaAcciones(entradas);
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });

@@ -38,7 +38,7 @@ async function actualizarTablaPermisos(datos) {
       datos = await peticionBackSHOWALLrolaccionfuncionalidad();
       actualizarSelectSearch(datos);
     } catch (err) {
-      mensajeError({
+      mensajeErrorModal({
         idInput: "id_caja_error",
         codigo: err,
       });
@@ -140,11 +140,15 @@ function crearBtnAddDelete({
 
   if (tienePermiso) {
     btnTick.src = "./images/tick-disabled.svg";
+    btnTick.classList.add("boton-redondo-desactivado");
+    btnDelete.classList.add("boton-redondo");
     btnDelete.src = "./images/close.svg";
     btnDelete.onclick = () =>
       deleteRolAccionFuncionalidad({ id_accion, id_funcionalidad, id_rol });
   } else {
     btnTick.src = "./images/tick.svg";
+    btnTick.classList.add("boton-redondo");
+    btnDelete.classList.add("boton-redondo-desactivado");
     btnDelete.src = "./images/close-disabled.svg";
     btnTick.onclick = () =>
       addRolAccionFuncionalidad({ id_accion, id_funcionalidad, id_rol });
@@ -169,7 +173,7 @@ async function deleteRolAccionFuncionalidad({
     const datos = await peticionBackSEARCHrolaccionfuncionalidad();
     await actualizarTablaPermisos(datos);
   } catch (err) {
-    mensajeError({ idInput: "id_caja_error", codigo: err });
+    mensajeErrorModal({ idInput: "id_caja_error", codigo: err });
   }
 }
 
@@ -187,29 +191,13 @@ async function addRolAccionFuncionalidad({
     const datos = await peticionBackSEARCHrolaccionfuncionalidad();
     await actualizarTablaPermisos(datos);
   } catch (err) {
-    mensajeError({ idInput: "id_caja_error", codigo: err });
+    mensajeErrorModal({ idInput: "id_caja_error", codigo: err });
   }
 }
 
 /**
- * 
- * @param {{
-        id_funcionalidad: {
-          id_funcionalidad: number,
-          nombre_funcionalidad: string,
-          descrip_funcionalidad: string
-        },
-        id_accion: {
-          id_accion: number,
-          nombre_accion: string,
-          descrip_accion: string
-        },
-        id_rol: {
-          id_rol: number,
-          nombre_rol: string,
-          descrip_rol: string
-        }
-      }[] | undefined} datos 
+ *
+ * @param {{id_funcionalidad: {id_funcionalidad: number, nombre_funcionalidad: string, descrip_funcionalidad: string }, id_accion: { id_accion: number, nombre_accion: string, descrip_accion: string }, id_rol: {id_rol: number, nombre_rol: string, descrip_rol: string }}[] | undefined} datos
  */
 function actualizarSelectSearch(datos) {
   const select = document.getElementById("select_funcionalidad");
@@ -237,7 +225,7 @@ async function searchFuncionalidad() {
     const datos = await peticionBackSEARCHrolaccionfuncionalidad();
     actualizarTablaPermisos(datos);
   } catch (err) {
-    mensajeError({
+    mensajeErrorModal({
       idInput: "id_caja_error",
       codigo: err,
     });

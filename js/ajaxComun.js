@@ -35,7 +35,7 @@ function crearBotonCRUD({
   btn.src = src || `images/${accion}.svg`;
   btn.width = width;
   btn.height = height;
-  btn.className = `txt txt-titulo_${accion} ${clase}`;
+  btn.className = `txt txt-titulo_${accion} ${clase} boton-redondo`;
   btn.title = getTextoTitulo(accion);
   btn.onclick = click;
   btn.onsubmit = onsubmit;

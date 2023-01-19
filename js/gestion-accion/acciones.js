@@ -6,7 +6,7 @@ async function getAcciones() {
   try {
     const peticion = await peticionAccionesBack();
     if (peticion.code != "RECORDSET_DATOS") {
-      mensajeError({
+      mensajeErrorModal({
         codigo: peticion.code,
         idInput: "caja_campos_formulario",
       });
@@ -14,7 +14,7 @@ async function getAcciones() {
     }
     return peticion.resource;
   } catch (err) {
-    mensajeError({ codigo: `get_acciones_${err.code}` });
+    mensajeErrorModal({ codigo: `get_acciones_${err.code}` });
     return undefined;
   }
 }
@@ -41,7 +41,7 @@ function peticionAccionesBack() {
         } else resolve(res);
       })
       .fail((res) => {
-        mensajeError({
+        mensajeErrorModal({
           codigo: `http_status_${res.status}`,
           idInput: "caja_campos_formulario",
         });

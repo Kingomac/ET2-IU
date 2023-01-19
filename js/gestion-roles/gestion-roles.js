@@ -79,7 +79,7 @@ async function addRol() {
     await actualizarTablaRoles();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -147,7 +147,7 @@ async function editRol() {
     await actualizarTablaRoles();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -219,7 +219,7 @@ async function deleteRol() {
     await actualizarTablaRoles();
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
@@ -323,7 +323,7 @@ async function searchRol() {
     await actualizarTablaRoles(entradas);
     document.getElementById("form-modal").close();
   } catch (e) {
-    mensajeError({
+    mensajeErrorModal({
       codigo: e,
       idInput: "caja_campos_formulario",
     });
