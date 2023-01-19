@@ -54,13 +54,16 @@ function loginAjaxPromesa() {
       .fail(function (jqXHR) {
         mensajeErrorModal({
           idInput: "id_form_login",
-          codigo: `http_status_${jqXHR}`,
+          codigo: `http_status_${jqXHR.code}`,
         });
       });
   });
 }
 
 async function login() {
+  if (!comprobar_form_login()) {
+    return;
+  }
   await loginAjaxPromesa()
     .then((res) => {
       mensajeOK("id_form_login");

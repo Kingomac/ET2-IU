@@ -173,6 +173,7 @@ function mensajeErrorModal({ codigo, mensaje }) {
   modal.append(divModal);
   document.body.append(modal);
   modal.showModal();
+  console.error("Error en", codigo, "con mensaje", mensaje);
 }
 
 // function crearSelectIdioma() {

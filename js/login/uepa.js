@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-login-uepa");
   btn.style.transform = "translateY(0)";
   btn.style.transitionDuration = ".5s";
-  btn.onmouseover = () => {
+  btn.onmouseover = btn.onclick = () => {
     try {
       comprobar_form_login();
     } catch (e) {
