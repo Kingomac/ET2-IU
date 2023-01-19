@@ -16,12 +16,12 @@
 
 .boton-login:hover {
   cursor: pointer;
-  background-color: #552051;
+  background-color: var(--color-boton-login-hover);
   animation: none;
 }
 
 .boton-login:active {
-  background-color: #250c23;
+  background-color: var(--color-boton-login-active);
 }
 
 .caja-login input {

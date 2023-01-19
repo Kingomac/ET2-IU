@@ -11,6 +11,13 @@ a {
   color: var(--color-fuente);
 }
 
+input {
+  background-color: var(--color-fondo-input);
+  border-color: var(--color-fondo-input);
+  border-style: solid;
+  color: var(--color-fuente);
+}
+
 
 table {
   margin-left: auto;

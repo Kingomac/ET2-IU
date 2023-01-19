@@ -12,6 +12,11 @@ body {
   --color-menu-boton-fondo: #e3d5fb;
   --color-menu-boton-grande: #e3d5fb;
 
+  --color-boton-login-hover: #552051;
+  --color-boton-login-active: #250c23;
+
+  --color-fondo-input: white;
+
   --filtro-invert: invert(0%);
 }
 
@@ -28,6 +33,11 @@ body.oscuro {
   --color-menu-boton-borde: #64439c;
   --color-menu-boton-fondo: #392360;
   --color-menu-boton-grande: #190839;
+
+  --color-fondo-input: #200d49;
+
+  --color-boton-login-hover: #4a2384;
+  --color-boton-login-active: #100529;
 
   --filtro-invert: invert(90%);
 }
