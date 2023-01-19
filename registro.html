@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/general.css" />
+    <link
+      rel="stylesheet"
+      media="(orientation: portrait)"
+      href="css/general.portrait.css"
+    />
+    <link rel="stylesheet" href="css/registro.css" />
+    <link
+      rel="stylesheet"
+      media="(orientation: portrait)"
+      href="css/registro.portrait.css"
+    />
     <title class="txt txt-titulo_registro"></title>
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="./locale/es.js"></script>
@@ -37,15 +48,6 @@
       <h1 class="txt txt-titulo_registro"></h1>
     </header>
 
-    <div id="id_caja_error">
-      <div id="id_texterror" class="txt"></div>
-      <img
-        src="./images/close.svg"
-        width="25"
-        height="25"
-        onclick="document.getElementById('id_caja_error').style.display = 'none';"
-      />
-    </div>
     <div>
       <form id="id_form_registro" action="javascript:registrar()">
         <fieldset>
@@ -59,7 +61,6 @@
             maxlength="9"
             onblur="comprobar_dni()"
           />
-          <br />
           <label
             for="nombre_persona"
             class="txt txt-label_nombre_persona"
@@ -71,7 +72,6 @@
             name="nombre_persona"
             onblur="comprobarNombrePersona()"
           />
-          <br />
           <label
             for="apellidos_persona"
             class="txt txt-label_apellidos_persona"
@@ -83,7 +83,6 @@
             id="apellidos_persona"
             onblur="comprobarApellidosPersona()"
           />
-          <br />
           <label
             for="fechaNacimiento_persona"
             class="txt txt-label_fecha_nacimiento_persona"
@@ -94,7 +93,6 @@
             id="fechaNacimiento_persona"
             onblur="comprobarFechaNacimientoPersona()"
           />
-          <br />
           <label
             for="direccion_persona"
             class="txt txt-label_direccion_persona"
@@ -106,7 +104,6 @@
             id="direccion_persona"
             onblur="comprobarDireccionPersona()"
           />
-          <br />
           <label
             for="telefono_persona"
             class="txt txt-label_telefono_persona"
@@ -118,7 +115,6 @@
             id="telefono_persona"
             onblur="comprobarTelefonoPersona()"
           />
-          <br />
           <label
             for="email_persona"
             class="txt txt-label_email_persona"
@@ -130,7 +126,6 @@
             id="email_persona"
             onblur="comprobarEmailPersona()"
           />
-          <br />
           <label for="foto_persona" class="txt txt-label_foto_persona"></label>
           <input
             maxlength="45"
@@ -149,14 +144,12 @@
             name="usuario"
             onblur="comprobar_usuario();"
           />
-          <br />
           <label for="id_contrasena" class="txt txt-label_contrasena"></label>
           <input
             type="password"
             id="id_contrasena"
             onblur="comprobar_contrasena();"
           />
-          <br />
           <label
             for="id_contrasena_verificar"
             class="txt txt-label_contrasena_verificar"
@@ -166,10 +159,10 @@
             id="id_contrasena_verificar"
             onblur="comprobar_contrasena_verificada()"
           />
-          <br />
           <label for="id_id_rol" class="txt txt-label_rol"></label>
         </fieldset>
         <img
+          class="boton-redondo"
           src="images/add.svg"
           width="50"
           height="50"

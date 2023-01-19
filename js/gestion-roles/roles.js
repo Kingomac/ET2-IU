@@ -7,6 +7,7 @@ async function crearSelectRoles({
   vacio = false,
   itemseleccionado,
   readonly = false,
+  className = "",
 }) {
   const datos = await getRoles();
   if (datos === undefined) return;
@@ -14,6 +15,7 @@ async function crearSelectRoles({
   const select = document.createElement("select");
   select.name = "id_rol";
   select.id = "id_id_rol";
+  select.className = className;
 
   for (const rol of datos) {
     const option = document.createElement("option");

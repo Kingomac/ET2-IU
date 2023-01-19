@@ -24,6 +24,7 @@ async function appendSelectRoles() {
     await crearSelectRoles({
       readonly: false,
       vacio: false,
+      className: "select-body",
     })
   );
 }

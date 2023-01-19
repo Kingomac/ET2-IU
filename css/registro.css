@@ -1,0 +1,16 @@
+fieldset {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 10px;
+  width: 75%;
+  align-items: center;
+}
+
+fieldset input {
+  width: 80%;
+}
+
+.err-div {
+  grid-column: 1/span 2;
+  text-align: center;
+}
