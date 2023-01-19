@@ -10,21 +10,24 @@ body {
   
   --color-menu-boton-borde: #1e0746;
   --color-menu-boton-fondo: #e3d5fb;
+  --color-menu-boton-grande: #e3d5fb;
 
   --filtro-invert: invert(0%);
 }
 
 body.oscuro {
   --fuente-primaria: Verdana, Geneva, Tahoma, sans-serif;
+
   --color-fuente: white;
+  --color-fondo: #392360;
 
-  --color-fondo: rgb(44, 43, 43);
-  --color-barra-superior: #563691;
-  --color-fondo-thead: #332054;
-  --color-fondo-tbody: #39383b;
-  
-  --color-menu-boton-borde: #330c75;
-  --color-menu-boton-fondo: #231e2d;
+  --color-barra-superior: #190839;
+  --color-fondo-thead: #1e0a41;
+  --color-fondo-tbody: #2a1c47;
 
-  --filtro-invert: invert(100%);
+  --color-menu-boton-borde: #64439c;
+  --color-menu-boton-fondo: #392360;
+  --color-menu-boton-grande: #190839;
+
+  --filtro-invert: invert(90%);
 }
