@@ -11,7 +11,7 @@ a {
   color: var(--color-fuente);
 }
 
-input {
+input, textarea {
   background-color: var(--color-fondo-input);
   border-color: var(--color-fondo-input);
   border-style: solid;
