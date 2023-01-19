@@ -1,10 +1,11 @@
-@media (min-resolution: 150dpi) {
-  .menu-superior {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    padding: 2vh 0 2vh 0;
-    position: static;
-  }
+.menu-superior {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 2vh 0 2vh 0;
+  position: static;
+}
 
+.caja-modal {
+  width: 85%;
 }

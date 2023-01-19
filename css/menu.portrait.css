@@ -1,0 +1,8 @@
+.grid-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-menu li {
+  width: 200px;
+}
