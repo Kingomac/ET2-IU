@@ -4,8 +4,12 @@ fieldset {
   margin: 10px;
   width: 75%;
   align-items: center;
+  justify-items: center;
 }
 
+fieldset select {
+  width: 82.5%;
+}
 fieldset input {
   width: 80%;
 }

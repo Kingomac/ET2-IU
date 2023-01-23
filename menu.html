@@ -38,10 +38,10 @@
   </head>
 
   <body
-    onload="redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
   >
     <header>
-      <h1 class="txt txt-titulo_menu">ET2</h1>
+      <h1 class="txt txt-titulo_menu"></h1>
     </header>
     <nav>
       <ul class="grid-menu">
@@ -99,7 +99,7 @@
         <div class="cabecera-modal">
           <h2 class="txt txt-fields_nueva_contrasena"></h2>
           <img
-            class="boton-redondo"
+            class="boton-redondo txt txt-titulo_modal_cerrar"
             src="images/close.svg"
             width="40px"
             onclick="document.getElementById('modal-recuperar-contrasena').close()"

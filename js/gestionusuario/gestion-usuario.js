@@ -7,7 +7,6 @@ async function add_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionADDusuarioBack();
-      await crearformADDusuario();
       await actualizarTablaUsuarios();
       document.getElementById("form-modal").close();
     } catch (err) {
@@ -27,7 +26,6 @@ async function edit_usuario() {
   if (comprobar_form_usuario_add()) {
     try {
       await peticionEDITusuarioBack();
-      await crearformEDITusuario();
       await actualizarTablaUsuarios();
       document.getElementById("form-modal").close();
     } catch (err) {

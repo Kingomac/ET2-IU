@@ -39,7 +39,7 @@
   </head>
 
   <body
-    onload="redirigirLoginTrue(PAGINAS.menu);/*alternarDisplay('id_caja_cambiar_contrasena');*/setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
+    onload="cargarTema();redirigirLoginTrue(PAGINAS.menu);/*alternarDisplay('id_caja_cambiar_contrasena');*/setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
   >
     <div class="contenedor caja-login">
       <header>
@@ -61,7 +61,10 @@
           onblur="comprobar_usuario();"
         />
 
-        <label for="id_contrasena" class="txt txt-label_contrasena"></label>
+        <label
+          for="id_contrasena_noencriptada"
+          class="txt txt-label_contrasena"
+        ></label>
         <input
           type="password"
           id="id_contrasena_noencriptada"
@@ -92,7 +95,7 @@
         <div class="cabecera-modal">
           <h2 class="txt txt-recuperar_contrasena"></h2>
           <img
-            class="boton-redondo"
+            class="boton-redondo txt txt-titulo_modal_cerrar"
             src="images/close.svg"
             width="40px"
             onclick="document.getElementById('modal-recuperar-contrasena').close()"
@@ -100,7 +103,6 @@
         </div>
         <form
           id="id_form_cambiar_contrasena"
-          class="form-login"
           action="javascript:cambiarContrasenaLogin()"
           method="POST"
         >

@@ -30,6 +30,11 @@ const EN = Object.freeze({
   rol_responsable: "Responsible",
   err_RECORDSET_VACIO: "No results",
 
+  // Modales
+  titulo_modal_cerrar: "Close",
+  modal_mensaje_exito: "🤯 Successful operation 🤯",
+  titulo_modal_exito: "🤩🤩 Sucess 🤩🤩 ",
+
   // Gestion personas
   titulo_gestion_personas: "People management",
   label_nombre_persona: "Name",
@@ -182,7 +187,7 @@ const EN = Object.freeze({
   err_dni_EXISTE_EN_usuario_KO:
     "There's an user registered with that DNI so delete that user before deleting the person",
   err_dni_EXISTE_en_persona_KO: "This DNI is already registered",
-  err_dni_NO_EXISTE_en_persona_KO: "There is not any user with that DNI",
+  err_dni_NO_EXISTE_en_persona_KO: "There is not any person with that DNI",
   err_dni_EXISTE_en_usuario_KO: "This DNI is already registered",
   err_dni_NO_EXISTE_en_usuario_KO: "There is not any user with that DNI",
   err_email_EXISTE_en_persona_KO: "The entered email is already registered",

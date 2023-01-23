@@ -42,7 +42,7 @@
   </head>
 
   <body
-    onload="ponerinvisibleerror();setLang(readCookie('lang'));appendSelectRoles();insertarMenuAcciones()"
+    onload="cargarTema();ponerinvisibleerror();setLang(readCookie('lang'));appendSelectRoles();insertarMenuAcciones({ pagVolver: 'login.html' })"
   >
     <header>
       <h1 class="txt txt-titulo_registro"></h1>
@@ -162,7 +162,7 @@
           <label for="id_id_rol" class="txt txt-label_rol"></label>
         </fieldset>
         <img
-          class="boton-redondo"
+          class="boton-redondo boton-fondo-blanco txt txt-titulo_registrar"
           src="images/add.svg"
           width="50"
           height="50"

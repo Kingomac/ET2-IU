@@ -250,24 +250,20 @@ function crearFormDeletePersona({
   $("#email_persona").attr("readonly", true);
   $("#foto_persona").attr("readonly", true);
   $("#fechaNacimiento_persona").attr("readonly", true);
+
+  $("#id_dni").off("blur");
+  $("#nombre_persona").off("blur");
+  $("#apellidos_persona").off("blur");
+  $("#direccion_persona").off("blur");
+  $("#telefono_persona").off("blur");
+  $("#email_persona").off("blur");
+  $("#foto_persona").off("blur");
+  $("#fechaNacimiento_persona").off("blur");
 }
 
 async function deletePersona() {
-  if (
-    !comprobarNombrePersona() ||
-    !comprobarApellidosPersona() ||
-    !comprobarDireccionPersona() ||
-    !comprobarTelefonoPersona() ||
-    !comprobarEmailPersona() ||
-    !comprobarFotoPersona()
-  ) {
-    console.error("campos erroneos");
-    return;
-  }
   try {
     await peticionBackDeletePersona();
-    document.getElementById("id_caja_formulario_persona").style.display =
-      "none";
     await actualizarTablaPersonas();
     document.getElementById("form-modal").close();
   } catch (e) {

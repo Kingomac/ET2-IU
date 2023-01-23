@@ -7,7 +7,7 @@ function peticionBackCambiarContrasena(
   const datoDni = dni || document.getElementById("cc_dni").value;
   const datoContrasena =
     contrasenaSinEncriptar ||
-    document.getElementById("cc_contrasena_noencriptada");
+    document.getElementById("cc_contrasena_noencriptada").value;
 
   const datos = new URLSearchParams({
     controlador: "AUTH",
@@ -65,7 +65,7 @@ async function cambiarContrasenaMenu() {
   }
   try {
     await peticionBackCambiarContrasena({ dni: await getDniUsuario() });
-    mensajeOK("id_fields_cambiar_contrasena");
+    mensajeOKmodal();
     document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
     mensajeErrorModal({

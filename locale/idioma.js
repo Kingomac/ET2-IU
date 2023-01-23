@@ -116,7 +116,7 @@ function mensajeError({ codigo, idInput, idResaltar = idInput }) {
     ? elInput.nextElementSibling
     : document.createElement("div");
 
-  errDiv.classList.add("err-div", "txt", `txt_err_${codigo}`);
+  errDiv.classList.add("err-div", "txt", `txt-err_${codigo}`);
   errDiv.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
 
   const nextEl = elInput.nextElementSibling;
@@ -161,10 +161,10 @@ function mensajeErrorModal({ codigo, mensaje }) {
 
   const divErr = document.createElement("div");
   divErr.classList.add("txt");
-  divErr.innerText = lang[`err_${codigo}`] || `${ALT_TEXT} (${codigo})`;
+  divErr.innerText = lang[`err_${codigo}`] || `${codigo}`;
 
   const detalleError = document.createElement("span");
-  detalleError.innerText = mensaje;
+  detalleError.innerText = mensaje || "";
 
   const divRelleno = document.createElement("div");
   divRelleno.style.height = "3rem";

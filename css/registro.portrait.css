@@ -3,3 +3,7 @@ fieldset {
   flex-direction: column;
   width: 85%;
 }
+
+select {
+  width: 80%;
+}

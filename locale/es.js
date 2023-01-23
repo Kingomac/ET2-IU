@@ -31,6 +31,11 @@ const ES = Object.freeze({
   rol_responsable: "Responsable",
   err_RECORDSET_VACIO: "No ha habido resultados de la búsqueda",
 
+  // Modales
+  titulo_modal_cerrar: "Cerrar",
+  modal_mensaje_exito: "😻 Operación exitosa 😻",
+  titulo_modal_exito: "🐈🐈 Éxito 🐈🐈",
+
   // Gestion personas
   titulo_gestion_personas: "Gestión de personas",
   label_nombre_persona: "Nombre",

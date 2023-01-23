@@ -30,6 +30,11 @@ const GA = Object.freeze({
   rol_responsable: "Responsable",
   err_RECORDSET_VACIO: "Non houbo resultados na procura",
 
+  // Modales
+  titulo_modal_cerrar: "Pechar",
+  modal_mensaje_exito: "😻 Operación exitosa 😻",
+  titulo_modal_exito: "🐈🐈 Éxito 🐈🐈",
+
   // Gestion personas
   titulo_gestion_personas: "Xestión de personas",
   label_nombre_persona: "Nome",

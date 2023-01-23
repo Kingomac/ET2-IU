@@ -75,6 +75,7 @@ async function login() {
     })
     .catch((res) => {
       mensajeErrorModal({ idInput: "id_form_login", codigo: res });
+      console.log("HOLA MIRAME 🙌🙌🙌🙌", res);
       //eliminarcampo('controlador');
       //eliminarcampo('action');
       //setLang(idioma);

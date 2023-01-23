@@ -32,7 +32,7 @@
     ></script>
   </head>
   <body
-    onload="redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPermisos();"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPermisos();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_permisos"></h1>
@@ -49,6 +49,7 @@
         <label
           for="select_funcionalidad"
           class="txt txt-label_permisos_select_funcionalidad"
+          style="text-align: center"
         ></label>
         <select
           name="id_funcionalidad"

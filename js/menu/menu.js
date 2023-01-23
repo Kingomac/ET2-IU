@@ -26,11 +26,12 @@ function crearLista(...elems) {
 
 /**
  * Crea e inserta el menú de acciones para usuarios logueados
- * @param {{desconectar?: boolean, volver?: boolean, selectIdioma?:boolean, tema?:boolean}} params
+ * @param {{desconectar?: boolean, volver?: boolean, pagVolver?:string, selectIdioma?:boolean, tema?:boolean}} params
  */
 function insertarMenuAcciones({
   desconectar = true,
   volver = true,
+  pagVolver = "menu.html",
   selectIdioma = true,
   nombreUsuario = true,
   tema = true,
@@ -59,7 +60,7 @@ function insertarMenuAcciones({
     btnVolver.innerText = getTextoTitulo("volver");
     btnVolver.classList.add("txt");
     btnVolver.classList.add("txt-titulo_volver");
-    btnVolver.href = "menu.html";
+    btnVolver.href = pagVolver;
     btnVolver.classList.add("uno");
     nav.append(btnVolver);
   }
@@ -108,20 +109,59 @@ function insertarMenuAcciones({
     const btnTema = document.createElement("img");
     btnTema.classList.add("boton-redondo");
     btnTema.src =
-      leerTema == "claro" ? "images/modo-claro.svg" : "images/modo-oscuro.svg";
+      getTema() == "claro" ? "images/modo-claro.svg" : "images/modo-oscuro.svg";
     btnTema.onclick = () => {
-      leerTema = leerTema == "claro" ? "oscuro" : "claro";
-      window.localStorage.setItem("tema", leerTema);
-      document.body.classList.remove("oscuro");
-      if (leerTema == "oscuro") document.body.classList.add(leerTema);
-      btnTema.src =
-        leerTema == "claro"
-          ? "images/modo-claro.svg"
-          : "images/modo-oscuro.svg";
+      if (getTema() == "claro") {
+        cargarTema({ tema: "oscuro" });
+      } else {
+        cargarTema({ tema: "claro" });
+      }
     };
     divBtnTema.append(btnTema);
     nav.append(divBtnTema);
   }
 
   document.body.prepend(nav);
+}
+
+/**
+ *
+ * @param {{tema: "claro" | "oscuro"}} param0
+ */
+function cargarTema({ tema } = {}) {
+  if (tema != null) {
+    window.localStorage.setItem("tema", tema);
+    setTema({ tema });
+    return;
+  }
+  let temaLeer = window.localStorage.getItem("tema");
+  if (temaLeer != null) {
+    setTema({ tema: temaLeer });
+  } else {
+    let temaSistema =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "oscuro"
+        : "claro";
+    setTema({ tema: temaSistema });
+  }
+}
+
+/**
+ * @param {{tema: "claro" | "oscuro"}} param0
+ */
+function setTema({ tema } = {}) {
+  if (tema == "claro") {
+    document.body.classList.remove("oscuro");
+  } else {
+    if (!document.body.classList.contains("oscuro"))
+      document.body.classList.add("oscuro");
+  }
+}
+
+/**
+ * @returns {'claro' | 'oscuro'}
+ */
+function getTema() {
+  return document.body.classList.contains("oscuro") ? "oscuro" : "claro";
 }

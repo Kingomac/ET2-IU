@@ -93,8 +93,7 @@ form button {
 }
 
 select {
-  margin: 1vh 1vw 1vh 1vw;
-  padding:1vh 2vw 1vh 2vw;
+  padding:.5vh 1.5vw .5vh 1.5vw;
   border: 4px var(--color-menu-boton-fondo) solid;
   background-color: var(--color-menu-boton-fondo);
   border-radius: 10px;
@@ -141,7 +140,6 @@ select:hover {
   padding: 3px;
   transition-duration: .5s;
   width: 5vh;
-  display: flex;
   background-color: var(--color-menu-boton-fondo);
 }
 
@@ -155,6 +153,8 @@ select:hover {
 
 .menu-superior .cuatro img {
   filter: var(--filtro-invert);
+  width: 5vh;
+  height: 5vh;
 }
 
 .menu-superior .cinco {
@@ -188,7 +188,7 @@ select:hover {
 dialog {
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .boton-fondo-blanco {

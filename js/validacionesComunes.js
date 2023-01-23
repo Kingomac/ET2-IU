@@ -22,6 +22,33 @@ function mensajeOK(idElemento) {
   if (err && err.classList.contains("error-div")) err.textContent = "";
 }
 
+function mensajeOKmodal() {
+  const dialog = document.createElement("dialog");
+  const divModal = document.createElement("div");
+  const cabeceraModal = document.createElement("div");
+
+  cabeceraModal.classList.add("cabecera-modal");
+  divModal.classList.add("caja-modal");
+
+  const tituloModal = document.createElement("h2");
+  tituloModal.classList.add("txt", "txt-titulo_error_modal");
+  tituloModal.innerText = lang["titulo_modal_exito"];
+  const cerrarModal = document.createElement("img");
+  cerrarModal.classList.add("boton-redondo");
+  cerrarModal.src = "images/close.svg";
+  cerrarModal.width = "50";
+  cerrarModal.onclick = () => dialog.close();
+  cabeceraModal.append(tituloModal, cerrarModal);
+
+  const divMensaje = document.createElement("div");
+  divMensaje.innerText = lang["modal_mensaje_exito"];
+
+  divModal.append(cabeceraModal, divMensaje);
+  dialog.append(divModal);
+  document.body.append(dialog);
+  dialog.showModal();
+}
+
 function size_minimo(idElemento, longitudminima) {
   const elemento = document.getElementById(idElemento).value;
   if (elemento.length < longitudminima) {
