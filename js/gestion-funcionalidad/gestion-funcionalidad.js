@@ -81,6 +81,7 @@ async function addFuncionalidad() {
         .value,
     });
     resetForm("id_form_funcionalidad");
+    mensajeOKmodal({ codigoMensaje: "exito_anadido" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -149,6 +150,7 @@ async function editFuncionalidad() {
     await peticionEditFuncionalidad();
     resetForm("id_form_funcionalidad");
     await actualizarTablaFuncionalidades();
+    mensajeOKmodal({ codigoMensaje: "exito_editado" });
     document.getElementById("form-modal").close();
   } catch (err) {
     mensajeErrorModal({
@@ -223,6 +225,7 @@ async function deleteFuncionalidad() {
   try {
     await peticionBackDeleteFuncionalidad();
     await actualizarTablaFuncionalidades();
+    mensajeOKmodal({ codigoMensaje: "exito_eliminacion" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({

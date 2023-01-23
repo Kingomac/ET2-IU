@@ -78,6 +78,7 @@ async function addAccion() {
     });
     await actualizarTablaAcciones();
     resetForm("id_form_accion");
+    mensajeOKmodal({ codigoMensaje: "exito_anadido" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -142,6 +143,7 @@ async function editAccion() {
     await peticionEditAccion();
     resetForm("id_form_accion");
     await actualizarTablaAcciones();
+    mensajeOKmodal({ codigoMensaje: "exito_editado" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -211,6 +213,7 @@ async function deleteAccion() {
   try {
     await peticionBackDeleteAccion();
     await actualizarTablaAcciones();
+    mensajeOKmodal({ codigoMensaje: "exito_eliminacion" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({

@@ -49,7 +49,7 @@ async function cambiarContrasenaLogin() {
   }
   try {
     await peticionBackCambiarContrasena();
-    mensajeOK("id_fields_cambiar_contrasena");
+    mensajeOKmodal({ codigoMensaje: "exito_cambio_contrasena" });
     document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
     mensajeErrorModal({
@@ -65,7 +65,7 @@ async function cambiarContrasenaMenu() {
   }
   try {
     await peticionBackCambiarContrasena({ dni: await getDniUsuario() });
-    mensajeOKmodal();
+    mensajeOKmodal({ codigoMensaje: "exito_cambio_contrasena" });
     document.getElementById("modal-recuperar-contrasena").close();
   } catch (err) {
     mensajeErrorModal({

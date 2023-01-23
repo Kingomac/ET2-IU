@@ -27,6 +27,7 @@ async function edit_usuario() {
     try {
       await peticionEDITusuarioBack();
       await actualizarTablaUsuarios();
+      mensajeOKmodal({ codigoMensaje: "exito_editado" });
       document.getElementById("form-modal").close();
     } catch (err) {
       mensajeErrorModal({

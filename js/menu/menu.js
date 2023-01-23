@@ -108,6 +108,8 @@ function insertarMenuAcciones({
     divBtnTema.classList.add("cuatro");
     const btnTema = document.createElement("img");
     btnTema.classList.add("boton-redondo");
+    btnTema.title = getTextoTitulo("boton_tema");
+    btnTema.classList.add("txt", "txt-titulo_boton_tema");
     btnTema.src =
       getTema() == "claro" ? "images/modo-claro.svg" : "images/modo-oscuro.svg";
     btnTema.onclick = () => {

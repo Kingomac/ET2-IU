@@ -22,7 +22,11 @@ function mensajeOK(idElemento) {
   if (err && err.classList.contains("error-div")) err.textContent = "";
 }
 
-function mensajeOKmodal() {
+/**
+ *
+ * @param {{onclose:((this: GlobalEventHandlers, ev: Event) => any) | null, codigoMensaje: string}} param0
+ */
+function mensajeOKmodal({ onclose, codigoMensaje } = {}) {
   const dialog = document.createElement("dialog");
   const divModal = document.createElement("div");
   const cabeceraModal = document.createElement("div");
@@ -41,11 +45,12 @@ function mensajeOKmodal() {
   cabeceraModal.append(tituloModal, cerrarModal);
 
   const divMensaje = document.createElement("div");
-  divMensaje.innerText = lang["modal_mensaje_exito"];
+  divMensaje.innerText = lang[codigoMensaje] || lang["modal_mensaje_exito"];
 
   divModal.append(cabeceraModal, divMensaje);
   dialog.append(divModal);
   document.body.append(dialog);
+  dialog.onclose = onclose;
   dialog.showModal();
 }
 

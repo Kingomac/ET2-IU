@@ -11,6 +11,7 @@ body {
   --color-menu-boton-borde: #1e0746;
   --color-menu-boton-fondo: #e3d5fb;
   --color-menu-boton-grande: #e3d5fb;
+  --color-borde-boton-flotante: #616161;
 
   --color-boton-login-hover: #552051;
   --color-boton-login-active: #250c23;
@@ -33,6 +34,7 @@ body.oscuro {
   --color-menu-boton-borde: #64439c;
   --color-menu-boton-fondo: #392360;
   --color-menu-boton-grande: #190839;
+  --color-borde-boton-flotante: #50c8ef;
 
   --color-fondo-input: #200d49;
 

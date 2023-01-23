@@ -77,6 +77,7 @@ async function addRol() {
     await peticionBackAddRol();
     resetForm("id_form_rol");
     await actualizarTablaRoles();
+    mensajeOKmodal({ codigoMensaje: "exito_anadido" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -145,6 +146,7 @@ async function editRol() {
     await peticionEditRol();
     resetForm("id_form_rol");
     await actualizarTablaRoles();
+    mensajeOKmodal({ codigoMensaje: "exito_editado" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -217,6 +219,7 @@ async function deleteRol() {
   try {
     await peticionBackDeleteRol();
     await actualizarTablaRoles();
+    mensajeOKmodal({ codigoMensaje: "exito_eliminacion" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({

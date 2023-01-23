@@ -50,7 +50,7 @@ async function actualizarTablaPersonas(datos) {
         i.direccion_persona,
         i.telefono_persona,
         i.email_persona,
-        i.foto_persona,
+        getFoto({ src: i.foto_persona }),
         editBtn,
         deleteBtn,
         detailBtn
@@ -58,6 +58,18 @@ async function actualizarTablaPersonas(datos) {
     );
   }
   trProgress.remove();
+}
+
+function getFoto({ src }) {
+  const pic = new Image();
+  pic.width = "50";
+  pic.height = "50";
+  pic.onerror = () => {
+    pic.classList.add("defpic");
+    pic.src = `images/face${Math.floor(Math.random() * 6)}.svg`;
+  };
+  pic.src = src;
+  return pic;
 }
 
 function resetOnBlur() {
@@ -116,6 +128,7 @@ async function addPersona() {
     await peticionBackAddPersona();
     resetForm("id_form_persona");
     await actualizarTablaPersonas();
+    mensajeOKmodal({ codigoMensaje: "exito_anadido" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -193,6 +206,7 @@ async function editPersona() {
     await peticionEditPersona();
     resetForm("id_form_persona");
     await actualizarTablaPersonas();
+    mensajeOKmodal({ codigoMensaje: "exito_editado" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({
@@ -265,6 +279,7 @@ async function deletePersona() {
   try {
     await peticionBackDeletePersona();
     await actualizarTablaPersonas();
+    mensajeOKmodal({ codigoMensaje: "exito_eliminacion" });
     document.getElementById("form-modal").close();
   } catch (e) {
     mensajeErrorModal({

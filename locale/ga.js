@@ -35,6 +35,14 @@ const GA = Object.freeze({
   modal_mensaje_exito: "😻 Operación exitosa 😻",
   titulo_modal_exito: "🐈🐈 Éxito 🐈🐈",
 
+  titulo_boton_tema: "Cambiar tema",
+
+  exito_anadido: "Engadido correctamente",
+  exito_editado: "Editado correctamente",
+  exito_registro: "Rexistrado correctamente",
+  exito_eliminacion: "Eliminado correctamente",
+  exito_cambio_contrasena: "Contrasinal cambiado correctamente",
+
   // Gestion personas
   titulo_gestion_personas: "Xestión de personas",
   label_nombre_persona: "Nome",

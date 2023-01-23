@@ -33,7 +33,12 @@ async function registrar() {
   if (!comprobarFormPersona() || !comprobarFormUsuario()) return false;
   try {
     await peticionBackRegistrar();
-    window.location.href = "login.html";
+    mensajeOKmodal({
+      onclose: () => {
+        window.location.href = "login.html";
+      },
+      codigoMensaje: "exito_registro",
+    });
   } catch (err) {
     mensajeErrorModal({
       codigo: err,

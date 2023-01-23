@@ -5,6 +5,14 @@ fieldset {
   width: 75%;
   align-items: center;
   justify-items: center;
+  border-radius: 20px;
+  background-color: var(--color-fondo-tbody);
+  border: none;
+}
+
+legend {
+ background-color: var(--color-fondo-tbody);
+  border-radius: 20px;
 }
 
 fieldset select {

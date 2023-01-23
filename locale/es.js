@@ -36,6 +36,15 @@ const ES = Object.freeze({
   modal_mensaje_exito: "😻 Operación exitosa 😻",
   titulo_modal_exito: "🐈🐈 Éxito 🐈🐈",
 
+  titulo_boton_tema: "Cambiar tema",
+
+  // Mensajes de exito
+  exito_anadido: "Añadido correctamente",
+  exito_editado: "Editado correctamente",
+  exito_registro: "Registrado correctamente",
+  exito_eliminacion: "Eliminado correctamente",
+  exito_cambio_contrasena: "Contraseña cambiada correctamente",
+
   // Gestion personas
   titulo_gestion_personas: "Gestión de personas",
   label_nombre_persona: "Nombre",

@@ -13,6 +13,16 @@
 
 .menu-gestion {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  gap: 5px;
+  z-index: 1;
+}
+
+.menu-gestion img {
+  border: 2px solid var(--color-borde-boton-flotante);
 }
