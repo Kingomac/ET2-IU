@@ -36,10 +36,11 @@
       src="js/gestionusuario/comprobar_errores_usuario.js"
     ></script>
     <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
   </head>
 
   <body
-    onload="cargarTema();redirigirLoginTrue(PAGINAS.menu);/*alternarDisplay('id_caja_cambiar_contrasena');*/setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});"
+    onload="cargarTema();redirigirLoginTrue(PAGINAS.menu);/*alternarDisplay('id_caja_cambiar_contrasena');*/setLang(readCookie('lang'));insertarMenuAcciones({desconectar: false, volver: false});cargarFooter();"
   >
     <div class="contenedor caja-login">
       <header>

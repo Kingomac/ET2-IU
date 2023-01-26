@@ -42,10 +42,11 @@
       type="text/javascript"
       src="js/gestion-roles/comprobar-errores-roles.js"
     ></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
   </head>
 
   <body
-    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaRoles();"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaRoles();cargarFooter();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_roles"></h1>

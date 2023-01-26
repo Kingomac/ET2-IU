@@ -50,10 +50,11 @@
       type="text/javascript"
       src="js/gestion-accion/comprobar-errores-accion.js"
     ></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
   </head>
 
   <body
-    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaAcciones();"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaAcciones();cargarFooter();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_acciones"></h1>

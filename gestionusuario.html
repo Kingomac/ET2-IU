@@ -42,10 +42,11 @@
     ></script>
     <script type="text/javascript" src="js/login/cookiesLogin.js"></script>
     <script type="text/javascript" src="js/menu/menu.js"></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
   </head>
 
   <body
-    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaUsuarios()"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaUsuarios();cargarFooter();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_usuarios">Página de gestión</h1>

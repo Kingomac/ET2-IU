@@ -30,9 +30,10 @@
       type="text/javascript"
       src="js/gestion-permisos/gestion-permisos.js"
     ></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
   </head>
   <body
-    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPermisos();"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setDivInvisible('id_caja_error');setLang(readCookie('lang'));insertarMenuAcciones();actualizarTablaPermisos();cargarFooter();"
   >
     <header>
       <h1 class="txt txt-titulo_gestion_permisos"></h1>
