@@ -5,6 +5,9 @@ body {
   background-color: var(--color-fondo);
   font-family: var(--fuente-primaria);
   color: var(--color-fuente);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
