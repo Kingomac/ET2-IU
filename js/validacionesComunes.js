@@ -41,7 +41,10 @@ function mensajeOKmodal({ onclose, codigoMensaje } = {}) {
   cerrarModal.classList.add("boton-redondo");
   cerrarModal.src = "images/close.svg";
   cerrarModal.width = "50";
-  cerrarModal.onclick = () => dialog.close();
+  cerrarModal.onclick = () => {
+    dialog.close();
+    dialog.remove();
+  };
   cabeceraModal.append(tituloModal, cerrarModal);
 
   const divMensaje = document.createElement("div");

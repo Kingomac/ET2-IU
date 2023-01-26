@@ -218,10 +218,6 @@ function crearFormDeleteFuncionalidad({
 }
 
 async function deleteFuncionalidad() {
-  if (!comprobarNombreFuncionalidad() || !comprobarDescripFuncionalidad()) {
-    console.error("campos erroneos");
-    return;
-  }
   try {
     await peticionBackDeleteFuncionalidad();
     await actualizarTablaFuncionalidades();

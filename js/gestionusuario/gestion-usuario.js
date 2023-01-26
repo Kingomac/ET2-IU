@@ -295,6 +295,9 @@ async function crearformSHOWCURRENTusuario(dni, usuario, rol) {
 
   document.getElementById("form-modal").showModal();
 
+  $("#id_dni").off("blur");
+  $("#id_usuario").off("blur");
+
   $("#id_dni").val(dni);
   $("#id_dni").attr("readonly", true);
 

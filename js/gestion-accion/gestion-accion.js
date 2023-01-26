@@ -207,9 +207,6 @@ function crearFormDeleteAccion({ id_accion, nombre_accion, descrip_accion }) {
 }
 
 async function deleteAccion() {
-  if (!comprobarNombreAccion() || !comprobarDescripAccion()) {
-    return;
-  }
   try {
     await peticionBackDeleteAccion();
     await actualizarTablaAcciones();

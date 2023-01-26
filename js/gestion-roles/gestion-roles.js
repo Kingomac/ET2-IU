@@ -212,10 +212,6 @@ function crearFormDeleteRol({ id_rol, nombre_rol, descrip_rol }) {
 }
 
 async function deleteRol() {
-  if (!comprobarNombreRol() || !comprobarDescripRol()) {
-    console.error("campos erroneos");
-    return;
-  }
   try {
     await peticionBackDeleteRol();
     await actualizarTablaRoles();

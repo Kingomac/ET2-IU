@@ -26,3 +26,15 @@
 .menu-gestion img {
   border: 2px solid var(--color-borde-boton-flotante);
 }
+
+.fichero-imagen {
+  font-size: smaller;
+  color: gray;
+}
+
+.div-imagen-perfil-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

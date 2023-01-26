@@ -107,6 +107,12 @@ const GA = Object.freeze({
   //Errores
   titulo_error_modal: "Erro",
   err_rol_desconocido: "Rol descoñecido con ID:",
+
+  //Footer
+  footer_gestiones: "Xestións",
+  footer_general: "Xeral",
+  footer_creditos: "Creado por Jesús, Xián, Javi e Mario 2023",
+
   // Errores de comprobaciones
   //err_id_accion_largo: "ID de acción longo",
   //err_id_accion_negativo: "ID de acción non pode ser negativo",

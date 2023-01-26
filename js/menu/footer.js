@@ -10,7 +10,6 @@ async function cargarFooter() {
   const resp = await req.text();
   const parser = new DOMParser();
   const virtualDom = parser.parseFromString(resp, "text/html");
-  console.log(virtualDom.body.children);
   setLangElem({
     elem: virtualDom.body,
   });

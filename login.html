@@ -60,6 +60,7 @@
           id="id_usuario"
           name="usuario"
           onblur="comprobar_usuario();"
+          autocomplete="new-password"
         />
 
         <label
@@ -71,6 +72,7 @@
           id="id_contrasena_noencriptada"
           name="contrasena"
           onblur="comprobar_contrasena({idInput: 'id_contrasena_noencriptada'});"
+          autocomplete="new-password"
         />
 
         <button
@@ -114,6 +116,7 @@
             name="dni"
             onblur="comprobar_dni({idInput: 'cc_dni'})"
             maxlength="9"
+            autocomplete="new-password"
           />
 
           <label
@@ -124,6 +127,7 @@
             type="password"
             id="cc_contrasena_noencriptada"
             onblur="comprobar_contrasena({idInput: 'cc_contrasena_noencriptada'});"
+            autocomplete="new-password"
           />
 
           <label
@@ -134,6 +138,7 @@
             type="password"
             id="cc_contrasena_verificar"
             onblur="comprobar_contrasena_verificada({ idInput: 'cc_contrasena_noencriptada', idInputVerificar: 'cc_contrasena_verificar' })"
+            autocomplete="new-password"
           />
           <button
             type="submit"

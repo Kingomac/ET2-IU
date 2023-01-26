@@ -102,6 +102,11 @@ const EN = Object.freeze({
   btn_cambiar_contrasena: "Change password",
   fields_nueva_contrasena: "Write your new password",
 
+  //Footer
+  footer_gestiones: "Management",
+  footer_general: "General",
+  footer_creditos: "Made by Jesús, Xián, Javi y Mario 2023",
+
   //Errores
   titulo_error_modal: "Error",
   err_rol_desconocido: "Unknown role with ID:",

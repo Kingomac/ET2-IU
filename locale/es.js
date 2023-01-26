@@ -107,6 +107,7 @@ const ES = Object.freeze({
   //Footer
   footer_gestiones: "Gestiones",
   footer_general: "General",
+  footer_creditos: "Creado por Jesús, Xián, Javi y Mario 2023",
 
   //Errores
   titulo_error_modal: "Error",

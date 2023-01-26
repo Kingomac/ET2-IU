@@ -61,15 +61,22 @@ async function actualizarTablaPersonas(datos) {
 }
 
 function getFoto({ src }) {
+  const div = document.createElement("div");
+  div.classList.add("div-imagen-perfil-error");
   const pic = new Image();
+  div.append(pic);
   pic.width = "50";
   pic.height = "50";
   pic.onerror = () => {
     pic.classList.add("defpic");
     pic.src = `images/face${Math.floor(Math.random() * 6)}.svg`;
+    const fichero = document.createElement("span");
+    fichero.innerText = src;
+    fichero.classList.add("fichero-imagen");
+    div.append(fichero);
   };
   pic.src = src;
-  return pic;
+  return div;
 }
 
 function resetOnBlur() {

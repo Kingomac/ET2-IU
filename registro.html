@@ -61,6 +61,7 @@
             name="dni"
             maxlength="9"
             onblur="comprobar_dni()"
+            autocomplete="new-password"
           />
           <label
             for="nombre_persona"
@@ -72,6 +73,7 @@
             id="nombre_persona"
             name="nombre_persona"
             onblur="comprobarNombrePersona()"
+            autocomplete="name"
           />
           <label
             for="apellidos_persona"
@@ -83,6 +85,7 @@
             name="apellidos_persona"
             id="apellidos_persona"
             onblur="comprobarApellidosPersona()"
+            autocomplete="name"
           />
           <label
             for="fechaNacimiento_persona"
@@ -93,6 +96,7 @@
             name="fechaNacimiento_persona"
             id="fechaNacimiento_persona"
             onblur="comprobarFechaNacimientoPersona()"
+            autocomplete="bday"
           />
           <label
             for="direccion_persona"
@@ -104,6 +108,7 @@
             name="direccion_persona"
             id="direccion_persona"
             onblur="comprobarDireccionPersona()"
+            autocomplete="street-address"
           />
           <label
             for="telefono_persona"
@@ -115,6 +120,7 @@
             name="telefono_persona"
             id="telefono_persona"
             onblur="comprobarTelefonoPersona()"
+            autocomplete="tel"
           />
           <label
             for="email_persona"
@@ -126,6 +132,7 @@
             name="email_persona"
             id="email_persona"
             onblur="comprobarEmailPersona()"
+            autocomplete="email"
           />
           <label for="foto_persona" class="txt txt-label_foto_persona"></label>
           <input
@@ -134,6 +141,7 @@
             name="foto_persona"
             id="foto_persona"
             onblur="comprobarFotoPersona()"
+            autocomplete="new-password"
           />
         </fieldset>
         <fieldset id="id_fields_usuario">
@@ -144,12 +152,14 @@
             id="id_usuario"
             name="usuario"
             onblur="comprobar_usuario();"
+            autocomplete="nickname"
           />
           <label for="id_contrasena" class="txt txt-label_contrasena"></label>
           <input
             type="password"
             id="id_contrasena"
             onblur="comprobar_contrasena();"
+            autocomplete="new-password"
           />
           <label
             for="id_contrasena_verificar"
@@ -159,6 +169,7 @@
             type="password"
             id="id_contrasena_verificar"
             onblur="comprobar_contrasena_verificada()"
+            autocomplete="new-password"
           />
           <label for="id_id_rol" class="txt txt-label_rol"></label>
         </fieldset>
