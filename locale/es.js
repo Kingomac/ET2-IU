@@ -104,6 +104,10 @@ const ES = Object.freeze({
   btn_cambiar_contrasena: "Cambiar contraseña",
   fields_nueva_contrasena: "Escribe tu nueva contraseña",
 
+  //Footer
+  footer_gestiones: "Gestiones",
+  footer_general: "General",
+
   //Errores
   titulo_error_modal: "Error",
   err_rol_desconocido: "Rol desconocido con ID:",

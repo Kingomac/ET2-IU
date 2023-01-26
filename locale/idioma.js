@@ -20,41 +20,52 @@ function setLangSelect(ev) {
   setLang(ev.target.value);
 }
 
-function setLang(codigo = "ES") {
-  lang = IDIOMAS[codigo].valores;
-
-  for (const el of document.querySelectorAll("div.txt")) {
+/**
+ *
+ * @param {{ codigo?:string, elem?: Document | HTMLElement }} param0
+ */
+function setLangElem({
+  codigo = readCookie(COOKIE_LANG) || "ES",
+  elem = document,
+}) {
+  for (const el of elem.querySelectorAll("div.txt")) {
     el.innerHTML =
       lang[getLangClass(el.classList)] ||
       `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
-  for (const el of document.querySelectorAll(
-    "th.txt, td.txt, label.txt, h1.txt, h2.txt, h3.txt, h4.txt, h5.txt, h6.txt, title.txt, legend.txt, a.txt, button.txt, span.txt"
+  for (const el of elem.querySelectorAll(
+    "th.txt, td.txt, label.txt, h1.txt, h2.txt, h3.txt, h4.txt, h5.txt, h6.txt, title.txt, legend.txt, a.txt, button.txt, span.txt, li.txt"
   )) {
     el.innerText =
       lang[getLangClass(el.classList)] ||
       `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
-  for (const el of document.querySelectorAll("option.txt")) {
+  for (const el of elem.querySelectorAll("option.txt")) {
     const query =
       lang[getLangClass(el.classList)] ||
       `${ALT_TEXT} (${getLangClass(el.classList)})`;
     if (query != null) el.innerText = query;
   }
 
-  for (const el of document.querySelectorAll("img.txt")) {
+  for (const el of elem.querySelectorAll("img.txt")) {
     el.title =
       lang[getLangClass(el.classList)] ||
       `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
 
-  for (const el of document.querySelectorAll("input.txt")) {
+  for (const el of elem.querySelectorAll("input.txt")) {
     el.placeholder =
       lang[getLangClass(el.classList)] ||
       `${ALT_TEXT} (${getLangClass(el.classList)})`;
   }
+}
+
+function setLang(codigo = "ES") {
+  lang = IDIOMAS[codigo].valores;
+
+  setLangElem({ codigo });
 
   writeCookie({
     clave: "lang",

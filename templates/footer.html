@@ -1,0 +1,94 @@
+<footer>
+  <div class="lists">
+    <ul>
+      <li class="txt txt-footer_general titulo"></li>
+      <li><a href="registro.html" class="txt txt-titulo_registrar"></a></li>
+      <li><a href="login.html" class="txt txt-titulo_pagina_login"></a></li>
+      <li><a href="menu.html" class="txt txt-titulo_menu"></a></li>
+    </ul>
+    <ul>
+      <li class="txt txt-footer_gestiones titulo"></li>
+      <li>
+        <a
+          href="gestionpersonas.html"
+          class="txt txt-titulo_gestion_personas"
+        ></a>
+      </li>
+      <li>
+        <a
+          href="gestionusuario.html"
+          class="txt txt-titulo_gestion_usuarios"
+        ></a>
+      </li>
+      <li>
+        <a href="gestionroles.html" class="txt txt-titulo_gestion_roles"></a>
+      </li>
+      <li>
+        <a
+          href="gestionfuncionalidad.html"
+          class="txt txt-titulo_gestion_funcionalidades"
+        ></a>
+      </li>
+      <li>
+        <a
+          href="gestionaccion.html"
+          class="txt txt-titulo_gestion_acciones"
+        ></a>
+      </li>
+      <li>
+        <a
+          href="gestionpermisos.html"
+          class="txt txt-titulo_gestion_permisos"
+        ></a>
+      </li>
+    </ul>
+  </div>
+  <div class="creditos">Creado por Suso, Xián, Javi y Mario. 2023</div>
+</footer>
+<style>
+  footer {
+    margin-top: 5vh;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: var(--color-menu-boton-borde);
+    color: white;
+    display: grid;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+
+  footer .lists {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid white;
+    width: 70%;
+  }
+
+  footer .lists ul {
+    list-style: square;
+  }
+
+  footer .lists ul li {
+    margin: 5px 0;
+  }
+
+  footer .lists ul .titulo {
+    font-weight: bold;
+  }
+
+  footer .creditos {
+    margin: 2vh 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (orientation: portrait) {
+    footer .lists {
+      width: 100%;
+    }
+  }
+</style>

@@ -14,7 +14,7 @@ function writeCookie({ clave, valor, expires }) {
 /**
  *
  * @param {string} clave
- * @returns string | undefined
+ * @returns {string | undefined}
  */
 function readCookie(clave) {
   for (const entrada of document.cookie.split("; ")) {

@@ -34,11 +34,12 @@
       type="text/javascript"
       src="js/gestionusuario/comprobar_errores_usuario.js"
     ></script>
+    <script type="text/javascript" src="js/menu/footer.js"></script>
     <title class="txt txt-titulo_menu"></title>
   </head>
 
   <body
-    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});"
+    onload="cargarTema();redirigirLoginFalse(PAGINAS.login);setLang(readCookie('lang'));insertarMenuAcciones({volver: false});cargarFooter();"
   >
     <header>
       <h1 class="txt txt-titulo_menu"></h1>
