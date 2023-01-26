@@ -59,7 +59,7 @@ function crearFormAddFuncionalidad() {
   submitImg.src = "images/add.svg";
   submitImg.onclick = addFuncionalidad;
 
-  $("#form-funcionalidad").text(getTextoTitulo("add"));
+  document.getElementById("titulo-form").innerText = getTextoTitulo("add");
   document.getElementById("form-funcionalidad").className =
     "txt txt-titulo_add";
 }
